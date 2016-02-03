@@ -2,6 +2,7 @@ package biz.golek.whattodofordinner.modules;
 
 import javax.inject.Singleton;
 
+import biz.golek.whattodofordinner.ViewStateManager;
 import biz.golek.whattodofordinner.view.helpers.ViewState;
 import dagger.Module;
 import dagger.Provides;
@@ -11,6 +12,12 @@ import dagger.Provides;
  */
 @Module
 public class AppModule {
+
+    @Provides
+    @Singleton
+    static ViewStateManager provideViewStateManager(){
+        return new ViewStateManager();
+    }
 
     @Provides
     @Singleton

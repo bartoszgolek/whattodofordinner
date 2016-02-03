@@ -18,13 +18,11 @@ import biz.golek.whattodofordinner.business.contract.controllers.ShowSettingsCon
 public class MainActivity extends AppCompatActivity {
 
     @Inject
-    Provider<ShowSettingsController> settings;
+    ShowSettingsController settings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        ((WhatToDoForDinnerApp)getApplication()).getComponent().inject(this);
 
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -56,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            settings.get().Run();
+            settings.Run();
             return true;
         }
 

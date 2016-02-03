@@ -1,5 +1,7 @@
 package biz.golek.whattodofordinner;
 
+import android.app.Activity;
+
 import javax.inject.Singleton;
 
 import biz.golek.whattodofordinner.modules.AppModule;
@@ -16,6 +18,6 @@ import dagger.Component;
                 SettingsModule.class
         })
 public interface ApplicationComponent {
-    void inject(WhatToDoForDinnerApp app);
-    void inject(MainActivity activity);
+    ViewStateManager viewStateManager();
+    void inject(Activity activity);
 }
