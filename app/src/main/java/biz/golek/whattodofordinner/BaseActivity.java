@@ -3,19 +3,24 @@ package biz.golek.whattodofordinner;
 import android.app.Activity;
 import android.os.Bundle;
 
+import javax.inject.Inject;
+
+import biz.golek.whattodofordinner.view.helpers.ViewState;
+
 /**
  * Created by bg on 02.02.16.
  */
 public class BaseActivity extends Activity {
-    protected WhatToDoForDinnerApp mMyApp;
+    @Inject
+    ViewState viewState;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mMyApp = (WhatToDoForDinnerApp)this.getApplicationContext();
     }
+
     protected void onResume() {
         super.onResume();
-        mMyApp.setCurrentActivity(this);
+        viewState.setCurrentActivity(this);
     }
     protected void onPause() {
         clearReferences();
@@ -27,8 +32,8 @@ public class BaseActivity extends Activity {
     }
 
     private void clearReferences(){
-        Activity currActivity = mMyApp.getCurrentActivity();
+        Activity currActivity = viewState.getCurrentActivity();
         if (this.equals(currActivity))
-            mMyApp.setCurrentActivity(null);
+            viewState.setCurrentActivity(null);
     }
 }

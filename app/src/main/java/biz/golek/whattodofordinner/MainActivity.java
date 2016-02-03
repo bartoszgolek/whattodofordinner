@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import javax.inject.Inject;
+import javax.inject.Provider;
 
 import biz.golek.conaobiad.R;
 import biz.golek.whattodofordinner.business.contract.controllers.ShowSettingsController;
@@ -17,11 +18,14 @@ import biz.golek.whattodofordinner.business.contract.controllers.ShowSettingsCon
 public class MainActivity extends AppCompatActivity {
 
     @Inject
-    ShowSettingsController settings;
+    Provider<ShowSettingsController> settings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        ((WhatToDoForDinnerApp)getApplication()).getComponent().inject(this);
+
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -52,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            settings.Run();
+            settings.get().Run();
             return true;
         }
 
