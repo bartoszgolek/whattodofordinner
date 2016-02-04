@@ -30,7 +30,7 @@ public class AppModule {
 
     @Provides
     @Singleton
-    static ControllersProvider provideShowSettingsController(
+    static ControllersProvider provideControllersProvider(
             Provider<ShowSettingsController> showSettingsControllerProvider
     ){
         return new ControllersProvider(
