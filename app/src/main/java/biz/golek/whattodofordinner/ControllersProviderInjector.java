@@ -6,34 +6,37 @@ import android.os.Bundle;
 
 import javax.inject.Inject;
 
-import biz.golek.whattodofordinner.modules.AppModule;
-import biz.golek.whattodofordinner.modules.SettingsModule;
-import biz.golek.whattodofordinner.view.helpers.ViewState;
+import biz.golek.whattodofordinner.view.ControllersProvider;
+import biz.golek.whattodofordinner.view.awareness.IAware;
+import biz.golek.whattodofordinner.view.awareness.IControllersProviderAware;
 
 /**
  * Created by bg on 02.02.16.
  */
-public class ActivityInjector implements Application.ActivityLifecycleCallbacks {
-    private ApplicationComponent component;
+public class ControllersProviderInjector implements Application.ActivityLifecycleCallbacks {
 
-    public ActivityInjector(){
-        this.component = DaggerApplicationComponent.builder()
-                .appModule(new AppModule())
-                .settingsModule(new SettingsModule())
-                .build();
+    private ControllersProvider controllersProvider;
+
+    @Inject
+    public ControllersProviderInjector(ControllersProvider controllersProvider)
+    {
+        this.controllersProvider = controllersProvider;
     }
 
     @Override
     public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
-        component.inject(activity);
+        if (activity instanceof IControllersProviderAware)
+            ((IControllersProviderAware)activity).Set(controllersProvider);
     }
 
     @Override
     public void onActivityStarted(Activity activity) {
+
     }
 
     @Override
     public void onActivityResumed(Activity activity) {
+
     }
 
     @Override

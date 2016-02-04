@@ -14,10 +14,16 @@ import biz.golek.whattodofordinner.view.helpers.ViewState;
  */
 public class ShowSettingsPresenterImpl implements ShowSettingsPresenter {
     @Inject
+    public ShowSettingsPresenterImpl(ViewState viewState){
+        this.viewState = viewState;
+    }
+
     ViewState viewState;
 
     @Override
     public void Show() {
-        Intent intent = new Intent(viewState.getCurrentActivity(), SettingsActivity.class);
+        Activity currentActivity = viewState.getCurrentActivity();
+        Intent intent = new Intent(currentActivity, SettingsActivity.class);
+        currentActivity.startActivity(intent);
     }
 }

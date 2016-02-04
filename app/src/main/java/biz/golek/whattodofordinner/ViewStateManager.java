@@ -12,8 +12,13 @@ import biz.golek.whattodofordinner.view.helpers.ViewState;
  * Created by bg on 02.02.16.
  */
 public class ViewStateManager implements Application.ActivityLifecycleCallbacks {
-    @Inject
+
     ViewState viewState;
+
+    @Inject
+    public ViewStateManager(ViewState viewState){
+        this.viewState = viewState;
+    }
 
     private void clearReferences(){
         Activity currActivity = viewState.getCurrentActivity();

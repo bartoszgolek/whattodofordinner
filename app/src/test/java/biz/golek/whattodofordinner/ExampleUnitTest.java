@@ -1,4 +1,4 @@
-package biz.golek.conaobiad;
+package biz.golek.whattodofordinner;
 
 import org.junit.Test;
 

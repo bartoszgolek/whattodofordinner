@@ -10,8 +10,12 @@ import biz.golek.whattodofordinner.business.contract.controllers.interactors.Sho
  */
 public class ShowSettingsControllerImpl implements ShowSettingsController {
 
-    @Inject
     ShowSettings interactor;
+
+    @Inject
+    public ShowSettingsControllerImpl(ShowSettings showSettings){
+        this.interactor = showSettings;
+    }
 
     @Override
     public void Run() {

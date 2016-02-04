@@ -9,16 +9,12 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import javax.inject.Inject;
-import javax.inject.Provider;
+import biz.golek.whattodofordinner.view.ControllersProvider;
+import biz.golek.whattodofordinner.view.awareness.IControllersProviderAware;
 
-import biz.golek.conaobiad.R;
-import biz.golek.whattodofordinner.business.contract.controllers.ShowSettingsController;
+public class MainActivity extends AppCompatActivity implements IControllersProviderAware {
 
-public class MainActivity extends AppCompatActivity {
-
-    @Inject
-    ShowSettingsController settings;
+    private ControllersProvider controllerProvider;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,10 +50,15 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            settings.Run();
+            this.controllerProvider.getShowSettingsController().Run();
             return true;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void Set(ControllersProvider item) {
+        this.controllerProvider = item;
     }
 }

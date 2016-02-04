@@ -11,10 +11,14 @@ import biz.golek.whattodofordinner.business.contract.controllers.presenters.Show
 public class ShowSettingsImpl implements ShowSettings {
 
     @Inject
-    ShowSettingsPresenter controller;
+    public ShowSettingsImpl(ShowSettingsPresenter presenter){
+        this.presenter = presenter;
+    }
+
+    ShowSettingsPresenter presenter;
 
     @Override
     public void Run() {
-        controller.Show();
+        presenter.Show();
     }
 }

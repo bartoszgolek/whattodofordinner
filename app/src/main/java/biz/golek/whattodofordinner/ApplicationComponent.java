@@ -1,7 +1,5 @@
 package biz.golek.whattodofordinner;
 
-import android.app.Activity;
-
 import javax.inject.Singleton;
 
 import biz.golek.whattodofordinner.modules.AppModule;
@@ -19,5 +17,5 @@ import dagger.Component;
         })
 public interface ApplicationComponent {
     ViewStateManager viewStateManager();
-    void inject(Activity activity);
+    ControllersProviderInjector controllersProviderInjector();
 }

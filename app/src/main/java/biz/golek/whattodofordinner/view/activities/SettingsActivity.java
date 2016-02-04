@@ -20,7 +20,7 @@ import android.preference.RingtonePreference;
 import android.text.TextUtils;
 import android.view.MenuItem;
 
-import biz.golek.conaobiad.R;
+import biz.golek.whattodofordinner.R;
 
 import java.util.List;
 
