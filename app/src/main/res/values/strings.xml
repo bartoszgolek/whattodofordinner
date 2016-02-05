@@ -66,4 +66,7 @@
     <string name="add_new_dinner_duration">Duration</string>
     <string name="add_new_dinner_is_soup">Soup</string>
     <string name="add_new_dinner_name_is_vege">Vege</string>
+    <string name="dinner_duration_short">Short</string>
+    <string name="dinner_duration_medium">Medium</string>
+    <string name="dinner_duration_long">Long</string>
 </resources>

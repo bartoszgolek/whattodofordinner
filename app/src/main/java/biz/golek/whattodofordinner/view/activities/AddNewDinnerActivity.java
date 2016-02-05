@@ -7,6 +7,11 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.CompoundButton;
+import android.widget.EditText;
+import android.widget.Spinner;
 
 import biz.golek.whattodofordinner.R;
 import biz.golek.whattodofordinner.databinding.ActivityAddNewDinnerBinding;
@@ -28,6 +33,21 @@ public class AddNewDinnerActivity extends AppCompatActivity implements IControll
 
         dinner = new Dinner();
         binding.setDinner(dinner);
+
+        attachListeners();
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, dinner.getDurations(getResources()));
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        Spinner sItems = (Spinner) findViewById(R.id.duration);
+        sItems.setAdapter(adapter);
+    }
+
+    private void attachListeners() {
+        ((EditText)findViewById(R.id.name)).addTextChangedListener(dinner.getNameListener());
+        ((CompoundButton)findViewById(R.id.vege)).setOnCheckedChangeListener(dinner.getVegetarianListener());
+        ((CompoundButton)findViewById(R.id.soup)).setOnCheckedChangeListener(dinner.getSoupListener());
+        ((AdapterView)findViewById(R.id.duration)).setOnItemSelectedListener(dinner.getDurationListener());
     }
 
     @Override

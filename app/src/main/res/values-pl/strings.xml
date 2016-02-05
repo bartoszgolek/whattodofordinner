@@ -9,4 +9,7 @@
     <string name="add_new_dinner_is_soup">Zupa</string>
     <string name="add_new_dinner_duration">Czas przygotowania</string>
     <string name="save">Zapisz</string>
+    <string name="dinner_duration_short">Krótki</string>
+    <string name="dinner_duration_medium">Średni</string>
+    <string name="dinner_duration_long">Długi</string>
 </resources>
