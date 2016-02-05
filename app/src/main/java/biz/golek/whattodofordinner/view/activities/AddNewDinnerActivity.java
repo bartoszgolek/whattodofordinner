@@ -1,5 +1,6 @@
 package biz.golek.whattodofordinner.view.activities;
 
+import android.databinding.DataBindingUtil;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,19 +9,25 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import biz.golek.whattodofordinner.R;
+import biz.golek.whattodofordinner.databinding.ActivityAddNewDinnerBinding;
 import biz.golek.whattodofordinner.view.ControllersProvider;
 import biz.golek.whattodofordinner.view.awareness.IControllersProviderAware;
+import biz.golek.whattodofordinner.view.view_models.Dinner;
 
 public class AddNewDinnerActivity extends AppCompatActivity implements IControllersProviderAware {
 
     private ControllersProvider controllerProvider;
+    private Dinner dinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_new_dinner);
+        ActivityAddNewDinnerBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_add_new_dinner);
 
         setupActionBar();
+
+        dinner = new Dinner();
+        binding.setDinner(dinner);
     }
 
     @Override
