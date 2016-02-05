@@ -1,4 +1,4 @@
-package biz.golek.whattodofordinner.business.controllers;
+package biz.golek.whattodofordinner.view.business.controllers;
 
 import biz.golek.whattodofordinner.business.contract.controllers.AddNewDinnerController;
 import biz.golek.whattodofordinner.business.contract.interactors.AddNewDinner;

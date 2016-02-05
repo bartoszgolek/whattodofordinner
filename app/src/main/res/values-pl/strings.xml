@@ -12,4 +12,6 @@
     <string name="dinner_duration_short">Krótki</string>
     <string name="dinner_duration_medium">Średni</string>
     <string name="dinner_duration_long">Długi</string>
+    <string name="cancel">Anuluj</string>
+    <string name="save_new_dinner_saved_message">Nowy obiad został zapisany.</string>
 </resources>

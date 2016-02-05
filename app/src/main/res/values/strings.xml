@@ -69,4 +69,6 @@
     <string name="dinner_duration_short">Short</string>
     <string name="dinner_duration_medium">Medium</string>
     <string name="dinner_duration_long">Long</string>
+    <string name="cancel">Cancel</string>
+    <string name="save_new_dinner_saved_message">Dinner has been saved.</string>
 </resources>

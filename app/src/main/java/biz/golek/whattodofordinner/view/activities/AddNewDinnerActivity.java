@@ -23,6 +23,7 @@ public class AddNewDinnerActivity extends AppCompatActivity implements IControll
 
     private ControllersProvider controllerProvider;
     private Dinner dinner;
+    private String ADD_NEW_DINNER_VIEW_MODEL = "addNewDinnerViewModel";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,8 +31,11 @@ public class AddNewDinnerActivity extends AppCompatActivity implements IControll
         ActivityAddNewDinnerBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_add_new_dinner);
 
         setupActionBar();
+        if (savedInstanceState != null)
+            dinner = (Dinner) savedInstanceState.getSerializable(ADD_NEW_DINNER_VIEW_MODEL);
+        else
+            dinner = new Dinner();
 
-        dinner = new Dinner();
         binding.setDinner(dinner);
 
         attachListeners();
@@ -48,6 +52,12 @@ public class AddNewDinnerActivity extends AppCompatActivity implements IControll
         ((CompoundButton)findViewById(R.id.vege)).setOnCheckedChangeListener(dinner.getVegetarianListener());
         ((CompoundButton)findViewById(R.id.soup)).setOnCheckedChangeListener(dinner.getSoupListener());
         ((AdapterView)findViewById(R.id.duration)).setOnItemSelectedListener(dinner.getDurationListener());
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putSerializable(ADD_NEW_DINNER_VIEW_MODEL, dinner);
+        super.onSaveInstanceState(outState);
     }
 
     @Override
@@ -77,7 +87,7 @@ public class AddNewDinnerActivity extends AppCompatActivity implements IControll
         }
 
         if (id == R.id.save) {
-            finish();
+            controllerProvider.getSaveNewDinnerController().Run(dinner);
             return true;
         }
         return super.onOptionsItemSelected(item);

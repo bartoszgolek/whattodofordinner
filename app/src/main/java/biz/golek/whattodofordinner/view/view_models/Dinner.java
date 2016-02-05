@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.CompoundButton;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -19,7 +20,7 @@ import biz.golek.whattodofordinner.view.helpers.SimpleTextWatcher;
 /**
  * Created by bgolek on 2016-02-05.
  */
-public class Dinner extends BaseObservable {
+public class Dinner extends BaseObservable implements Serializable {
     public Integer duration = 1;
 
     public List<String> getDurations(Resources resources) {
