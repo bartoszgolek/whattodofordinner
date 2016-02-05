@@ -1,11 +1,11 @@
-package biz.golek.whattodofordinner.view.contract.business.presneters;
+package biz.golek.whattodofordinner.view.business.presneters;
 
 import android.app.Activity;
 import android.content.Intent;
 
 import javax.inject.Inject;
 
-import biz.golek.whattodofordinner.business.contract.controllers.presenters.ShowSettingsPresenter;
+import biz.golek.whattodofordinner.business.contract.presenters.ShowSettingsPresenter;
 import biz.golek.whattodofordinner.view.activities.SettingsActivity;
 import biz.golek.whattodofordinner.view.helpers.ViewState;
 

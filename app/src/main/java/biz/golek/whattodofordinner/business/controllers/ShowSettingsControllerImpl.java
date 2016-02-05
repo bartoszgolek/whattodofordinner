@@ -1,9 +1,9 @@
-package biz.golek.whattodofordinner.business;
+package biz.golek.whattodofordinner.business.controllers;
 
 import javax.inject.Inject;
 
 import biz.golek.whattodofordinner.business.contract.controllers.ShowSettingsController;
-import biz.golek.whattodofordinner.business.contract.controllers.interactors.ShowSettings;
+import biz.golek.whattodofordinner.business.contract.interactors.ShowSettings;
 
 /**
  * Created by bg on 02.02.16.

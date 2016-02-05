@@ -15,6 +15,7 @@ import biz.golek.whattodofordinner.view.awareness.IControllersProviderAware;
 public class MainActivity extends AppCompatActivity implements IControllersProviderAware {
 
     private ControllersProvider controllerProvider;
+    private View.OnClickListener listener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,10 +29,17 @@ public class MainActivity extends AppCompatActivity implements IControllersProvi
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Snackbar.make(view, R.string.add_new_dinner, Snackbar.LENGTH_LONG)
+                        .setAction("Action", listener).show();
             }
         });
+
+        listener = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                controllerProvider.getAddNewDinnerController().Run();
+            }
+        };
     }
 
     @Override

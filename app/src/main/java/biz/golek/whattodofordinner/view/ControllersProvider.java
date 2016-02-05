@@ -2,6 +2,7 @@ package biz.golek.whattodofordinner.view;
 
 import javax.inject.Provider;
 
+import biz.golek.whattodofordinner.business.contract.controllers.AddNewDinnerController;
 import biz.golek.whattodofordinner.business.contract.controllers.ShowSettingsController;
 
 /**
@@ -9,13 +10,21 @@ import biz.golek.whattodofordinner.business.contract.controllers.ShowSettingsCon
  */
 public class ControllersProvider {
     private final Provider<ShowSettingsController> showSettingsControllerProvider;
+    private final Provider<AddNewDinnerController> addNewDinnerControllerProvider;
 
-    public ControllersProvider(Provider<ShowSettingsController> showSettingsControllerProvider)
+    public ControllersProvider(
+        Provider<ShowSettingsController> showSettingsControllerProvider,
+        Provider<AddNewDinnerController> addNewDinnerControllerProvider)
     {
         this.showSettingsControllerProvider = showSettingsControllerProvider;
+        this.addNewDinnerControllerProvider = addNewDinnerControllerProvider;
     }
 
     public ShowSettingsController getShowSettingsController() {
         return showSettingsControllerProvider.get();
+    }
+
+    public AddNewDinnerController getAddNewDinnerController() {
+        return addNewDinnerControllerProvider.get();
     }
 }

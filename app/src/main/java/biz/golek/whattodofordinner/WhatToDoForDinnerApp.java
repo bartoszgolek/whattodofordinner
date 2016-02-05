@@ -1,5 +1,7 @@
 package biz.golek.whattodofordinner;
 
+import biz.golek.whattodofordinner.business.contract.interactors.AddNewDinner;
+import biz.golek.whattodofordinner.modules.AddNewDinnerModule;
 import biz.golek.whattodofordinner.modules.AppModule;
 import biz.golek.whattodofordinner.modules.SettingsModule;
 import biz.golek.whattodofordinner.view.ControllersProvider;
@@ -16,6 +18,7 @@ public class WhatToDoForDinnerApp extends com.orm.SugarApp {
         ApplicationComponent component = DaggerApplicationComponent.builder()
                 .appModule(new AppModule())
                 .settingsModule(new SettingsModule())
+                .addNewDinnerModule(new AddNewDinnerModule())
                 .build();
 
         registerActivityLifecycleCallbacks(component.viewStateManager());

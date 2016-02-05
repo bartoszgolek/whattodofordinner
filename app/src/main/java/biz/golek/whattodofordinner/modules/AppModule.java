@@ -4,6 +4,7 @@ import javax.inject.Provider;
 import javax.inject.Singleton;
 
 import biz.golek.whattodofordinner.ViewStateManager;
+import biz.golek.whattodofordinner.business.contract.controllers.AddNewDinnerController;
 import biz.golek.whattodofordinner.business.contract.controllers.ShowSettingsController;
 import biz.golek.whattodofordinner.view.ControllersProvider;
 import biz.golek.whattodofordinner.view.helpers.ViewState;
@@ -31,10 +32,12 @@ public class AppModule {
     @Provides
     @Singleton
     static ControllersProvider provideControllersProvider(
-            Provider<ShowSettingsController> showSettingsControllerProvider
+            Provider<ShowSettingsController> showSettingsControllerProvider,
+            Provider<AddNewDinnerController> addNewDinnerControllerProvider
     ){
         return new ControllersProvider(
-            showSettingsControllerProvider
+            showSettingsControllerProvider,
+            addNewDinnerControllerProvider
         );
     }
 }

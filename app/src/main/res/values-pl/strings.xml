@@ -3,4 +3,10 @@
     <string name="app_name">Co Na Obiad</string>
     <string name="action_settings">Ustawienia</string>
     <string name="title_activity_settings">Ustawienia</string>
+    <string name="add_new_dinner">Dodaj nowy obiad</string>
+    <string name="add_new_dinner_name_is_vege">Potrawa wegetariańska</string>
+    <string name="add_new_dinner_name">Nazwa</string>
+    <string name="add_new_dinner_is_soup">Zupa</string>
+    <string name="add_new_dinner_duration">Czas przygotowania</string>
+    <string name="save">Zapisz</string>
 </resources>

@@ -2,12 +2,12 @@ package biz.golek.whattodofordinner.modules;
 
 import javax.inject.Singleton;
 
-import biz.golek.whattodofordinner.business.ShowSettingsControllerImpl;
+import biz.golek.whattodofordinner.business.controllers.ShowSettingsControllerImpl;
 import biz.golek.whattodofordinner.business.contract.controllers.ShowSettingsController;
-import biz.golek.whattodofordinner.business.contract.controllers.interactors.ShowSettings;
-import biz.golek.whattodofordinner.business.contract.controllers.presenters.ShowSettingsPresenter;
+import biz.golek.whattodofordinner.business.contract.interactors.ShowSettings;
+import biz.golek.whattodofordinner.business.contract.presenters.ShowSettingsPresenter;
 import biz.golek.whattodofordinner.business.interactors.ShowSettingsImpl;
-import biz.golek.whattodofordinner.view.contract.business.presneters.ShowSettingsPresenterImpl;
+import biz.golek.whattodofordinner.view.business.presneters.ShowSettingsPresenterImpl;
 import biz.golek.whattodofordinner.view.helpers.ViewState;
 import dagger.Module;
 import dagger.Provides;

@@ -2,6 +2,7 @@ package biz.golek.whattodofordinner;
 
 import javax.inject.Singleton;
 
+import biz.golek.whattodofordinner.modules.AddNewDinnerModule;
 import biz.golek.whattodofordinner.modules.AppModule;
 import biz.golek.whattodofordinner.modules.SettingsModule;
 import dagger.Component;
@@ -13,7 +14,8 @@ import dagger.Component;
 @Component(modules =
         {
                 AppModule.class,
-                SettingsModule.class
+                SettingsModule.class,
+                AddNewDinnerModule.class
         })
 public interface ApplicationComponent {
     ViewStateManager viewStateManager();

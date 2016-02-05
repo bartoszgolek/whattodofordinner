@@ -3,14 +3,14 @@
     package="biz.golek.whattodofordinner">
 
     <application
-        android:name="biz.golek.whattodofordinner.WhatToDoForDinnerApp"
+        android:name=".WhatToDoForDinnerApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="biz.golek.whattodofordinner.MainActivity"
+            android:name=".MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -32,8 +32,9 @@
             android:value="golek.biz" />
 
         <activity
-            android:name="biz.golek.whattodofordinner.view.activities.SettingsActivity"
-            android:label="@string/title_activity_settings"></activity>
+            android:name=".view.activities.SettingsActivity"
+            android:label="@string/title_activity_settings" />
+        <activity android:name=".view.activities.AddNewDinnerActivity"></activity>
     </application>
 
 </manifest>
