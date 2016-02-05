@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="dinner"
+            type="biz.golek.whattodofordinner.view.view_models.Dinner" />
+    </data>
     <RelativeLayout
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
@@ -31,7 +36,9 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/name"
                 android:layout_row="0"
-                android:layout_column="1" />
+                android:layout_column="1"
+                android:text="@{dinner.name}"
+                />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -47,7 +54,9 @@
                 android:text="@string/add_new_dinner_is_soup"
                 android:id="@+id/soup"
                 android:layout_row="2"
-                android:layout_column="0" />
+                android:layout_column="0"
+                android:checked="@{dinner.is_soup}"
+                />
 
             <CheckBox
                 android:layout_width="wrap_content"
@@ -55,14 +64,16 @@
                 android:text="@string/add_new_dinner_name_is_vege"
                 android:id="@+id/vege"
                 android:layout_row="3"
-                android:layout_column="0" />
+                android:layout_column="0"
+                android:checked="@{dinner.is_vege}" />
 
             <Spinner
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/spinner"
                 android:layout_row="1"
-                android:layout_column="1" />
+                android:layout_column="1"
+                />
         </GridLayout>
     </RelativeLayout>
 </layout>
