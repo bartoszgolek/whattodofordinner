@@ -1,4 +1,4 @@
-package biz.golek.whattodofordinner.view.business.controllers;
+package biz.golek.whattodofordinner.business.controllers;
 
 import javax.inject.Inject;
 

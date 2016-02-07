@@ -1,4 +1,4 @@
-package biz.golek.whattodofordinner.view.business.controllers;
+package biz.golek.whattodofordinner.business.controllers;
 
 import biz.golek.whattodofordinner.business.contract.controllers.SaveNewDinnerController;
 import biz.golek.whattodofordinner.business.contract.interactors.SaveNewDinner;
@@ -16,7 +16,7 @@ public class SaveNewDinnerControllerImpl implements SaveNewDinnerController {
     }
 
     @Override
-    public void Run(Dinner requestData) {
-        interactor.Run(null);
+    public void Run(SaveNewDinnerRequestData requestData) {
+        interactor.Run(requestData);
     }
 }

@@ -1,5 +1,8 @@
 package biz.golek.whattodofordinner;
 
+import android.app.Application;
+
+import biz.golek.whattodofordinner.models.DaoMaster;
 import biz.golek.whattodofordinner.modules.NewDinnerModule;
 import biz.golek.whattodofordinner.modules.AppModule;
 import biz.golek.whattodofordinner.modules.SettingsModule;
@@ -7,7 +10,7 @@ import biz.golek.whattodofordinner.modules.SettingsModule;
 /**
  * Created by bg on 02.02.16.
  */
-public class WhatToDoForDinnerApp extends com.orm.SugarApp {
+public class WhatToDoForDinnerApp extends Application {
 
     @Override
     public void onCreate() {

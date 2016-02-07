@@ -2,7 +2,7 @@ package biz.golek.whattodofordinner.modules;
 
 import javax.inject.Singleton;
 
-import biz.golek.whattodofordinner.view.business.controllers.ShowSettingsControllerImpl;
+import biz.golek.whattodofordinner.business.controllers.ShowSettingsControllerImpl;
 import biz.golek.whattodofordinner.business.contract.controllers.ShowSettingsController;
 import biz.golek.whattodofordinner.business.contract.interactors.ShowSettings;
 import biz.golek.whattodofordinner.business.contract.presenters.ShowSettingsPresenter;

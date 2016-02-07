@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import biz.golek.whattodofordinner.R;
+import biz.golek.whattodofordinner.business.contract.request_data.SaveNewDinnerRequestData;
 import biz.golek.whattodofordinner.databinding.ActivityAddNewDinnerBinding;
 import biz.golek.whattodofordinner.view.ControllersProvider;
 import biz.golek.whattodofordinner.view.awareness.IControllersProviderAware;
@@ -87,7 +88,8 @@ public class AddNewDinnerActivity extends AppCompatActivity implements IControll
         }
 
         if (id == R.id.save) {
-            controllerProvider.getSaveNewDinnerController().Run(dinner);
+            SaveNewDinnerRequestData requestData = new SaveNewDinnerRequestData();
+            controllerProvider.getSaveNewDinnerController().Run(requestData);
             return true;
         }
         return super.onOptionsItemSelected(item);

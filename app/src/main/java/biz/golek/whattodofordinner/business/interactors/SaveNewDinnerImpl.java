@@ -16,7 +16,8 @@ public class SaveNewDinnerImpl implements SaveNewDinner {
 
     @Override
     public void Run(SaveNewDinnerRequestData requestData) {
-        //TODO: DO ORM logic
+        //Dinner dinner = new Dinner();
+        //dinner.save();
         presenter.ShowSaved();
     }
 }
