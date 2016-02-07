@@ -88,11 +88,21 @@ public class AddNewDinnerActivity extends AppCompatActivity implements IControll
         }
 
         if (id == R.id.save) {
-            SaveNewDinnerRequestData requestData = new SaveNewDinnerRequestData();
-            controllerProvider.getSaveNewDinnerController().Run(requestData);
+            saveDinner();
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void saveDinner() {
+        SaveNewDinnerRequestData requestData = new SaveNewDinnerRequestData();
+
+        requestData.name = dinner.getName();
+        requestData.duration = dinner.getDuration();
+        requestData.soup = dinner.getSoup();
+        requestData.vegetarian = dinner.getVegetarian();
+
+        controllerProvider.getSaveNewDinnerController().Run(requestData);
     }
 
     @Override

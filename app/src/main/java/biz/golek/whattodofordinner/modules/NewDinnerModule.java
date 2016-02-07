@@ -44,8 +44,11 @@ public class NewDinnerModule {
 
     @Provides
     @Singleton
-    static SaveNewDinner provideSaveNewDinner(SaveNewDinnerPreseneter saveNewDinnerPreseneter){
-        return new SaveNewDinnerImpl(saveNewDinnerPreseneter);
+    static SaveNewDinner provideSaveNewDinner(
+            SaveNewDinnerPreseneter saveNewDinnerPreseneter,
+            ViewState viewState
+    ){
+        return new SaveNewDinnerImpl(saveNewDinnerPreseneter, viewState);
     }
 
     @Provides
