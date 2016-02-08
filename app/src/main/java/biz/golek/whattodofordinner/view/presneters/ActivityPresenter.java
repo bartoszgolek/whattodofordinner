@@ -1,4 +1,4 @@
-package biz.golek.whattodofordinner.view.helpers;
+package biz.golek.whattodofordinner.view.presneters;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -6,14 +6,15 @@ import android.content.Intent;
 import java.io.Serializable;
 
 import biz.golek.whattodofordinner.view.activities.AddNewDinnerActivity;
+import biz.golek.whattodofordinner.view.helpers.ViewState;
 
 /**
  * Created by bgolek on 2016-02-08.
  */
-public class ActivityStarter {
+public class ActivityPresenter {
     private ViewState viewState;
 
-    public ActivityStarter(ViewState viewState) {
+    public ActivityPresenter(ViewState viewState) {
         this.viewState = viewState;
     }
 

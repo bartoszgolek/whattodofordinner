@@ -1,5 +1,7 @@
 package biz.golek.whattodofordinner.modules;
 
+import org.greenrobot.eventbus.EventBus;
+
 import javax.inject.Provider;
 import javax.inject.Singleton;
 
@@ -9,8 +11,9 @@ import biz.golek.whattodofordinner.business.contract.controllers.SaveNewDinnerCo
 import biz.golek.whattodofordinner.business.contract.controllers.ShowSettingsController;
 import biz.golek.whattodofordinner.business.contract.controllers.DinnerListController;
 import biz.golek.whattodofordinner.view.ControllersProvider;
-import biz.golek.whattodofordinner.view.helpers.ActivityStarter;
+import biz.golek.whattodofordinner.view.presneters.ActivityPresenter;
 import biz.golek.whattodofordinner.view.helpers.ViewState;
+import biz.golek.whattodofordinner.view.presneters.NotificationPresenter;
 import dagger.Module;
 import dagger.Provides;
 
@@ -48,7 +51,19 @@ public class AppModule {
 
     @Provides
     @Singleton
-    static ActivityStarter providesActivityStarter(ViewState viewState){
-        return new ActivityStarter(viewState);
+    static ActivityPresenter providesActivityPresenter(ViewState viewState){
+        return new ActivityPresenter(viewState);
+    }
+
+    @Provides
+    @Singleton
+    static NotificationPresenter providesNotificationPresenter(ViewState viewState){
+        return new NotificationPresenter(viewState);
+    }
+
+    @Provides
+    @Singleton
+    static EventBus providesEventBus(){
+        return EventBus.getDefault();
     }
 }

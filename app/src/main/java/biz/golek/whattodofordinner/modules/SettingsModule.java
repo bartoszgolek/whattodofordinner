@@ -8,7 +8,7 @@ import biz.golek.whattodofordinner.business.contract.interactors.ShowSettings;
 import biz.golek.whattodofordinner.business.contract.presenters.ShowSettingsPresenter;
 import biz.golek.whattodofordinner.business.interactors.ShowSettingsImpl;
 import biz.golek.whattodofordinner.view.business.presneters.ShowSettingsPresenterImpl;
-import biz.golek.whattodofordinner.view.helpers.ActivityStarter;
+import biz.golek.whattodofordinner.view.presneters.ActivityPresenter;
 import dagger.Module;
 import dagger.Provides;
 
@@ -32,7 +32,7 @@ public class SettingsModule {
 
     @Provides
     @Singleton
-    static ShowSettingsPresenter provideShowSettingsPresenter(ActivityStarter starter){
+    static ShowSettingsPresenter provideShowSettingsPresenter(ActivityPresenter starter){
         return new ShowSettingsPresenterImpl(starter);
     }
 }

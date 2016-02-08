@@ -4,18 +4,18 @@ import javax.inject.Inject;
 
 import biz.golek.whattodofordinner.business.contract.presenters.ShowSettingsPresenter;
 import biz.golek.whattodofordinner.view.activities.SettingsActivity;
-import biz.golek.whattodofordinner.view.helpers.ActivityStarter;
+import biz.golek.whattodofordinner.view.presneters.ActivityPresenter;
 
 /**
  * Created by bg on 02.02.16.
  */
 public class ShowSettingsPresenterImpl implements ShowSettingsPresenter {
     @Inject
-    public ShowSettingsPresenterImpl(ActivityStarter starter){
+    public ShowSettingsPresenterImpl(ActivityPresenter starter){
         this.starter = starter;
     }
 
-    ActivityStarter starter;
+    ActivityPresenter starter;
 
     @Override
     public void Show() {

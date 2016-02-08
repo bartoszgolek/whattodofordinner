@@ -1,23 +1,28 @@
 package biz.golek.whattodofordinner.modules;
 
+import org.greenrobot.eventbus.EventBus;
+
 import javax.inject.Provider;
 import javax.inject.Singleton;
 
 import biz.golek.whattodofordinner.business.contract.controllers.AddNewDinnerController;
 import biz.golek.whattodofordinner.business.contract.controllers.SaveNewDinnerController;
+import biz.golek.whattodofordinner.business.contract.dao.SaveNewDinnerDao;
 import biz.golek.whattodofordinner.business.contract.interactors.AddNewDinner;
 import biz.golek.whattodofordinner.business.contract.interactors.SaveNewDinner;
 import biz.golek.whattodofordinner.business.contract.presenters.AddNewDinnerPresenter;
 import biz.golek.whattodofordinner.business.contract.presenters.SaveNewDinnerPresenter;
+import biz.golek.whattodofordinner.database.business.dao.SaveNewDinnerDaoImpl;
 import biz.golek.whattodofordinner.business.interactors.SaveNewDinnerImpl;
 import biz.golek.whattodofordinner.business.controllers.AddNewDinnerControllerImpl;
 import biz.golek.whattodofordinner.business.interactors.AddNewDinnerImpl;
 import biz.golek.whattodofordinner.business.controllers.SaveNewDinnerControllerImpl;
 import biz.golek.whattodofordinner.models.DinnerDao;
 import biz.golek.whattodofordinner.view.business.presneters.AddNewDinnerPresenterImpl;
-import biz.golek.whattodofordinner.view.business.presneters.SaveNewDinnerPreseneterImpl;
-import biz.golek.whattodofordinner.view.helpers.ActivityStarter;
+import biz.golek.whattodofordinner.view.business.presneters.SaveNewDinnerPresenterImpl;
+import biz.golek.whattodofordinner.view.presneters.ActivityPresenter;
 import biz.golek.whattodofordinner.view.helpers.ViewState;
+import biz.golek.whattodofordinner.view.presneters.NotificationPresenter;
 import dagger.Module;
 import dagger.Provides;
 
@@ -41,7 +46,7 @@ public class NewDinnerModule {
 
     @Provides
     @Singleton
-    static AddNewDinnerPresenter provideAddNewDinnerPresenter(ActivityStarter starter){
+    static AddNewDinnerPresenter provideAddNewDinnerPresenter(ActivityPresenter starter){
         return new AddNewDinnerPresenterImpl(starter);
     }
 
@@ -49,9 +54,9 @@ public class NewDinnerModule {
     @Singleton
     static SaveNewDinner provideSaveNewDinner(
             SaveNewDinnerPresenter saveNewDinnerPreseneter,
-            Provider<DinnerDao> dinnerDaoProvider
+            SaveNewDinnerDao saveNewDinnerDao
     ){
-        return new SaveNewDinnerImpl(saveNewDinnerPreseneter, dinnerDaoProvider);
+        return new SaveNewDinnerImpl(saveNewDinnerPreseneter, saveNewDinnerDao);
     }
 
     @Provides
@@ -62,7 +67,18 @@ public class NewDinnerModule {
 
     @Provides
     @Singleton
-    static SaveNewDinnerPresenter provideSaveNewDinnerPresenter(ViewState viewState){
-        return new SaveNewDinnerPreseneterImpl(viewState);
+    static SaveNewDinnerPresenter provideSaveNewDinnerPresenter(
+            ViewState viewState,
+            NotificationPresenter notification,
+            EventBus eventBus)
+    {
+        return new SaveNewDinnerPresenterImpl(viewState, notification, eventBus);
+    }
+
+    @Provides
+    @Singleton
+    static SaveNewDinnerDao provideSaveNewDinnerDao(Provider<DinnerDao> dinnerDaoProvider)
+    {
+        return new SaveNewDinnerDaoImpl(dinnerDaoProvider);
     }
 }
