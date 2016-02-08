@@ -71,4 +71,5 @@
     <string name="dinner_duration_long">Long</string>
     <string name="cancel">Cancel</string>
     <string name="save_new_dinner_saved_message">Dinner has been saved.</string>
+    <string name="action_dinner_list">Dinner list</string>
 </resources>

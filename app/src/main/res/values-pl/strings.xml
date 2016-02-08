@@ -14,4 +14,5 @@
     <string name="dinner_duration_long">Długi</string>
     <string name="cancel">Anuluj</string>
     <string name="save_new_dinner_saved_message">Nowy obiad został zapisany.</string>
+    <string name="action_dinner_list">Lista obiadów</string>
 </resources>

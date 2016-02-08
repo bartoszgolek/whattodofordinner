@@ -2,9 +2,11 @@ package biz.golek.whattodofordinner.business.interactors;
 
 import android.database.sqlite.SQLiteDatabase;
 
+import javax.inject.Provider;
+
 import biz.golek.whattodofordinner.DinnerOpenHelper;
 import biz.golek.whattodofordinner.business.contract.interactors.SaveNewDinner;
-import biz.golek.whattodofordinner.business.contract.presenters.SaveNewDinnerPreseneter;
+import biz.golek.whattodofordinner.business.contract.presenters.SaveNewDinnerPresenter;
 import biz.golek.whattodofordinner.business.contract.request_data.SaveNewDinnerRequestData;
 import biz.golek.whattodofordinner.models.DaoMaster;
 import biz.golek.whattodofordinner.models.DaoSession;
@@ -16,21 +18,20 @@ import biz.golek.whattodofordinner.view.helpers.ViewState;
  * Created by bg on 05.02.16.
  */
 public class SaveNewDinnerImpl implements SaveNewDinner {
-    private SaveNewDinnerPreseneter presenter;
-    private ViewState viewState;
+    private SaveNewDinnerPresenter presenter;
+    private Provider<DinnerDao> dinnerDaoProvider;
 
-    public SaveNewDinnerImpl(SaveNewDinnerPreseneter presenter, ViewState viewState) {
+    public SaveNewDinnerImpl(
+            SaveNewDinnerPresenter presenter,
+            Provider<DinnerDao> dinnerDaoProvider
+            ) {
         this.presenter = presenter;
-        this.viewState = viewState;
+        this.dinnerDaoProvider = dinnerDaoProvider;
     }
 
     @Override
     public void Run(SaveNewDinnerRequestData requestData) {
-        DinnerOpenHelper dinnerOpenHelper = new DinnerOpenHelper(viewState.getCurrentActivity());
-        SQLiteDatabase db = dinnerOpenHelper.getWritableDatabase();
-        DaoMaster daoMaster = new DaoMaster(db);
-        DaoSession daoSession = daoMaster.newSession();
-        DinnerDao dinnerDao = daoSession.getDinnerDao();
+        DinnerDao dinnerDao = dinnerDaoProvider.get();
 
         Dinner entity = new Dinner();
         entity.setName(requestData.name);

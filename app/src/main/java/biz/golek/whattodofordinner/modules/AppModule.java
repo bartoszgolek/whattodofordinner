@@ -7,6 +7,7 @@ import biz.golek.whattodofordinner.ViewStateManager;
 import biz.golek.whattodofordinner.business.contract.controllers.AddNewDinnerController;
 import biz.golek.whattodofordinner.business.contract.controllers.SaveNewDinnerController;
 import biz.golek.whattodofordinner.business.contract.controllers.ShowSettingsController;
+import biz.golek.whattodofordinner.business.contract.controllers.DinnerListController;
 import biz.golek.whattodofordinner.view.ControllersProvider;
 import biz.golek.whattodofordinner.view.helpers.ViewState;
 import dagger.Module;
@@ -35,10 +36,12 @@ public class AppModule {
     static ControllersProvider provideControllersProvider(
             Provider<ShowSettingsController> showSettingsControllerProvider,
             Provider<AddNewDinnerController> addNewDinnerControllerProvider,
-            Provider<SaveNewDinnerController> saveNewDinnerControllerProvider){
+            Provider<SaveNewDinnerController> saveNewDinnerControllerProvider,
+            Provider<DinnerListController> dinnerListControllerProvider){
         return new ControllersProvider(
             showSettingsControllerProvider,
             addNewDinnerControllerProvider,
-            saveNewDinnerControllerProvider);
+            saveNewDinnerControllerProvider,
+            dinnerListControllerProvider);
     }
 }

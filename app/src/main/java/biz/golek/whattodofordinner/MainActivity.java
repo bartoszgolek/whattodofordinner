@@ -62,6 +62,11 @@ public class MainActivity extends AppCompatActivity implements IControllersProvi
             return true;
         }
 
+        if (id == R.id.action_dinner_list) {
+            this.controllerProvider.getShowDinnerListController().Run();
+            return true;
+        }
+
         return super.onOptionsItemSelected(item);
     }
 

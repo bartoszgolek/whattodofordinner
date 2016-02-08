@@ -6,13 +6,13 @@ import android.content.res.Resources;
 import android.widget.Toast;
 
 import biz.golek.whattodofordinner.R;
-import biz.golek.whattodofordinner.business.contract.presenters.SaveNewDinnerPreseneter;
+import biz.golek.whattodofordinner.business.contract.presenters.SaveNewDinnerPresenter;
 import biz.golek.whattodofordinner.view.helpers.ViewState;
 
 /**
  * Created by bg on 05.02.16.
  */
-public class SaveNewDinnerPreseneterImpl implements SaveNewDinnerPreseneter {
+public class SaveNewDinnerPreseneterImpl implements SaveNewDinnerPresenter {
     private ViewState viewState;
 
     public SaveNewDinnerPreseneterImpl(ViewState viewState) {
