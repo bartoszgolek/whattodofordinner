@@ -16,6 +16,7 @@ import biz.golek.whattodofordinner.business.controllers.SaveNewDinnerControllerI
 import biz.golek.whattodofordinner.models.DinnerDao;
 import biz.golek.whattodofordinner.view.business.presneters.AddNewDinnerPresenterImpl;
 import biz.golek.whattodofordinner.view.business.presneters.SaveNewDinnerPreseneterImpl;
+import biz.golek.whattodofordinner.view.helpers.ActivityStarter;
 import biz.golek.whattodofordinner.view.helpers.ViewState;
 import dagger.Module;
 import dagger.Provides;
@@ -40,8 +41,8 @@ public class NewDinnerModule {
 
     @Provides
     @Singleton
-    static AddNewDinnerPresenter provideAddNewDinnerPresenter(ViewState viewState){
-        return new AddNewDinnerPresenterImpl(viewState);
+    static AddNewDinnerPresenter provideAddNewDinnerPresenter(ActivityStarter starter){
+        return new AddNewDinnerPresenterImpl(starter);
     }
 
     @Provides

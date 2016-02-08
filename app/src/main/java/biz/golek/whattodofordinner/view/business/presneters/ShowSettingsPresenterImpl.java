@@ -1,29 +1,24 @@
 package biz.golek.whattodofordinner.view.business.presneters;
 
-import android.app.Activity;
-import android.content.Intent;
-
 import javax.inject.Inject;
 
 import biz.golek.whattodofordinner.business.contract.presenters.ShowSettingsPresenter;
 import biz.golek.whattodofordinner.view.activities.SettingsActivity;
-import biz.golek.whattodofordinner.view.helpers.ViewState;
+import biz.golek.whattodofordinner.view.helpers.ActivityStarter;
 
 /**
  * Created by bg on 02.02.16.
  */
 public class ShowSettingsPresenterImpl implements ShowSettingsPresenter {
     @Inject
-    public ShowSettingsPresenterImpl(ViewState viewState){
-        this.viewState = viewState;
+    public ShowSettingsPresenterImpl(ActivityStarter starter){
+        this.starter = starter;
     }
 
-    ViewState viewState;
+    ActivityStarter starter;
 
     @Override
     public void Show() {
-        Activity currentActivity = viewState.getCurrentActivity();
-        Intent intent = new Intent(currentActivity, SettingsActivity.class);
-        currentActivity.startActivity(intent);
+        starter.startActivity(SettingsActivity.class);
     }
 }

@@ -20,7 +20,7 @@ import biz.golek.whattodofordinner.view.helpers.SimpleTextWatcher;
 /**
  * Created by bgolek on 2016-02-05.
  */
-public class Dinner extends BaseObservable implements Serializable {
+public class AddNewDinnerViewModel extends BaseObservable implements Serializable {
     public Integer duration = 1;
 
     public List<String> getDurations(Resources resources) {

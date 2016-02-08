@@ -18,12 +18,12 @@ import biz.golek.whattodofordinner.business.contract.request_data.SaveNewDinnerR
 import biz.golek.whattodofordinner.databinding.ActivityAddNewDinnerBinding;
 import biz.golek.whattodofordinner.view.ControllersProvider;
 import biz.golek.whattodofordinner.view.awareness.IControllersProviderAware;
-import biz.golek.whattodofordinner.view.view_models.Dinner;
+import biz.golek.whattodofordinner.view.view_models.AddNewDinnerViewModel;
 
 public class AddNewDinnerActivity extends AppCompatActivity implements IControllersProviderAware {
 
     private ControllersProvider controllerProvider;
-    private Dinner dinner;
+    private AddNewDinnerViewModel addNewDinner;
     private String ADD_NEW_DINNER_VIEW_MODEL = "addNewDinnerViewModel";
 
     @Override
@@ -33,15 +33,15 @@ public class AddNewDinnerActivity extends AppCompatActivity implements IControll
 
         setupActionBar();
         if (savedInstanceState != null)
-            dinner = (Dinner) savedInstanceState.getSerializable(ADD_NEW_DINNER_VIEW_MODEL);
+            addNewDinner = (AddNewDinnerViewModel) savedInstanceState.getSerializable(ADD_NEW_DINNER_VIEW_MODEL);
         else
-            dinner = new Dinner();
+            addNewDinner = new AddNewDinnerViewModel();
 
-        binding.setDinner(dinner);
+        binding.setViewModel(addNewDinner);
 
         attachListeners();
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, dinner.getDurations(getResources()));
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, addNewDinner.getDurations(getResources()));
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         Spinner sItems = (Spinner) findViewById(R.id.duration);
@@ -49,15 +49,15 @@ public class AddNewDinnerActivity extends AppCompatActivity implements IControll
     }
 
     private void attachListeners() {
-        ((EditText)findViewById(R.id.name)).addTextChangedListener(dinner.getNameListener());
-        ((CompoundButton)findViewById(R.id.vege)).setOnCheckedChangeListener(dinner.getVegetarianListener());
-        ((CompoundButton)findViewById(R.id.soup)).setOnCheckedChangeListener(dinner.getSoupListener());
-        ((AdapterView)findViewById(R.id.duration)).setOnItemSelectedListener(dinner.getDurationListener());
+        ((EditText)findViewById(R.id.name)).addTextChangedListener(addNewDinner.getNameListener());
+        ((CompoundButton)findViewById(R.id.vege)).setOnCheckedChangeListener(addNewDinner.getVegetarianListener());
+        ((CompoundButton)findViewById(R.id.soup)).setOnCheckedChangeListener(addNewDinner.getSoupListener());
+        ((AdapterView)findViewById(R.id.duration)).setOnItemSelectedListener(addNewDinner.getDurationListener());
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
-        outState.putSerializable(ADD_NEW_DINNER_VIEW_MODEL, dinner);
+        outState.putSerializable(ADD_NEW_DINNER_VIEW_MODEL, addNewDinner);
         super.onSaveInstanceState(outState);
     }
 
@@ -97,10 +97,10 @@ public class AddNewDinnerActivity extends AppCompatActivity implements IControll
     private void saveDinner() {
         SaveNewDinnerRequestData requestData = new SaveNewDinnerRequestData();
 
-        requestData.name = dinner.getName();
-        requestData.duration = dinner.getDuration();
-        requestData.soup = dinner.getSoup();
-        requestData.vegetarian = dinner.getVegetarian();
+        requestData.name = addNewDinner.getName();
+        requestData.duration = addNewDinner.getDuration();
+        requestData.soup = addNewDinner.getSoup();
+        requestData.vegetarian = addNewDinner.getVegetarian();
 
         controllerProvider.getSaveNewDinnerController().Run(requestData);
     }

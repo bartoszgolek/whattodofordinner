@@ -19,11 +19,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".view.activities.SettingsActivity"
             android:label="@string/title_activity_settings" />
-        <activity android:name=".view.activities.AddNewDinnerActivity"></activity>
+        <activity android:name=".view.activities.AddNewDinnerActivity" />
+        <activity android:name=".view.activities.DinnerListActivity"></activity>
     </application>
 
 </manifest>

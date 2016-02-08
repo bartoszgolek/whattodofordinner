@@ -4,21 +4,25 @@ import java.util.List;
 
 import biz.golek.whattodofordinner.business.contract.presenters.DinnerListPresenter;
 import biz.golek.whattodofordinner.business.contract.response_data.DinnerListItem;
-import biz.golek.whattodofordinner.view.helpers.ViewState;
+import biz.golek.whattodofordinner.view.activities.DinnerListActivity;
+import biz.golek.whattodofordinner.view.helpers.ActivityStarter;
+import biz.golek.whattodofordinner.view.view_models.DinnerListViewModel;
 
 /**
  * Created by bgolek on 2016-02-08.
  */
 public class DinnerListPresenterImpl implements DinnerListPresenter {
-    private ViewState viewState;
+    private ActivityStarter starter;
 
-    public DinnerListPresenterImpl(ViewState viewState) {
+    public DinnerListPresenterImpl(ActivityStarter starter) {
 
-        this.viewState = viewState;
+        this.starter = starter;
     }
 
     @Override
     public void Show(List<DinnerListItem> dinners) {
-
+        DinnerListViewModel data = new DinnerListViewModel();
+        data.dinners = dinners;
+        starter.startActivity(DinnerListActivity.class, data);
     }
 }

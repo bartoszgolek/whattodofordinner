@@ -61,7 +61,7 @@
 
     <string name="pref_title_vibrate">Vibrate</string>
     <string name="save">Save</string>
-    <string name="add_new_dinner">Add new dinner</string>
+    <string name="add_new_dinner">Add new addNewDinner</string>
     <string name="add_new_dinner_name">Name</string>
     <string name="add_new_dinner_duration">Duration</string>
     <string name="add_new_dinner_is_soup">Soup</string>

@@ -1,28 +1,14 @@
 package biz.golek.whattodofordinner.modules;
 
-import javax.inject.Provider;
 import javax.inject.Singleton;
 
-import biz.golek.whattodofordinner.business.contract.controllers.AddNewDinnerController;
 import biz.golek.whattodofordinner.business.contract.controllers.DinnerListController;
-import biz.golek.whattodofordinner.business.contract.controllers.SaveNewDinnerController;
-import biz.golek.whattodofordinner.business.contract.interactors.AddNewDinner;
 import biz.golek.whattodofordinner.business.contract.interactors.DinnerList;
-import biz.golek.whattodofordinner.business.contract.interactors.SaveNewDinner;
-import biz.golek.whattodofordinner.business.contract.presenters.AddNewDinnerPresenter;
 import biz.golek.whattodofordinner.business.contract.presenters.DinnerListPresenter;
-import biz.golek.whattodofordinner.business.contract.presenters.SaveNewDinnerPresenter;
-import biz.golek.whattodofordinner.business.controllers.AddNewDinnerControllerImpl;
 import biz.golek.whattodofordinner.business.controllers.DinnerListControllerImpl;
-import biz.golek.whattodofordinner.business.controllers.SaveNewDinnerControllerImpl;
-import biz.golek.whattodofordinner.business.interactors.AddNewDinnerImpl;
 import biz.golek.whattodofordinner.business.interactors.DinnerListImpl;
-import biz.golek.whattodofordinner.business.interactors.SaveNewDinnerImpl;
-import biz.golek.whattodofordinner.models.DinnerDao;
-import biz.golek.whattodofordinner.view.business.presneters.AddNewDinnerPresenterImpl;
 import biz.golek.whattodofordinner.view.business.presneters.DinnerListPresenterImpl;
-import biz.golek.whattodofordinner.view.business.presneters.SaveNewDinnerPreseneterImpl;
-import biz.golek.whattodofordinner.view.helpers.ViewState;
+import biz.golek.whattodofordinner.view.helpers.ActivityStarter;
 import dagger.Module;
 import dagger.Provides;
 
@@ -46,7 +32,7 @@ public class DinnerListModule {
 
     @Provides
     @Singleton
-    static DinnerListPresenter provideDinnerListPresenter(ViewState viewState){
-        return new DinnerListPresenterImpl(viewState);
+    static DinnerListPresenter provideDinnerListPresenter(ActivityStarter starter){
+        return new DinnerListPresenterImpl(starter);
     }
 }

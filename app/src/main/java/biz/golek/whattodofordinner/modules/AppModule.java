@@ -9,6 +9,7 @@ import biz.golek.whattodofordinner.business.contract.controllers.SaveNewDinnerCo
 import biz.golek.whattodofordinner.business.contract.controllers.ShowSettingsController;
 import biz.golek.whattodofordinner.business.contract.controllers.DinnerListController;
 import biz.golek.whattodofordinner.view.ControllersProvider;
+import biz.golek.whattodofordinner.view.helpers.ActivityStarter;
 import biz.golek.whattodofordinner.view.helpers.ViewState;
 import dagger.Module;
 import dagger.Provides;
@@ -43,5 +44,11 @@ public class AppModule {
             addNewDinnerControllerProvider,
             saveNewDinnerControllerProvider,
             dinnerListControllerProvider);
+    }
+
+    @Provides
+    @Singleton
+    static ActivityStarter providesActivityStarter(ViewState viewState){
+        return new ActivityStarter(viewState);
     }
 }

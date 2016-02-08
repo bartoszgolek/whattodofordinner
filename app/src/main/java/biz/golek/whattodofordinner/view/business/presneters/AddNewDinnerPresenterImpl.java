@@ -1,26 +1,21 @@
 package biz.golek.whattodofordinner.view.business.presneters;
 
-import android.app.Activity;
-import android.content.Intent;
-
 import biz.golek.whattodofordinner.business.contract.presenters.AddNewDinnerPresenter;
 import biz.golek.whattodofordinner.view.activities.AddNewDinnerActivity;
-import biz.golek.whattodofordinner.view.helpers.ViewState;
+import biz.golek.whattodofordinner.view.helpers.ActivityStarter;
 
 /**
  * Created by bgolek on 2016-02-05.
  */
 public class AddNewDinnerPresenterImpl implements AddNewDinnerPresenter {
-    private ViewState viewState;
+    private ActivityStarter starter;
 
-    public AddNewDinnerPresenterImpl(ViewState viewState) {
-        this.viewState = viewState;
+    public AddNewDinnerPresenterImpl(ActivityStarter starter) {
+        this.starter = starter;
     }
 
     @Override
     public void Run() {
-        Activity currentActivity = viewState.getCurrentActivity();
-        Intent intent = new Intent(currentActivity, AddNewDinnerActivity.class);
-        currentActivity.startActivity(intent);
+        starter.startActivity(AddNewDinnerActivity.class);
     }
 }
