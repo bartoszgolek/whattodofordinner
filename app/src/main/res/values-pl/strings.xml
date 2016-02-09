@@ -20,4 +20,9 @@
     <string name="welcome_message_header2">Co na obiad</string>
     <string name="welcome_message2">Kliknij poniższy przycisk aby zobaczyć propozycje.</string>
     <string name="generate_prompts">Generuj</string>
+    <string name="autumn">Jesień</string>
+    <string name="seasons">Pory roku</string>
+    <string name="spring">Wiosna</string>
+    <string name="summer">Lato</string>
+    <string name="winter">Zima</string>
 </resources>

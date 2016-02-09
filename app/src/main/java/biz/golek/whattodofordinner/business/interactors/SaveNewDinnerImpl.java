@@ -31,6 +31,7 @@ public class SaveNewDinnerImpl implements SaveNewDinner {
         entity.setDuration(requestData.duration);
         entity.setSoup(requestData.soup);
         entity.setVegetarian(requestData.vegetarian);
+        entity.setSeasons(requestData.seasons);
 
         saveNewDinnerDao.saveDinner(entity);
 

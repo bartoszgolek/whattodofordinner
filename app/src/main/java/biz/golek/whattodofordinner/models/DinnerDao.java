@@ -19,15 +19,19 @@ public class DinnerDao extends AbstractDao<Dinner, Long> {
     public static final String TABLENAME = "DINNER";
 
     /**
-     * Properties of entity AddNewDinnerViewModel.<br/>
+     * Properties of entity Dinner.<br/>
      * Can be used for QueryBuilder and for referencing column names.
     */
     public static class Properties {
         public final static Property Id = new Property(0, Long.class, "id", true, "_id");
         public final static Property Name = new Property(1, String.class, "name", false, "NAME");
-        public final static Property Duration = new Property(2, Integer.class, "duration", false, "DURATION");
-        public final static Property Soup = new Property(3, Boolean.class, "soup", false, "SOUP");
-        public final static Property Vegetarian = new Property(4, Boolean.class, "vegetarian", false, "VEGETARIAN");
+        public final static Property Duration = new Property(2, int.class, "duration", false, "DURATION");
+        public final static Property Seasons = new Property(3, int.class, "seasons", false, "SEASONS");
+        public final static Property Soup = new Property(4, boolean.class, "soup", false, "SOUP");
+        public final static Property Vegetarian = new Property(5, boolean.class, "vegetarian", false, "VEGETARIAN");
+        public final static Property LastUsage = new Property(6, java.util.Date.class, "lastUsage", false, "LAST_USAGE");
+        public final static Property LestDrop = new Property(7, java.util.Date.class, "lestDrop", false, "LEST_DROP");
+        public final static Property CreationDate = new Property(8, java.util.Date.class, "creationDate", false, "CREATION_DATE");
     };
 
 
@@ -45,9 +49,13 @@ public class DinnerDao extends AbstractDao<Dinner, Long> {
         db.execSQL("CREATE TABLE " + constraint + "\"DINNER\" (" + //
                 "\"_id\" INTEGER PRIMARY KEY ," + // 0: id
                 "\"NAME\" TEXT NOT NULL ," + // 1: name
-                "\"DURATION\" INTEGER," + // 2: duration
-                "\"SOUP\" INTEGER," + // 3: soup
-                "\"VEGETARIAN\" INTEGER);"); // 4: vegetarian
+                "\"DURATION\" INTEGER NOT NULL ," + // 2: duration
+                "\"SEASONS\" INTEGER NOT NULL ," + // 3: seasons
+                "\"SOUP\" INTEGER NOT NULL ," + // 4: soup
+                "\"VEGETARIAN\" INTEGER NOT NULL ," + // 5: vegetarian
+                "\"LAST_USAGE\" INTEGER," + // 6: lastUsage
+                "\"LEST_DROP\" INTEGER," + // 7: lestDrop
+                "\"CREATION_DATE\" INTEGER NOT NULL );"); // 8: creationDate
     }
 
     /** Drops the underlying database table. */
@@ -66,21 +74,21 @@ public class DinnerDao extends AbstractDao<Dinner, Long> {
             stmt.bindLong(1, id);
         }
         stmt.bindString(2, entity.getName());
+        stmt.bindLong(3, entity.getDuration());
+        stmt.bindLong(4, entity.getSeasons());
+        stmt.bindLong(5, entity.getSoup() ? 1L: 0L);
+        stmt.bindLong(6, entity.getVegetarian() ? 1L: 0L);
  
-        Integer duration = entity.getDuration();
-        if (duration != null) {
-            stmt.bindLong(3, duration);
+        java.util.Date lastUsage = entity.getLastUsage();
+        if (lastUsage != null) {
+            stmt.bindLong(7, lastUsage.getTime());
         }
  
-        Boolean soup = entity.getSoup();
-        if (soup != null) {
-            stmt.bindLong(4, soup ? 1L: 0L);
+        java.util.Date lestDrop = entity.getLestDrop();
+        if (lestDrop != null) {
+            stmt.bindLong(8, lestDrop.getTime());
         }
- 
-        Boolean vegetarian = entity.getVegetarian();
-        if (vegetarian != null) {
-            stmt.bindLong(5, vegetarian ? 1L: 0L);
-        }
+        stmt.bindLong(9, entity.getCreationDate().getTime());
     }
 
     /** @inheritdoc */
@@ -95,9 +103,13 @@ public class DinnerDao extends AbstractDao<Dinner, Long> {
         Dinner entity = new Dinner( //
             cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
             cursor.getString(offset + 1), // name
-            cursor.isNull(offset + 2) ? null : cursor.getInt(offset + 2), // duration
-            cursor.isNull(offset + 3) ? null : cursor.getShort(offset + 3) != 0, // soup
-            cursor.isNull(offset + 4) ? null : cursor.getShort(offset + 4) != 0 // vegetarian
+            cursor.getInt(offset + 2), // duration
+            cursor.getInt(offset + 3), // seasons
+            cursor.getShort(offset + 4) != 0, // soup
+            cursor.getShort(offset + 5) != 0, // vegetarian
+            cursor.isNull(offset + 6) ? null : new java.util.Date(cursor.getLong(offset + 6)), // lastUsage
+            cursor.isNull(offset + 7) ? null : new java.util.Date(cursor.getLong(offset + 7)), // lestDrop
+            new java.util.Date(cursor.getLong(offset + 8)) // creationDate
         );
         return entity;
     }
@@ -107,9 +119,13 @@ public class DinnerDao extends AbstractDao<Dinner, Long> {
     public void readEntity(Cursor cursor, Dinner entity, int offset) {
         entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
         entity.setName(cursor.getString(offset + 1));
-        entity.setDuration(cursor.isNull(offset + 2) ? null : cursor.getInt(offset + 2));
-        entity.setSoup(cursor.isNull(offset + 3) ? null : cursor.getShort(offset + 3) != 0);
-        entity.setVegetarian(cursor.isNull(offset + 4) ? null : cursor.getShort(offset + 4) != 0);
+        entity.setDuration(cursor.getInt(offset + 2));
+        entity.setSeasons(cursor.getInt(offset + 3));
+        entity.setSoup(cursor.getShort(offset + 4) != 0);
+        entity.setVegetarian(cursor.getShort(offset + 5) != 0);
+        entity.setLastUsage(cursor.isNull(offset + 6) ? null : new java.util.Date(cursor.getLong(offset + 6)));
+        entity.setLestDrop(cursor.isNull(offset + 7) ? null : new java.util.Date(cursor.getLong(offset + 7)));
+        entity.setCreationDate(new java.util.Date(cursor.getLong(offset + 8)));
      }
     
     /** @inheritdoc */

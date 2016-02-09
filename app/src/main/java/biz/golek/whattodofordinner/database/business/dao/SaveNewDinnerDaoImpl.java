@@ -1,5 +1,7 @@
 package biz.golek.whattodofordinner.database.business.dao;
 
+import java.util.Date;
+
 import javax.inject.Provider;
 
 import biz.golek.whattodofordinner.business.contract.dao.SaveNewDinnerDao;
@@ -14,6 +16,7 @@ public class SaveNewDinnerDaoImpl implements SaveNewDinnerDao {
     }
 
     public void saveDinner(Dinner entity) {
+        entity.setCreationDate(new Date());
         dinnerDaoProvider.get().insert(entity);
     }
 }

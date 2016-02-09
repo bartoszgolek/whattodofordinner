@@ -101,6 +101,7 @@ public class AddNewDinnerActivity extends AppCompatActivity implements IControll
         requestData.duration = addNewDinner.getDuration();
         requestData.soup = addNewDinner.getSoup();
         requestData.vegetarian = addNewDinner.getVegetarian();
+        requestData.seasons = addNewDinner.getSeasons();
 
         controllerProvider.getSaveNewDinnerController().Run(requestData);
     }

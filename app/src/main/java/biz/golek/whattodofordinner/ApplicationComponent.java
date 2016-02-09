@@ -6,7 +6,6 @@ import biz.golek.whattodofordinner.modules.DatabaseModule;
 import biz.golek.whattodofordinner.modules.DinnerListModule;
 import biz.golek.whattodofordinner.modules.NewDinnerModule;
 import biz.golek.whattodofordinner.modules.AppModule;
-import biz.golek.whattodofordinner.modules.SettingsModule;
 import dagger.Component;
 
 /**
@@ -17,7 +16,6 @@ import dagger.Component;
         {
                 AppModule.class,
                 DatabaseModule.class,
-                SettingsModule.class,
                 NewDinnerModule.class,
                 DinnerListModule.class
         })

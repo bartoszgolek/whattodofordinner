@@ -2,6 +2,8 @@ package biz.golek.whattodofordinner.modules;
 
 import android.database.sqlite.SQLiteDatabase;
 
+import javax.inject.Singleton;
+
 import biz.golek.whattodofordinner.DinnerOpenHelper;
 import biz.golek.whattodofordinner.models.DaoMaster;
 import biz.golek.whattodofordinner.models.DaoSession;
@@ -16,6 +18,7 @@ import dagger.Provides;
 @Module
 public class DatabaseModule {
     @Provides
+    @Singleton
     public DinnerDao provideDinnerDao(ViewState viewState)
     {
         DinnerOpenHelper dinnerOpenHelper = new DinnerOpenHelper(viewState.getCurrentActivity());

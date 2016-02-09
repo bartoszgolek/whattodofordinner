@@ -9,9 +9,14 @@ public class Dinner {
     private Long id;
     /** Not-null value. */
     private String name;
-    private Integer duration;
-    private Boolean soup;
-    private Boolean vegetarian;
+    private int duration;
+    private int seasons;
+    private boolean soup;
+    private boolean vegetarian;
+    private java.util.Date lastUsage;
+    private java.util.Date lestDrop;
+    /** Not-null value. */
+    private java.util.Date creationDate;
 
     public Dinner() {
     }
@@ -20,12 +25,16 @@ public class Dinner {
         this.id = id;
     }
 
-    public Dinner(Long id, String name, Integer duration, Boolean soup, Boolean vegetarian) {
+    public Dinner(Long id, String name, int duration, int seasons, boolean soup, boolean vegetarian, java.util.Date lastUsage, java.util.Date lestDrop, java.util.Date creationDate) {
         this.id = id;
         this.name = name;
         this.duration = duration;
+        this.seasons = seasons;
         this.soup = soup;
         this.vegetarian = vegetarian;
+        this.lastUsage = lastUsage;
+        this.lestDrop = lestDrop;
+        this.creationDate = creationDate;
     }
 
     public Long getId() {
@@ -46,28 +55,62 @@ public class Dinner {
         this.name = name;
     }
 
-    public Integer getDuration() {
+    public int getDuration() {
         return duration;
     }
 
-    public void setDuration(Integer duration) {
+    public void setDuration(int duration) {
         this.duration = duration;
     }
 
-    public Boolean getSoup() {
+    public int getSeasons() {
+        return seasons;
+    }
+
+    public void setSeasons(int seasons) {
+        this.seasons = seasons;
+    }
+
+    public boolean getSoup() {
         return soup;
     }
 
-    public void setSoup(Boolean soup) {
+    public void setSoup(boolean soup) {
         this.soup = soup;
     }
 
-    public Boolean getVegetarian() {
+    public boolean getVegetarian() {
         return vegetarian;
     }
 
-    public void setVegetarian(Boolean vegetarian) {
+    public void setVegetarian(boolean vegetarian) {
         this.vegetarian = vegetarian;
+    }
+
+    public java.util.Date getLastUsage() {
+        return lastUsage;
+    }
+
+    public void setLastUsage(java.util.Date lastUsage) {
+        this.lastUsage = lastUsage;
+    }
+
+    public java.util.Date getLestDrop() {
+        return lestDrop;
+    }
+
+    public void setLestDrop(java.util.Date lestDrop) {
+        this.lestDrop = lestDrop;
+    }
+
+    /** Not-null value. */
+    public java.util.Date getCreationDate() {
+        return creationDate;
+    }
+
+    /** Not-null value; ensure this value is available before it is saved to the database. */
+    public void setCreationDate(java.util.Date creationDate) {
+        this.creationDate = creationDate;
     }
 
 }

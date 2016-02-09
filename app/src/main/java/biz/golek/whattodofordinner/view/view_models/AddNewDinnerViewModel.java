@@ -15,13 +15,20 @@ import java.util.Map;
 
 import biz.golek.whattodofordinner.BR;
 import biz.golek.whattodofordinner.R;
+import biz.golek.whattodofordinner.view.helpers.FlagHelper;
 import biz.golek.whattodofordinner.view.helpers.SimpleTextWatcher;
 
 /**
  * Created by bgolek on 2016-02-05.
  */
 public class AddNewDinnerViewModel extends BaseObservable implements Serializable {
-    public Integer duration = 1;
+
+    class Seasons {
+        public static final int spring = 1;
+        public static final int summer = 2;
+        public static final int autumn = 3;
+        public static final int winter = 4;
+    }
 
     public List<String> getDurations(Resources resources) {
         List<String> spinnerArray = new ArrayList<String>();
@@ -100,9 +107,109 @@ public class AddNewDinnerViewModel extends BaseObservable implements Serializabl
         };
     }
 
-    private String name = "Put Name";
-    private boolean soup = true;
-    private boolean vegetarian = true;
+    private String name = "";
+    private boolean soup = false;
+    private boolean vegetarian = false;
+    private Integer duration = 1;
+    private Integer seasons = 0;
+
+    @Bindable
+    public boolean getSpring() {
+        return getSeason(Seasons.spring);
+    }
+
+    @Bindable
+    public boolean getSummer() {
+        return getSeason(Seasons.summer);
+    }
+
+    @Bindable
+    public boolean getAutumn() {
+        return getSeason(Seasons.autumn);
+    }
+
+    @Bindable
+    public boolean getWinter() {
+        return getSeason(Seasons.winter);
+    }
+
+    private boolean getSeason(int season_number) {
+        return FlagHelper.flagIsSet(season_number, seasons);
+    }
+
+    @Bindable
+    public void setSpring(boolean value) {
+        setSeason(Seasons.spring, value);
+        notifyPropertyChanged(BR.spring);
+    }
+
+    @Bindable
+    public void setSummer(boolean value) {
+        setSeason(Seasons.summer, value);
+        notifyPropertyChanged(BR.summer);
+    }
+
+    @Bindable
+    public void setAutumn(boolean value) {
+        setSeason(Seasons.autumn, value);
+        notifyPropertyChanged(BR.autumn);
+    }
+
+    @Bindable
+    public void setWinter(boolean value) {
+        setSeason(Seasons.winter, value);
+        notifyPropertyChanged(BR.winter);
+    }
+
+    private void setSeason(int season_number, boolean value) {
+        seasons = value
+                ? FlagHelper.setFlag(season_number, seasons)
+                : FlagHelper.setFlag(season_number, seasons);
+    }
+
+    public Integer getSeasons() {
+        return seasons;
+    }
+
+    public CompoundButton.OnCheckedChangeListener getSpringListener() {
+        return new CompoundButton.OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                setSeason(Seasons.spring, isChecked);
+            }
+        };
+    }
+
+    public CompoundButton.OnCheckedChangeListener getSummerListener() {
+        return new CompoundButton.OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                setSeason(Seasons.summer, isChecked);
+            }
+        };
+    }
+
+    public CompoundButton.OnCheckedChangeListener getAutumnListener() {
+        return new CompoundButton.OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                setSeason(Seasons.autumn, isChecked);
+            }
+        };
+    }
+
+    public CompoundButton.OnCheckedChangeListener getWinterListener() {
+        return new CompoundButton.OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                setSeason(Seasons.winter, isChecked);
+            }
+        };
+    }
 
     public AdapterView.OnItemSelectedListener getDurationListener() {
         return new AdapterView.OnItemSelectedListener() {

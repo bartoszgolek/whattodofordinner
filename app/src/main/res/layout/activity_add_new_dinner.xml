@@ -21,7 +21,7 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:columnCount="2"
-            android:rowCount="4">
+            android:rowCount="6">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -76,6 +76,50 @@
                 android:layout_row="1"
                 android:layout_column="1"
                 />
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_row="5"
+                android:layout_column="0"
+                android:layout_columnSpan="2">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="@string/seasons" />
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/spring"
+                    android:id="@+id/spring_season"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin" />
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/summer"
+                    android:id="@+id/summer_season"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin" />
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/autumn"
+                    android:id="@+id/autumn_season"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin" />
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/winter"
+                    android:id="@+id/winter_season"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin" />
+            </LinearLayout>
+
         </GridLayout>
     </RelativeLayout>
 </layout>
