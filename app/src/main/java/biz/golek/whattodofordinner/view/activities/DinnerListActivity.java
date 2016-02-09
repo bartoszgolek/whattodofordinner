@@ -1,16 +1,14 @@
 package biz.golek.whattodofordinner.view.activities;
 
 import android.databinding.DataBindingUtil;
+import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import biz.golek.whattodofordinner.R;
-import biz.golek.whattodofordinner.business.contract.response_data.DinnerListItem;
 import biz.golek.whattodofordinner.databinding.ActivityDinnerListBinding;
 import biz.golek.whattodofordinner.view.adapters.DinnerListItemArrayAdapter;
 import biz.golek.whattodofordinner.view.view_models.DinnerListViewModel;

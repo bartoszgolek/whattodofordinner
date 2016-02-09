@@ -12,8 +12,60 @@
     tools:context="biz.golek.whattodofordinner.MainActivity"
     tools:showIn="@layout/activity_main">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/welcome_message_header"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/welcome_message_header2"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/welcome_message"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:breakStrategy="balanced"
+            android:clickable="false"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/welcome_message2"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:breakStrategy="balanced"
+            android:clickable="false"
+            android:layout_marginLeft="10dp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/generate_prompts"
+            android:id="@+id/button_generate"
+            android:layout_gravity="center_horizontal"
+            android:padding="25dp"
+            android:textColor="#ffffff"
+            android:background="#0000ff"
+            android:layout_margin="25dp" />
+    </LinearLayout>
 </RelativeLayout>

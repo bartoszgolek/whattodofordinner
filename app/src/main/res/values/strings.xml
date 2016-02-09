@@ -72,4 +72,9 @@
     <string name="cancel">Cancel</string>
     <string name="save_new_dinner_saved_message">Dinner has been saved.</string>
     <string name="action_dinner_list">Dinner list</string>
+    <string name="welcome_message_header">Welcome to</string>
+    <string name="welcome_message">"What to do for dinner" is an application to help with choosing dish for dinner.</string>
+    <string name="welcome_message_header2" >What To Do For Dinner</string>
+    <string name="welcome_message2" >Prompts are generated from dishes given by user, due to provious choices and given attributes. Click button below for prompts. </string>
+    <string name="generate_prompts">Generate</string>
 </resources>

@@ -15,4 +15,9 @@
     <string name="cancel">Anuluj</string>
     <string name="save_new_dinner_saved_message">Nowy obiad został zapisany.</string>
     <string name="action_dinner_list">Lista obiadów</string>
+    <string name="welcome_message">"Co na obiad" jest aplikacją pomagającą w wybraniu potrawy do przygotowania na obiad. Podpowiedzi generowane są z wprowadzonych potraw na podstawie wcześniej dokonywanych wyborów oraz nadanych potrawom atrybutów. </string>
+    <string name="welcome_message_header">Witaj w</string>
+    <string name="welcome_message_header2">Co na obiad</string>
+    <string name="welcome_message2">Kliknij poniższy przycisk aby zobaczyć propozycje.</string>
+    <string name="generate_prompts">Generuj</string>
 </resources>
