@@ -30,6 +30,7 @@ public class DinnerListImpl implements DinnerList {
         List<Dinner> dinners = dao.getAllDinners();
         for (Dinner d: dinners) {
             DinnerListItem dinnerListItem = new DinnerListItem();
+            dinnerListItem.id = d.getId();
             dinnerListItem.name = d.getName();
             result.add(dinnerListItem);
         };

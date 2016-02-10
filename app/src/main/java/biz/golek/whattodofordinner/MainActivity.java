@@ -2,19 +2,20 @@ package biz.golek.whattodofordinner;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.Toast;
 
-import biz.golek.whattodofordinner.view.ControllersProvider;
-import biz.golek.whattodofordinner.view.awareness.IControllersProviderAware;
+import biz.golek.whattodofordinner.view.ActivityDependencyProvider;
+import biz.golek.whattodofordinner.view.awareness.IActivityDependencyProviderAware;
 
-public class MainActivity extends AppCompatActivity implements IControllersProviderAware {
+public class MainActivity extends AppCompatActivity implements IActivityDependencyProviderAware {
 
-    private ControllersProvider controllerProvider;
+    private ActivityDependencyProvider controllerProvider;
     private View.OnClickListener listener;
 
     @Override
@@ -29,8 +30,8 @@ public class MainActivity extends AppCompatActivity implements IControllersProvi
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, R.string.add_new_dinner, Snackbar.LENGTH_LONG)
-                        .setAction("Action", listener).show();
+                controllerProvider.getAddNewDinnerController().Run();
+                //Snackbar.make(view, R.string.add_new_dinner, Snackbar.LENGTH_LONG).setAction("Action", listener).show();
             }
         });
 
@@ -40,6 +41,15 @@ public class MainActivity extends AppCompatActivity implements IControllersProvi
                 controllerProvider.getAddNewDinnerController().Run();
             }
         };
+
+        Button clickButton = (Button) findViewById(R.id.button_generate);
+        clickButton.setOnClickListener( new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "TODO: Generate", Toast.LENGTH_LONG);
+            }
+        });
     }
 
     @Override
@@ -65,7 +75,7 @@ public class MainActivity extends AppCompatActivity implements IControllersProvi
     }
 
     @Override
-    public void Set(ControllersProvider item) {
+    public void Set(ActivityDependencyProvider item) {
         this.controllerProvider = item;
     }
 }

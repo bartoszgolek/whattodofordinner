@@ -6,27 +6,26 @@ import android.os.Bundle;
 
 import javax.inject.Inject;
 
-import biz.golek.whattodofordinner.view.ControllersProvider;
-import biz.golek.whattodofordinner.view.awareness.IAware;
-import biz.golek.whattodofordinner.view.awareness.IControllersProviderAware;
+import biz.golek.whattodofordinner.view.ActivityDependencyProvider;
+import biz.golek.whattodofordinner.view.awareness.IActivityDependencyProviderAware;
 
 /**
  * Created by bg on 02.02.16.
  */
 public class ControllersProviderInjector implements Application.ActivityLifecycleCallbacks {
 
-    private ControllersProvider controllersProvider;
+    private ActivityDependencyProvider activityDependencyProvider;
 
     @Inject
-    public ControllersProviderInjector(ControllersProvider controllersProvider)
+    public ControllersProviderInjector(ActivityDependencyProvider activityDependencyProvider)
     {
-        this.controllersProvider = controllersProvider;
+        this.activityDependencyProvider = activityDependencyProvider;
     }
 
     @Override
     public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
-        if (activity instanceof IControllersProviderAware)
-            ((IControllersProviderAware)activity).Set(controllersProvider);
+        if (activity instanceof IActivityDependencyProviderAware)
+            ((IActivityDependencyProviderAware)activity).Set(activityDependencyProvider);
     }
 
     @Override

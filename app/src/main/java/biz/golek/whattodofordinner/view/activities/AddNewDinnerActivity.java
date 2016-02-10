@@ -16,13 +16,13 @@ import android.widget.Spinner;
 import biz.golek.whattodofordinner.R;
 import biz.golek.whattodofordinner.business.contract.request_data.SaveNewDinnerRequestData;
 import biz.golek.whattodofordinner.databinding.ActivityAddNewDinnerBinding;
-import biz.golek.whattodofordinner.view.ControllersProvider;
-import biz.golek.whattodofordinner.view.awareness.IControllersProviderAware;
+import biz.golek.whattodofordinner.view.ActivityDependencyProvider;
+import biz.golek.whattodofordinner.view.awareness.IActivityDependencyProviderAware;
 import biz.golek.whattodofordinner.view.view_models.AddNewDinnerViewModel;
 
-public class AddNewDinnerActivity extends AppCompatActivity implements IControllersProviderAware {
+public class AddNewDinnerActivity extends AppCompatActivity implements IActivityDependencyProviderAware {
 
-    private ControllersProvider controllerProvider;
+    private ActivityDependencyProvider controllerProvider;
     private AddNewDinnerViewModel addNewDinner;
     private String ADD_NEW_DINNER_VIEW_MODEL = "addNewDinnerViewModel";
 
@@ -107,7 +107,7 @@ public class AddNewDinnerActivity extends AppCompatActivity implements IControll
     }
 
     @Override
-    public void Set(ControllersProvider item) {
+    public void Set(ActivityDependencyProvider item) {
         this.controllerProvider = item;
     }
 }

@@ -7,9 +7,10 @@ import javax.inject.Singleton;
 
 import biz.golek.whattodofordinner.ViewStateManager;
 import biz.golek.whattodofordinner.business.contract.controllers.AddNewDinnerController;
+import biz.golek.whattodofordinner.business.contract.controllers.DeleteDinnerController;
 import biz.golek.whattodofordinner.business.contract.controllers.SaveNewDinnerController;
 import biz.golek.whattodofordinner.business.contract.controllers.DinnerListController;
-import biz.golek.whattodofordinner.view.ControllersProvider;
+import biz.golek.whattodofordinner.view.ActivityDependencyProvider;
 import biz.golek.whattodofordinner.view.presneters.ActivityPresenter;
 import biz.golek.whattodofordinner.view.helpers.ViewState;
 import biz.golek.whattodofordinner.view.presneters.NotificationPresenter;
@@ -36,14 +37,18 @@ public class AppModule {
 
     @Provides
     @Singleton
-    static ControllersProvider provideControllersProvider(
+    static ActivityDependencyProvider provideControllersProvider(
             Provider<AddNewDinnerController> addNewDinnerControllerProvider,
             Provider<SaveNewDinnerController> saveNewDinnerControllerProvider,
-            Provider<DinnerListController> dinnerListControllerProvider){
-        return new ControllersProvider(
+            Provider<DinnerListController> dinnerListControllerProvider,
+            Provider<DeleteDinnerController> deleteDinnerControllerProvider,
+            Provider<EventBus> eventBus){
+        return new ActivityDependencyProvider(
+            eventBus,
             addNewDinnerControllerProvider,
             saveNewDinnerControllerProvider,
-            dinnerListControllerProvider);
+            dinnerListControllerProvider,
+            deleteDinnerControllerProvider);
     }
 
     @Provides

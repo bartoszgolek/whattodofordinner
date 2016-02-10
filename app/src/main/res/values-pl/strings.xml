@@ -25,4 +25,7 @@
     <string name="spring">Wiosna</string>
     <string name="summer">Lato</string>
     <string name="winter">Zima</string>
+    <string name="delete">Usuń</string>
+    <string name="edit">Edytuj</string>
+    <string name="dinner_deleted_message">Obiad został usunięty.</string>
 </resources>
