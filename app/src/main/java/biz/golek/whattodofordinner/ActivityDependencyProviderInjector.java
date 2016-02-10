@@ -12,12 +12,12 @@ import biz.golek.whattodofordinner.view.awareness.IActivityDependencyProviderAwa
 /**
  * Created by bg on 02.02.16.
  */
-public class ControllersProviderInjector implements Application.ActivityLifecycleCallbacks {
+public class ActivityDependencyProviderInjector implements Application.ActivityLifecycleCallbacks {
 
     private ActivityDependencyProvider activityDependencyProvider;
 
     @Inject
-    public ControllersProviderInjector(ActivityDependencyProvider activityDependencyProvider)
+    public ActivityDependencyProviderInjector(ActivityDependencyProvider activityDependencyProvider)
     {
         this.activityDependencyProvider = activityDependencyProvider;
     }

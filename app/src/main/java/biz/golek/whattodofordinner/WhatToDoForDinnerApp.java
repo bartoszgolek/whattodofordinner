@@ -24,6 +24,6 @@ public class WhatToDoForDinnerApp extends Application {
                 .build();
 
         registerActivityLifecycleCallbacks(component.viewStateManager());
-        registerActivityLifecycleCallbacks(component.controllersProviderInjector());
+        registerActivityLifecycleCallbacks(component.activityDependencyProviderInjector());
     }
 }

@@ -15,7 +15,7 @@ import biz.golek.whattodofordinner.view.awareness.IActivityDependencyProviderAwa
 
 public class MainActivity extends AppCompatActivity implements IActivityDependencyProviderAware {
 
-    private ActivityDependencyProvider controllerProvider;
+    private ActivityDependencyProvider activityDependencyProvider;
     private View.OnClickListener listener;
 
     @Override
@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements IActivityDependen
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                controllerProvider.getAddNewDinnerController().Run();
+                activityDependencyProvider.getAddNewDinnerController().Run();
                 //Snackbar.make(view, R.string.add_new_dinner, Snackbar.LENGTH_LONG).setAction("Action", listener).show();
             }
         });
@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements IActivityDependen
         listener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                controllerProvider.getAddNewDinnerController().Run();
+                activityDependencyProvider.getAddNewDinnerController().Run();
             }
         };
 
@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements IActivityDependen
         int id = item.getItemId();
 
         if (id == R.id.action_dinner_list) {
-            this.controllerProvider.getShowDinnerListController().Run();
+            this.activityDependencyProvider.getShowDinnerListController().Run();
             return true;
         }
 
@@ -76,6 +76,6 @@ public class MainActivity extends AppCompatActivity implements IActivityDependen
 
     @Override
     public void Set(ActivityDependencyProvider item) {
-        this.controllerProvider = item;
+        this.activityDependencyProvider = item;
     }
 }

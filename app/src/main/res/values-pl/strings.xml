@@ -28,4 +28,7 @@
     <string name="delete">Usuń</string>
     <string name="edit">Edytuj</string>
     <string name="dinner_deleted_message">Obiad został usunięty.</string>
+    <string name="add">Dodaj</string>
+    <string name="title_activity_add_new_dinner">Dodaj nowy obiad</string>
+    <string name="title_activity_dinner_list">Lista obiadów</string>
 </resources>

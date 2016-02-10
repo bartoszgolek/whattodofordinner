@@ -20,10 +20,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".view.activities.SettingsActivity"
-            android:label="@string/title_activity_settings" />
-        <activity android:name=".view.activities.AddNewDinnerActivity" />
-        <activity android:name=".view.activities.DinnerListActivity"></activity>
+            android:name=".view.activities.AddNewDinnerActivity"
+            android:label="@string/title_activity_add_new_dinner" />
+            />
+        <activity
+            android:name=".view.activities.DinnerListActivity"
+            android:label="@string/title_activity_dinner_list" />
+            />
     </application>
 
 </manifest>

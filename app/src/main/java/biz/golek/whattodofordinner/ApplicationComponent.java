@@ -21,5 +21,5 @@ import dagger.Component;
         })
 public interface ApplicationComponent {
     ViewStateManager viewStateManager();
-    ControllersProviderInjector controllersProviderInjector();
+    ActivityDependencyProviderInjector activityDependencyProviderInjector();
 }

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.ContextMenu;
+import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,6 +22,7 @@ import biz.golek.whattodofordinner.databinding.ActivityDinnerListBinding;
 import biz.golek.whattodofordinner.view.ActivityDependencyProvider;
 import biz.golek.whattodofordinner.view.adapters.DinnerListItemArrayAdapter;
 import biz.golek.whattodofordinner.view.awareness.IActivityDependencyProviderAware;
+import biz.golek.whattodofordinner.view.messages.DinnerAddedMessage;
 import biz.golek.whattodofordinner.view.messages.DinnerDeletedMessage;
 import biz.golek.whattodofordinner.view.view_models.DinnerListViewModel;
 
@@ -49,18 +51,14 @@ public class DinnerListActivity extends AppCompatActivity implements IActivityDe
         adapter = new DinnerListItemArrayAdapter(this, viewModel.dinners);
         listView.setAdapter(adapter);
         registerForContextMenu(listView);
-    }
 
-    @Override
-    public void onStart() {
-        super.onStart();
         activityDependencyProvider.getEventBusProvider().get().register(this);
     }
 
     @Override
-    public void onStop() {
-        activityDependencyProvider.getEventBusProvider().get().unregister(this);
-        super.onStop();
+    protected void onDestroy() {
+        super.onDestroy();
+        activityDependencyProvider.getEventBusProvider().get().register(this);
     }
 
     @Subscribe
@@ -74,6 +72,23 @@ public class DinnerListActivity extends AppCompatActivity implements IActivityDe
             viewModel.dinners.remove(dinner);
             adapter.notifyDataSetChanged();
     };
+
+    @Subscribe
+    public void onEvent(DinnerAddedMessage event) {
+        DinnerListItem dinner = new DinnerListItem();
+        dinner.id = event.getId();
+        dinner.name = event.getName();
+
+        viewModel.dinners.add(dinner);
+        adapter.notifyDataSetChanged();
+    };
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.dinner_list_menu, menu);
+        return true;
+    }
 
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
@@ -118,6 +133,11 @@ public class DinnerListActivity extends AppCompatActivity implements IActivityDe
         int id = item.getItemId();
         if (id == android.R.id.home) {
             finish();
+            return true;
+        }
+
+        if (id == R.id.dinner_list_menu_add) {
+            this.activityDependencyProvider.getAddNewDinnerController().Run();
             return true;
         }
 

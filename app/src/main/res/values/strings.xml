@@ -25,4 +25,7 @@
     <string name="delete">Delete</string>
     <string name="edit">Edit</string>
     <string name="dinner_deleted_message">Dinner deleted</string>
+    <string name="add">Add</string>
+    <string name="title_activity_dinner_list">Dinner list</string>
+    <string name="title_activity_add_new_dinner">Add new dinner</string>
 </resources>

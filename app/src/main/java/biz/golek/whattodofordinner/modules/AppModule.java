@@ -37,7 +37,7 @@ public class AppModule {
 
     @Provides
     @Singleton
-    static ActivityDependencyProvider provideControllersProvider(
+    static ActivityDependencyProvider provideActivityDependencyProvider(
             Provider<AddNewDinnerController> addNewDinnerControllerProvider,
             Provider<SaveNewDinnerController> saveNewDinnerControllerProvider,
             Provider<DinnerListController> dinnerListControllerProvider,

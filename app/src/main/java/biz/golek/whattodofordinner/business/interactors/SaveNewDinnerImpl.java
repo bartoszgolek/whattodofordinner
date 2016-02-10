@@ -35,7 +35,7 @@ public class SaveNewDinnerImpl implements SaveNewDinner {
 
         saveNewDinnerDao.saveDinner(entity);
 
-        presenter.ShowSaved();
+        presenter.ShowSaved(entity);
     }
 
 }
