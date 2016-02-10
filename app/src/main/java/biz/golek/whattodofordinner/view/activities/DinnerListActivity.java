@@ -24,6 +24,7 @@ import biz.golek.whattodofordinner.view.adapters.DinnerListItemArrayAdapter;
 import biz.golek.whattodofordinner.view.awareness.IActivityDependencyProviderAware;
 import biz.golek.whattodofordinner.view.messages.DinnerAddedMessage;
 import biz.golek.whattodofordinner.view.messages.DinnerDeletedMessage;
+import biz.golek.whattodofordinner.view.messages.DinnerUpdatedMessage;
 import biz.golek.whattodofordinner.view.view_models.DinnerListViewModel;
 
 public class DinnerListActivity extends AppCompatActivity implements IActivityDependencyProviderAware {
@@ -83,6 +84,21 @@ public class DinnerListActivity extends AppCompatActivity implements IActivityDe
         adapter.notifyDataSetChanged();
     };
 
+    @Subscribe
+    public void onEvent(DinnerUpdatedMessage event) {
+        boolean updated = false;
+        for (DinnerListItem dinner : viewModel.dinners) {
+            if (dinner.id == event.getId()) {
+                dinner.id = event.getId();
+                dinner.name = event.getName();
+                updated = true;
+            }
+        }
+
+        if (updated)
+            adapter.notifyDataSetChanged();
+    };
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -105,7 +121,9 @@ public class DinnerListActivity extends AppCompatActivity implements IActivityDe
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
         switch(item.getItemId()) {
             case R.id.dinner_list_item_menu_edit:
-                Toast.makeText(this, "Edit", Toast.LENGTH_LONG);
+                ListView lv = (ListView)findViewById(R.id.dinner_list);
+                DinnerListItem dinnerListItem = (DinnerListItem)lv.getItemAtPosition(info.position);
+                activityDependencyProvider.getEditDinnerController().Run(dinnerListItem.id);
                 return true;
             case R.id.dinner_list_item_menu_delete:
                 ListView lv = (ListView)findViewById(R.id.dinner_list);

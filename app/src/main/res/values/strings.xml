@@ -28,4 +28,5 @@
     <string name="add">Add</string>
     <string name="title_activity_dinner_list">Dinner list</string>
     <string name="title_activity_add_new_dinner">Add new dinner</string>
+    <string name="update_dinner_saved_message">Dinner updated</string>
 </resources>

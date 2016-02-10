@@ -31,4 +31,5 @@
     <string name="add">Dodaj</string>
     <string name="title_activity_add_new_dinner">Dodaj nowy obiad</string>
     <string name="title_activity_dinner_list">Lista obiadów</string>
+    <string name="update_dinner_saved_message">Obiad został zaktualizowany.</string>
 </resources>

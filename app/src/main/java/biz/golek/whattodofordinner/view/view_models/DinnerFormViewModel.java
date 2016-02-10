@@ -21,7 +21,7 @@ import biz.golek.whattodofordinner.view.helpers.SimpleTextWatcher;
 /**
  * Created by bgolek on 2016-02-05.
  */
-public class AddNewDinnerViewModel extends BaseObservable implements Serializable {
+public class DinnerFormViewModel extends BaseObservable implements Serializable {
 
     class Seasons {
         public static final int spring = 1;

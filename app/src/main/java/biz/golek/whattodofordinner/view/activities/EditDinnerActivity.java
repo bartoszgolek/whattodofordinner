@@ -1,9 +1,9 @@
 package biz.golek.whattodofordinner.view.activities;
 
 import android.databinding.DataBindingUtil;
+import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -15,33 +15,34 @@ import android.widget.Spinner;
 
 import biz.golek.whattodofordinner.R;
 import biz.golek.whattodofordinner.business.contract.request_data.SaveNewDinnerRequestData;
+import biz.golek.whattodofordinner.business.contract.request_data.UpdateDinnerRequestData;
 import biz.golek.whattodofordinner.databinding.ActivityAddNewDinnerBinding;
 import biz.golek.whattodofordinner.view.ActivityDependencyProvider;
 import biz.golek.whattodofordinner.view.awareness.IActivityDependencyProviderAware;
 import biz.golek.whattodofordinner.view.view_models.DinnerFormViewModel;
 
-public class AddNewDinnerActivity extends AppCompatActivity implements IActivityDependencyProviderAware {
+public class EditDinnerActivity extends AppCompatActivity implements IActivityDependencyProviderAware {
 
     private ActivityDependencyProvider controllerProvider;
-    private DinnerFormViewModel addNewDinner;
-    private String ADD_NEW_DINNER_VIEW_MODEL = "addNewDinnerViewModel";
+    private DinnerFormViewModel editDinner;
+    private String EDIT_DINNER_VIEW_MODEL = "editDinnerViewModel";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ActivityAddNewDinnerBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_add_new_dinner);
+        ActivityAddNewDinnerBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_edit_dinner);
 
         setupActionBar();
         if (savedInstanceState != null)
-            addNewDinner = (DinnerFormViewModel) savedInstanceState.getSerializable(ADD_NEW_DINNER_VIEW_MODEL);
+            editDinner = (DinnerFormViewModel) savedInstanceState.getSerializable(EDIT_DINNER_VIEW_MODEL);
         else
-            addNewDinner = new DinnerFormViewModel();
+            editDinner = (DinnerFormViewModel) getIntent().getExtras().getSerializable(EDIT_DINNER_VIEW_MODEL);
 
-        binding.setViewModel(addNewDinner);
+        binding.setViewModel(editDinner);
 
         attachListeners();
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, addNewDinner.getDurations(getResources()));
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, editDinner.getDurations(getResources()));
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         Spinner sItems = (Spinner) findViewById(R.id.duration);
@@ -49,22 +50,22 @@ public class AddNewDinnerActivity extends AppCompatActivity implements IActivity
     }
 
     private void attachListeners() {
-        ((EditText)findViewById(R.id.name)).addTextChangedListener(addNewDinner.getNameListener());
-        ((CompoundButton)findViewById(R.id.vege)).setOnCheckedChangeListener(addNewDinner.getVegetarianListener());
-        ((CompoundButton)findViewById(R.id.soup)).setOnCheckedChangeListener(addNewDinner.getSoupListener());
-        ((AdapterView)findViewById(R.id.duration)).setOnItemSelectedListener(addNewDinner.getDurationListener());
+        ((EditText)findViewById(R.id.name)).addTextChangedListener(editDinner.getNameListener());
+        ((CompoundButton)findViewById(R.id.vege)).setOnCheckedChangeListener(editDinner.getVegetarianListener());
+        ((CompoundButton)findViewById(R.id.soup)).setOnCheckedChangeListener(editDinner.getSoupListener());
+        ((AdapterView)findViewById(R.id.duration)).setOnItemSelectedListener(editDinner.getDurationListener());
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
-        outState.putSerializable(ADD_NEW_DINNER_VIEW_MODEL, addNewDinner);
+        outState.putSerializable(EDIT_DINNER_VIEW_MODEL, editDinner);
         super.onSaveInstanceState(outState);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_add_new_dinner, menu);
+        inflater.inflate(R.menu.menu_edit_dinner, menu);
         return true;
     }
 
@@ -95,15 +96,15 @@ public class AddNewDinnerActivity extends AppCompatActivity implements IActivity
     }
 
     private void saveDinner() {
-        SaveNewDinnerRequestData requestData = new SaveNewDinnerRequestData();
+        UpdateDinnerRequestData requestData = new UpdateDinnerRequestData();
 
-        requestData.name = addNewDinner.getName();
-        requestData.duration = addNewDinner.getDuration();
-        requestData.soup = addNewDinner.getSoup();
-        requestData.vegetarian = addNewDinner.getVegetarian();
-        requestData.seasons = addNewDinner.getSeasons();
+        requestData.name = editDinner.getName();
+        requestData.duration = editDinner.getDuration();
+        requestData.soup = editDinner.getSoup();
+        requestData.vegetarian = editDinner.getVegetarian();
+        requestData.seasons = editDinner.getSeasons();
 
-        controllerProvider.getSaveNewDinnerController().Run(requestData);
+        controllerProvider.getUpdateDinnerController().Run(requestData);
     }
 
     @Override

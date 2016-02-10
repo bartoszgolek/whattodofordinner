@@ -4,6 +4,7 @@ import android.app.Application;
 
 import biz.golek.whattodofordinner.modules.DatabaseModule;
 import biz.golek.whattodofordinner.modules.DinnerListModule;
+import biz.golek.whattodofordinner.modules.EditDinnerModule;
 import biz.golek.whattodofordinner.modules.NewDinnerModule;
 import biz.golek.whattodofordinner.modules.AppModule;
 
@@ -21,6 +22,7 @@ public class WhatToDoForDinnerApp extends Application {
                 .databaseModule(new DatabaseModule())
                 .newDinnerModule(new NewDinnerModule())
                 .dinnerListModule(new DinnerListModule())
+                .editDinnerModule(new EditDinnerModule())
                 .build();
 
         registerActivityLifecycleCallbacks(component.viewStateManager());
