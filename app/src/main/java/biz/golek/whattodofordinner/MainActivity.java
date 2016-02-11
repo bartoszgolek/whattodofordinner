@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements IActivityDependen
 
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "TODO: Generate", Toast.LENGTH_LONG);
+                activityDependencyProvider.getShowGeneratePromptsPreferencesController().Run();
             }
         });
     }

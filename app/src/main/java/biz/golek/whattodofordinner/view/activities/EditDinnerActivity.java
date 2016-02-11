@@ -14,35 +14,34 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import biz.golek.whattodofordinner.R;
-import biz.golek.whattodofordinner.business.contract.request_data.SaveNewDinnerRequestData;
 import biz.golek.whattodofordinner.business.contract.request_data.UpdateDinnerRequestData;
-import biz.golek.whattodofordinner.databinding.ActivityAddNewDinnerBinding;
+import biz.golek.whattodofordinner.databinding.ActivityEditDinnerBinding;
 import biz.golek.whattodofordinner.view.ActivityDependencyProvider;
 import biz.golek.whattodofordinner.view.awareness.IActivityDependencyProviderAware;
-import biz.golek.whattodofordinner.view.view_models.DinnerFormViewModel;
+import biz.golek.whattodofordinner.view.view_models.EditDinnerFormViewModel;
 
 public class EditDinnerActivity extends AppCompatActivity implements IActivityDependencyProviderAware {
 
-    private ActivityDependencyProvider controllerProvider;
-    private DinnerFormViewModel editDinner;
+    private ActivityDependencyProvider activityDependencyProvider;
+    private EditDinnerFormViewModel viewModel;
     private String EDIT_DINNER_VIEW_MODEL = "editDinnerViewModel";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ActivityAddNewDinnerBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_edit_dinner);
+        ActivityEditDinnerBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_edit_dinner);
 
         setupActionBar();
         if (savedInstanceState != null)
-            editDinner = (DinnerFormViewModel) savedInstanceState.getSerializable(EDIT_DINNER_VIEW_MODEL);
+            viewModel = (EditDinnerFormViewModel) savedInstanceState.getSerializable(EDIT_DINNER_VIEW_MODEL);
         else
-            editDinner = (DinnerFormViewModel) getIntent().getExtras().getSerializable(EDIT_DINNER_VIEW_MODEL);
+            viewModel = (EditDinnerFormViewModel) getIntent().getExtras().getSerializable("VIEW_MODEL");
 
-        binding.setViewModel(editDinner);
+        binding.setViewModel(viewModel);
 
         attachListeners();
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, editDinner.getDurations(getResources()));
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, viewModel.getDurations(getResources()));
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         Spinner sItems = (Spinner) findViewById(R.id.duration);
@@ -50,15 +49,15 @@ public class EditDinnerActivity extends AppCompatActivity implements IActivityDe
     }
 
     private void attachListeners() {
-        ((EditText)findViewById(R.id.name)).addTextChangedListener(editDinner.getNameListener());
-        ((CompoundButton)findViewById(R.id.vege)).setOnCheckedChangeListener(editDinner.getVegetarianListener());
-        ((CompoundButton)findViewById(R.id.soup)).setOnCheckedChangeListener(editDinner.getSoupListener());
-        ((AdapterView)findViewById(R.id.duration)).setOnItemSelectedListener(editDinner.getDurationListener());
+        ((EditText)findViewById(R.id.name)).addTextChangedListener(viewModel.getNameListener());
+        ((CompoundButton)findViewById(R.id.vege)).setOnCheckedChangeListener(viewModel.getVegetarianListener());
+        ((CompoundButton)findViewById(R.id.soup)).setOnCheckedChangeListener(viewModel.getSoupListener());
+        ((AdapterView)findViewById(R.id.duration)).setOnItemSelectedListener(viewModel.getDurationListener());
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
-        outState.putSerializable(EDIT_DINNER_VIEW_MODEL, editDinner);
+        outState.putSerializable(EDIT_DINNER_VIEW_MODEL, viewModel);
         super.onSaveInstanceState(outState);
     }
 
@@ -98,17 +97,18 @@ public class EditDinnerActivity extends AppCompatActivity implements IActivityDe
     private void saveDinner() {
         UpdateDinnerRequestData requestData = new UpdateDinnerRequestData();
 
-        requestData.name = editDinner.getName();
-        requestData.duration = editDinner.getDuration();
-        requestData.soup = editDinner.getSoup();
-        requestData.vegetarian = editDinner.getVegetarian();
-        requestData.seasons = editDinner.getSeasons();
+        requestData.id = viewModel.id;
+        requestData.name = viewModel.getName();
+        requestData.duration = viewModel.getDuration();
+        requestData.soup = viewModel.getSoup();
+        requestData.vegetarian = viewModel.getVegetarian();
+        requestData.seasons = viewModel.getSeasons();
 
-        controllerProvider.getUpdateDinnerController().Run(requestData);
+        activityDependencyProvider.getUpdateDinnerController().Run(requestData);
     }
 
     @Override
     public void Set(ActivityDependencyProvider item) {
-        this.controllerProvider = item;
+        this.activityDependencyProvider = item;
     }
 }

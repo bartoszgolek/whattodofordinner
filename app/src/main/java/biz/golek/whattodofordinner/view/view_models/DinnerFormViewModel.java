@@ -30,6 +30,12 @@ public class DinnerFormViewModel extends BaseObservable implements Serializable 
         public static final int winter = 4;
     }
 
+    private String name = "";
+    private boolean soup = false;
+    private boolean vegetarian = false;
+    private Integer duration = 1;
+    private Integer seasons = 0;
+
     public List<String> getDurations(Resources resources) {
         List<String> spinnerArray = new ArrayList<String>();
         spinnerArray.add(resources.getString(R.string.dinner_duration_short));
@@ -107,12 +113,6 @@ public class DinnerFormViewModel extends BaseObservable implements Serializable 
         };
     }
 
-    private String name = "";
-    private boolean soup = false;
-    private boolean vegetarian = false;
-    private Integer duration = 1;
-    private Integer seasons = 0;
-
     @Bindable
     public boolean getSpring() {
         return getSeason(Seasons.spring);
@@ -169,6 +169,10 @@ public class DinnerFormViewModel extends BaseObservable implements Serializable 
 
     public Integer getSeasons() {
         return seasons;
+    }
+
+    public void setSeasons(Integer seasons) {
+        this.seasons = seasons;
     }
 
     public CompoundButton.OnCheckedChangeListener getSpringListener() {

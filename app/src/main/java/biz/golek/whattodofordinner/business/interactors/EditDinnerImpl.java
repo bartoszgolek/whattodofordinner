@@ -1,5 +1,6 @@
 package biz.golek.whattodofordinner.business.interactors;
 
+import biz.golek.whattodofordinner.business.contract.dao.EditDinnerDao;
 import biz.golek.whattodofordinner.business.contract.interactors.EditDinner;
 import biz.golek.whattodofordinner.business.contract.presenters.EditDinnerPresenter;
 
@@ -7,11 +8,18 @@ import biz.golek.whattodofordinner.business.contract.presenters.EditDinnerPresen
  * Created by bgolek on 2016-02-10.
  */
 public class EditDinnerImpl implements EditDinner {
-    public EditDinnerImpl(EditDinnerPresenter editDinnerPresenter) {
+    private EditDinnerPresenter editDinnerPresenter;
+    private EditDinnerDao dao;
+
+    public EditDinnerImpl(
+            EditDinnerPresenter editDinnerPresenter,
+            EditDinnerDao dao) {
+        this.editDinnerPresenter = editDinnerPresenter;
+        this.dao = dao;
     }
 
     @Override
     public void Run(Long id) {
-        //TODO: implement
+        editDinnerPresenter.Show(dao.GetDinner(id));
     }
 }

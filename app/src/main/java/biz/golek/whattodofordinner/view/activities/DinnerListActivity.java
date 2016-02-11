@@ -33,6 +33,7 @@ public class DinnerListActivity extends AppCompatActivity implements IActivityDe
     private DinnerListViewModel viewModel;
     private ActivityDependencyProvider activityDependencyProvider;
     private ArrayAdapter adapter;
+    private ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +49,7 @@ public class DinnerListActivity extends AppCompatActivity implements IActivityDe
 
         binding.setViewModel(viewModel);
 
-        ListView listView =  (ListView) findViewById(R.id.dinner_list);
+        listView =  (ListView) findViewById(R.id.dinner_list);
         adapter = new DinnerListItemArrayAdapter(this, viewModel.dinners);
         listView.setAdapter(adapter);
         registerForContextMenu(listView);
@@ -59,14 +60,14 @@ public class DinnerListActivity extends AppCompatActivity implements IActivityDe
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        activityDependencyProvider.getEventBusProvider().get().register(this);
+        activityDependencyProvider.getEventBusProvider().get().unregister(this);
     }
 
     @Subscribe
-    public void onEvent(DinnerDeletedMessage event) {
+    public void onDinnerDeleteMessage(DinnerDeletedMessage event) {
         DinnerListItem dinner = null;
         for (DinnerListItem d : viewModel.dinners)
-            if (d.id == event.getId())
+            if (d.id.equals(event.getId()))
                 dinner = d;
 
         if (dinner != null)
@@ -75,7 +76,7 @@ public class DinnerListActivity extends AppCompatActivity implements IActivityDe
     };
 
     @Subscribe
-    public void onEvent(DinnerAddedMessage event) {
+    public void onDinnerAddedMessage(DinnerAddedMessage event) {
         DinnerListItem dinner = new DinnerListItem();
         dinner.id = event.getId();
         dinner.name = event.getName();
@@ -85,10 +86,10 @@ public class DinnerListActivity extends AppCompatActivity implements IActivityDe
     };
 
     @Subscribe
-    public void onEvent(DinnerUpdatedMessage event) {
+    public void onDinnerUpdatedMessage(DinnerUpdatedMessage event) {
         boolean updated = false;
         for (DinnerListItem dinner : viewModel.dinners) {
-            if (dinner.id == event.getId()) {
+            if (dinner.id.equals(event.getId())) {
                 dinner.id = event.getId();
                 dinner.name = event.getName();
                 updated = true;
@@ -119,15 +120,12 @@ public class DinnerListActivity extends AppCompatActivity implements IActivityDe
     @Override
     public boolean onContextItemSelected(MenuItem item) {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        DinnerListItem dinnerListItem = (DinnerListItem)listView.getItemAtPosition(info.position);
         switch(item.getItemId()) {
             case R.id.dinner_list_item_menu_edit:
-                ListView lv = (ListView)findViewById(R.id.dinner_list);
-                DinnerListItem dinnerListItem = (DinnerListItem)lv.getItemAtPosition(info.position);
                 activityDependencyProvider.getEditDinnerController().Run(dinnerListItem.id);
                 return true;
             case R.id.dinner_list_item_menu_delete:
-                ListView lv = (ListView)findViewById(R.id.dinner_list);
-                DinnerListItem dinnerListItem = (DinnerListItem)lv.getItemAtPosition(info.position);
                 activityDependencyProvider.getDeleteDinnerController().Run(dinnerListItem.id);
                 return true;
             default:

@@ -7,6 +7,7 @@ import javax.inject.Singleton;
 
 
 import biz.golek.whattodofordinner.business.contract.controllers.EditDinnerController;
+import biz.golek.whattodofordinner.business.contract.dao.EditDinnerDao;
 import biz.golek.whattodofordinner.business.contract.dao.UpdateDinnerDao;
 import biz.golek.whattodofordinner.business.contract.interactors.EditDinner;
 import biz.golek.whattodofordinner.business.contract.interactors.UpdateDinner;
@@ -17,6 +18,7 @@ import biz.golek.whattodofordinner.business.controllers.EditDinnerControllerImpl
 import biz.golek.whattodofordinner.business.controllers.UpdateDinnerControllerImpl;
 import biz.golek.whattodofordinner.business.interactors.EditDinnerImpl;
 import biz.golek.whattodofordinner.business.interactors.UpdateDinnerImpl;
+import biz.golek.whattodofordinner.database.business.dao.EditDinnerDaoImpl;
 import biz.golek.whattodofordinner.database.business.dao.UpdateDinnerDaoImpl;
 import biz.golek.whattodofordinner.models.DinnerDao;
 import biz.golek.whattodofordinner.view.business.presneters.EditDinnerPresenterImpl;
@@ -35,8 +37,8 @@ public class EditDinnerModule {
 
     @Provides
     @Singleton
-    static EditDinner provideEditDinner(EditDinnerPresenter editDinnerPresenter){
-        return new EditDinnerImpl(editDinnerPresenter);
+    static EditDinner provideEditDinner(EditDinnerPresenter editDinnerPresenter, EditDinnerDao editDinnerDao){
+        return new EditDinnerImpl(editDinnerPresenter, editDinnerDao);
     }
 
     @Provides
@@ -49,6 +51,12 @@ public class EditDinnerModule {
     @Singleton
     static EditDinnerPresenter provideEditDinnerPresenter(ActivityPresenter starter){
         return new EditDinnerPresenterImpl(starter);
+    }
+
+    @Provides
+    @Singleton
+    static EditDinnerDao provideEditDinnerDao(Provider<DinnerDao> dinnerDaoProvider){
+        return new EditDinnerDaoImpl(dinnerDaoProvider);
     }
 
     @Provides

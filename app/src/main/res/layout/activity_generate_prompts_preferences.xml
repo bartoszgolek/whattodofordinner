@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="viewModel"
+            type="biz.golek.whattodofordinner.view.view_models.GeneratePreferencesViewModel"
+            />
+    </data>
+    <LinearLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context="biz.golek.whattodofordinner.view.activities.GeneratePromptsPreferencesActivity"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/duration"
+            android:id="@+id/duration_label"
+            />
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/maximum_duration"
+            android:spinnerMode="dropdown" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/vegetarian"
+            android:id="@+id/vegetarian_label"
+            />
+
+        <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/vegetarian_profile"
+            android:max="4"
+            android:progress="@{viewModel.vegetarian_profile}" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.vegetarian_profile_label}"
+            android:id="@+id/vegetarian_profile_label"
+            android:layout_gravity="center_horizontal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/soup"
+            android:id="@+id/soup_label"
+            />
+
+        <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/soup_profile"
+            android:max="4"
+            android:progress="@{viewModel.soup_profile}" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.soup_profile_label}"
+            android:id="@+id/soup_profile_label"
+            android:layout_gravity="center_horizontal" />
+
+        </LinearLayout>
+
+</layout>

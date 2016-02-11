@@ -18,6 +18,15 @@ public class UpdateDinnerDaoImpl implements UpdateDinnerDao {
 
     @Override
     public void updateDinner(Dinner entity) {
+        Dinner dinner = dinnerDaoProvider.get()
+                .queryBuilder()
+                .where(DinnerDao.Properties.Id.eq(entity.getId()))
+                .unique();
+
+        entity.setCreationDate(dinner.getCreationDate());
+        entity.setLastUsage(dinner.getLastUsage());
+        entity.setLestDrop(dinner.getLestDrop());
+
         dinnerDaoProvider.get().update(entity);
     }
 }

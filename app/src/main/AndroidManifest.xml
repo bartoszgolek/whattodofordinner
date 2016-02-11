@@ -22,10 +22,22 @@
         <activity
             android:name=".view.activities.AddNewDinnerActivity"
             android:label="@string/title_activity_add_new_dinner" />
-            />
+        />
+        <activity
+            android:name=".view.activities.EditDinnerActivity"
+            android:label="@string/title_activity_edit_dinner" />
+        />
         <activity
             android:name=".view.activities.DinnerListActivity"
             android:label="@string/title_activity_dinner_list" />
+        />
+        <activity
+            android:name=".view.activities.GeneratePromptsPreferencesActivity"
+            android:label="@string/title_activity_generate_prompts_preferences" />
+        />
+        <activity
+            android:name=".view.activities.PromptsActivity"
+            android:label="@string/title_activity_prompts"
             />
     </application>
 

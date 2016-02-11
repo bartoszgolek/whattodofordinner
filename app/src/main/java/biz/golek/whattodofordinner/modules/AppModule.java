@@ -8,13 +8,17 @@ import javax.inject.Singleton;
 import biz.golek.whattodofordinner.ViewStateManager;
 import biz.golek.whattodofordinner.business.contract.controllers.AddNewDinnerController;
 import biz.golek.whattodofordinner.business.contract.controllers.DeleteDinnerController;
+import biz.golek.whattodofordinner.business.contract.controllers.DinnerAcceptedController;
 import biz.golek.whattodofordinner.business.contract.controllers.EditDinnerController;
+import biz.golek.whattodofordinner.business.contract.controllers.GeneratePromptsController;
 import biz.golek.whattodofordinner.business.contract.controllers.SaveNewDinnerController;
 import biz.golek.whattodofordinner.business.contract.controllers.DinnerListController;
+import biz.golek.whattodofordinner.business.contract.controllers.ShowGeneratePromptsPreferencesController;
 import biz.golek.whattodofordinner.business.contract.interactors.UpdateDinnerController;
 import biz.golek.whattodofordinner.view.ActivityDependencyProvider;
 import biz.golek.whattodofordinner.view.presneters.ActivityPresenter;
 import biz.golek.whattodofordinner.view.helpers.ViewState;
+import biz.golek.whattodofordinner.view.presneters.MainActivityPresenter;
 import biz.golek.whattodofordinner.view.presneters.NotificationPresenter;
 import dagger.Module;
 import dagger.Provides;
@@ -46,7 +50,10 @@ public class AppModule {
             Provider<DinnerListController> dinnerListControllerProvider,
             Provider<DeleteDinnerController> deleteDinnerControllerProvider,
             Provider<UpdateDinnerController> updateDinnerControllerProvider,
-            Provider<EditDinnerController> editDinnerControllerProvider){
+            Provider<EditDinnerController> editDinnerControllerProvider,
+            Provider<ShowGeneratePromptsPreferencesController> showGeneratePromptsPreferencesControllerProvider,
+            Provider<GeneratePromptsController> generatePromptsControllerProvider,
+            Provider<DinnerAcceptedController> dinnerAcceptedControllerProvider){
         return new ActivityDependencyProvider(
             eventBus,
             addNewDinnerControllerProvider,
@@ -54,13 +61,22 @@ public class AppModule {
             dinnerListControllerProvider,
             deleteDinnerControllerProvider,
             updateDinnerControllerProvider,
-            editDinnerControllerProvider);
+            editDinnerControllerProvider,
+            showGeneratePromptsPreferencesControllerProvider,
+            generatePromptsControllerProvider,
+            dinnerAcceptedControllerProvider);
     }
 
     @Provides
     @Singleton
     static ActivityPresenter providesActivityPresenter(ViewState viewState){
         return new ActivityPresenter(viewState);
+    }
+
+    @Provides
+    @Singleton
+    static MainActivityPresenter providesMainActivityPresenter(ViewState viewState){
+        return new MainActivityPresenter(viewState);
     }
 
     @Provides

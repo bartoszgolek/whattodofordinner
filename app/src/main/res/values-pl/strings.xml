@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Co Na Obiad</string>
-    <string name="action_settings">Ustawienia</string>
-    <string name="title_activity_settings">Ustawienia</string>
     <string name="add_new_dinner">Dodaj nowy obiad</string>
     <string name="add_new_dinner_name_is_vege">Potrawa wegetariańska</string>
     <string name="add_new_dinner_name">Nazwa</string>
@@ -32,4 +30,10 @@
     <string name="title_activity_add_new_dinner">Dodaj nowy obiad</string>
     <string name="title_activity_dinner_list">Lista obiadów</string>
     <string name="update_dinner_saved_message">Obiad został zaktualizowany.</string>
+    <string name="title_activity_edit_dinner">Edytuj obiad</string>
+    <string name="ok">Ok</string>
+    <string name="title_activity_generate_prompts_preferences">Ustawienia generowania podpowiedzi</string>
+    <string name="duration">Czas przygotowania</string>
+    <string name="vegetarian">Potrawa wegetariańska</string>
+    <string name="soup">Zupa</string>
 </resources>

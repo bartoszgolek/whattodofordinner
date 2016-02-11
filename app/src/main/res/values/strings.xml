@@ -14,8 +14,8 @@
     <string name="action_dinner_list">Dinner list</string>
     <string name="welcome_message_header">Welcome to</string>
     <string name="welcome_message">"What\'s for dinner" is an application that helps choosing dishes for dinner. Prompts are generated from dishes added by the user and based on user\'s history of choices and attributes given to various dishes.</string>
-    <string name="welcome_message_header2" >What To Do For Dinner</string>
-    <string name="welcome_message2" >Click the button below for prompts.</string>
+    <string name="welcome_message_header2">What To Do For Dinner</string>
+    <string name="welcome_message2">Click the button below for prompts.</string>
     <string name="generate_prompts">Generate</string>
     <string name="seasons">Seasons</string>
     <string name="spring">Spring</string>
@@ -29,4 +29,21 @@
     <string name="title_activity_dinner_list">Dinner list</string>
     <string name="title_activity_add_new_dinner">Add new dinner</string>
     <string name="update_dinner_saved_message">Dinner updated</string>
+    <string name="title_activity_edit_dinner">Edit dinner</string>
+    <string name="ok">Ok</string>
+    <string name="title_activity_generate_prompts_preferences">Generate promps preferences</string>
+    <string name="duration">Duration</string>
+    <string name="vegetarian">Vegetarian</string>
+    <string name="soup">Soup</string>
+    <string name="only_vegetarian">Only vegetarian</string>
+    <string name="prefer_vegetarian">Prefer vegetarian</string>
+    <string name="doesnt_matter">Does\'nt matter</string>
+    <string name="prefer_not_vegetarian">Prefer not vegetarian</string>
+    <string name="only_not_vegetarian">Only not vegetarian</string>
+    <string name="only_soups">Only soups</string>
+    <string name="prefer_soups">Prefer soups</string>
+    <string name="prefer_not_soups">Prefer not soups</string>
+    <string name="only_not_soups">Only not soups</string>
+    <string name="non_of_this">Non of this...</string>
+    <string name="title_activity_prompts">Prompts</string>
 </resources>

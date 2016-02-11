@@ -8,9 +8,12 @@ import javax.inject.Provider;
 
 import biz.golek.whattodofordinner.business.contract.controllers.AddNewDinnerController;
 import biz.golek.whattodofordinner.business.contract.controllers.DeleteDinnerController;
+import biz.golek.whattodofordinner.business.contract.controllers.DinnerAcceptedController;
 import biz.golek.whattodofordinner.business.contract.controllers.EditDinnerController;
+import biz.golek.whattodofordinner.business.contract.controllers.GeneratePromptsController;
 import biz.golek.whattodofordinner.business.contract.controllers.SaveNewDinnerController;
 import biz.golek.whattodofordinner.business.contract.controllers.DinnerListController;
+import biz.golek.whattodofordinner.business.contract.controllers.ShowGeneratePromptsPreferencesController;
 import biz.golek.whattodofordinner.business.contract.interactors.UpdateDinnerController;
 
 /**
@@ -24,6 +27,9 @@ public class ActivityDependencyProvider {
     private final Provider<DeleteDinnerController> deleteDinnerControllerProvider;
     private final Provider<UpdateDinnerController> updateDinnerControllerProvider;
     private final Provider<EditDinnerController> editDinnerControllerProvider;
+    private final Provider<ShowGeneratePromptsPreferencesController> showGeneratePromptsPreferencesControllerProvider;
+    private final Provider<GeneratePromptsController> generatePromptsControllerProvider;
+    private final Provider<DinnerAcceptedController> dinnerAcceptedControllerProvider;
 
     public ActivityDependencyProvider(
             Provider<EventBus> eventBusProvider,
@@ -32,7 +38,10 @@ public class ActivityDependencyProvider {
             Provider<DinnerListController> dinnerListControllerProvider,
             Provider<DeleteDinnerController> deleteDinnerControllerProvider,
             Provider<UpdateDinnerController> updateDinnerControllerProvider,
-            Provider<EditDinnerController> editDinnerControllerProvider)
+            Provider<EditDinnerController> editDinnerControllerProvider,
+            Provider<ShowGeneratePromptsPreferencesController> showGeneratePromptsPreferencesControllerProvider,
+            Provider<GeneratePromptsController> generatePromptsControllerProvider,
+            Provider<DinnerAcceptedController> dinnerAcceptedControllerProvider)
     {
         this.eventBusProvider = eventBusProvider;
         this.addNewDinnerControllerProvider = addNewDinnerControllerProvider;
@@ -41,6 +50,9 @@ public class ActivityDependencyProvider {
         this.deleteDinnerControllerProvider = deleteDinnerControllerProvider;
         this.updateDinnerControllerProvider = updateDinnerControllerProvider;
         this.editDinnerControllerProvider = editDinnerControllerProvider;
+        this.showGeneratePromptsPreferencesControllerProvider = showGeneratePromptsPreferencesControllerProvider;
+        this.generatePromptsControllerProvider = generatePromptsControllerProvider;
+        this.dinnerAcceptedControllerProvider = dinnerAcceptedControllerProvider;
     }
 
     public AddNewDinnerController getAddNewDinnerController() {
@@ -69,5 +81,17 @@ public class ActivityDependencyProvider {
 
     public UpdateDinnerController getUpdateDinnerController() {
         return updateDinnerControllerProvider.get();
+    }
+
+    public ShowGeneratePromptsPreferencesController getShowGeneratePromptsPreferencesController() {
+        return showGeneratePromptsPreferencesControllerProvider.get();
+    }
+
+    public GeneratePromptsController getGeneratePromptsController() {
+        return generatePromptsControllerProvider.get();
+    }
+
+    public DinnerAcceptedController getDinnerAcceptedController() {
+        return dinnerAcceptedControllerProvider.get();
     }
 }
