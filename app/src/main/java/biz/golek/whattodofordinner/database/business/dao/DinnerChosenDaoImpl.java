@@ -4,17 +4,17 @@ import java.util.Date;
 
 import javax.inject.Provider;
 
-import biz.golek.whattodofordinner.business.contract.dao.DinnerAcceptedDao;
+import biz.golek.whattodofordinner.business.contract.dao.DinnerChosenDao;
 import biz.golek.whattodofordinner.models.Dinner;
 import biz.golek.whattodofordinner.models.DinnerDao;
 
 /**
  * Created by bg on 11.02.16.
  */
-public class DinnerAcceptedDaoImpl implements DinnerAcceptedDao {
+public class DinnerChosenDaoImpl implements DinnerChosenDao {
     private Provider<DinnerDao> dinnerDaoProvider;
 
-    public DinnerAcceptedDaoImpl(Provider<DinnerDao> dinnerDaoProvider) {
+    public DinnerChosenDaoImpl(Provider<DinnerDao> dinnerDaoProvider) {
         this.dinnerDaoProvider = dinnerDaoProvider;
     }
 

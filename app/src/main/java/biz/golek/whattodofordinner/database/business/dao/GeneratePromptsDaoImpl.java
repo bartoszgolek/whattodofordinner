@@ -52,7 +52,7 @@ public class GeneratePromptsDaoImpl implements GeneratePromptsDao {
                     .list();
 
             for (Dinner d : list) {
-                d.setLestDrop(new Date());
+                d.setLastDrop(new Date());
                 dinnerDao.update(d);
             }
         }

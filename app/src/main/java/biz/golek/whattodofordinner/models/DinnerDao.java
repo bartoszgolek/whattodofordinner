@@ -30,7 +30,7 @@ public class DinnerDao extends AbstractDao<Dinner, Long> {
         public final static Property Soup = new Property(4, boolean.class, "soup", false, "SOUP");
         public final static Property Vegetarian = new Property(5, boolean.class, "vegetarian", false, "VEGETARIAN");
         public final static Property LastUsage = new Property(6, java.util.Date.class, "lastUsage", false, "LAST_USAGE");
-        public final static Property LestDrop = new Property(7, java.util.Date.class, "lestDrop", false, "LEST_DROP");
+        public final static Property LastDrop = new Property(7, java.util.Date.class, "lastDrop", false, "LAST_DROP");
         public final static Property CreationDate = new Property(8, java.util.Date.class, "creationDate", false, "CREATION_DATE");
     };
 
@@ -54,7 +54,7 @@ public class DinnerDao extends AbstractDao<Dinner, Long> {
                 "\"SOUP\" INTEGER NOT NULL ," + // 4: soup
                 "\"VEGETARIAN\" INTEGER NOT NULL ," + // 5: vegetarian
                 "\"LAST_USAGE\" INTEGER," + // 6: lastUsage
-                "\"LEST_DROP\" INTEGER," + // 7: lestDrop
+                "\"LAST_DROP\" INTEGER," + // 7: lastDrop
                 "\"CREATION_DATE\" INTEGER NOT NULL );"); // 8: creationDate
     }
 
@@ -84,9 +84,9 @@ public class DinnerDao extends AbstractDao<Dinner, Long> {
             stmt.bindLong(7, lastUsage.getTime());
         }
  
-        java.util.Date lestDrop = entity.getLestDrop();
-        if (lestDrop != null) {
-            stmt.bindLong(8, lestDrop.getTime());
+        java.util.Date lastDrop = entity.getLastDrop();
+        if (lastDrop != null) {
+            stmt.bindLong(8, lastDrop.getTime());
         }
         stmt.bindLong(9, entity.getCreationDate().getTime());
     }
@@ -108,7 +108,7 @@ public class DinnerDao extends AbstractDao<Dinner, Long> {
             cursor.getShort(offset + 4) != 0, // soup
             cursor.getShort(offset + 5) != 0, // vegetarian
             cursor.isNull(offset + 6) ? null : new java.util.Date(cursor.getLong(offset + 6)), // lastUsage
-            cursor.isNull(offset + 7) ? null : new java.util.Date(cursor.getLong(offset + 7)), // lestDrop
+            cursor.isNull(offset + 7) ? null : new java.util.Date(cursor.getLong(offset + 7)), // lastDrop
             new java.util.Date(cursor.getLong(offset + 8)) // creationDate
         );
         return entity;
@@ -124,7 +124,7 @@ public class DinnerDao extends AbstractDao<Dinner, Long> {
         entity.setSoup(cursor.getShort(offset + 4) != 0);
         entity.setVegetarian(cursor.getShort(offset + 5) != 0);
         entity.setLastUsage(cursor.isNull(offset + 6) ? null : new java.util.Date(cursor.getLong(offset + 6)));
-        entity.setLestDrop(cursor.isNull(offset + 7) ? null : new java.util.Date(cursor.getLong(offset + 7)));
+        entity.setLastDrop(cursor.isNull(offset + 7) ? null : new java.util.Date(cursor.getLong(offset + 7)));
         entity.setCreationDate(new java.util.Date(cursor.getLong(offset + 8)));
      }
     

@@ -25,7 +25,7 @@ public class UpdateDinnerDaoImpl implements UpdateDinnerDao {
 
         entity.setCreationDate(dinner.getCreationDate());
         entity.setLastUsage(dinner.getLastUsage());
-        entity.setLestDrop(dinner.getLestDrop());
+        entity.setLastDrop(dinner.getLastDrop());
 
         dinnerDaoProvider.get().update(entity);
     }

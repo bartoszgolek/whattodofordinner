@@ -37,8 +37,8 @@
         />
         <activity
             android:name=".view.activities.PromptsActivity"
-            android:label="@string/title_activity_prompts"
-            />
+            android:label="@string/title_activity_prompts" />
+        <activity android:name=".view.activities.DinnerChosenActivity"></activity>
     </application>
 
 </manifest>

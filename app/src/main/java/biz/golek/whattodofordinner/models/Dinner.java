@@ -14,7 +14,7 @@ public class Dinner {
     private boolean soup;
     private boolean vegetarian;
     private java.util.Date lastUsage;
-    private java.util.Date lestDrop;
+    private java.util.Date lastDrop;
     /** Not-null value. */
     private java.util.Date creationDate;
 
@@ -25,7 +25,7 @@ public class Dinner {
         this.id = id;
     }
 
-    public Dinner(Long id, String name, int duration, int seasons, boolean soup, boolean vegetarian, java.util.Date lastUsage, java.util.Date lestDrop, java.util.Date creationDate) {
+    public Dinner(Long id, String name, int duration, int seasons, boolean soup, boolean vegetarian, java.util.Date lastUsage, java.util.Date lastDrop, java.util.Date creationDate) {
         this.id = id;
         this.name = name;
         this.duration = duration;
@@ -33,7 +33,7 @@ public class Dinner {
         this.soup = soup;
         this.vegetarian = vegetarian;
         this.lastUsage = lastUsage;
-        this.lestDrop = lestDrop;
+        this.lastDrop = lastDrop;
         this.creationDate = creationDate;
     }
 
@@ -95,12 +95,12 @@ public class Dinner {
         this.lastUsage = lastUsage;
     }
 
-    public java.util.Date getLestDrop() {
-        return lestDrop;
+    public java.util.Date getLastDrop() {
+        return lastDrop;
     }
 
-    public void setLestDrop(java.util.Date lestDrop) {
-        this.lestDrop = lestDrop;
+    public void setLastDrop(java.util.Date lastDrop) {
+        this.lastDrop = lastDrop;
     }
 
     /** Not-null value. */

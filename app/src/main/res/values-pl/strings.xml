@@ -36,4 +36,18 @@
     <string name="duration">Czas przygotowania</string>
     <string name="vegetarian">Potrawa wegetariańska</string>
     <string name="soup">Zupa</string>
+    <string name="doesnt_matter">Bez znaczenia</string>
+    <string name="non_of_this">Żaden z powyższych...</string>
+    <string name="only_not_soups">Tylko dania główne</string>
+    <string name="only_not_vegetarian">Tylko dania mięsne</string>
+    <string name="only_soups">Tylko zupy</string>
+    <string name="only_vegetarian">Tylko dania wegetariańskie</string>
+    <string name="prefer_not_soups">Preferuj dania główne</string>
+    <string name="prefer_not_vegetarian">Preferuj dania mięsne</string>
+    <string name="prefer_soups">Preferuj zupy</string>
+    <string name="prefer_vegetarian">Preferuj dania wegetariańskie</string>
+    <string name="title_activity_prompts">Propozycje</string>
+    <string name="close">Zamknij</string>
+    <string name="congratulations">Gratulacje!</string>
+    <string name="you_have_chose_dinner">Wybrałeś obiad:</string>
 </resources>

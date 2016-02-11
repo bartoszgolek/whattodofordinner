@@ -13,7 +13,7 @@ import de.greenrobot.daogenerator.Schema;
  */
 public class MyDaoGenerator {
     public static void main(String[] args) throws Exception {
-        Schema schema = new Schema(2, "biz.golek.whattodofordinner.models");
+        Schema schema = new Schema(1, "biz.golek.whattodofordinner.models");
 
         addDinner(schema);
 
@@ -29,7 +29,7 @@ public class MyDaoGenerator {
         dinner.addBooleanProperty("soup").notNull();
         dinner.addBooleanProperty("vegetarian").notNull();
         dinner.addDateProperty("lastUsage");
-        dinner.addDateProperty("lestDrop");
+        dinner.addDateProperty("lastDrop");
         dinner.addDateProperty("creationDate").notNull();
     }
 }

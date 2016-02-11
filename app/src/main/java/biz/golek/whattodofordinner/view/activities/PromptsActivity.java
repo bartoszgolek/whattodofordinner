@@ -1,6 +1,5 @@
 package biz.golek.whattodofordinner.view.activities;
 
-import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -16,11 +15,9 @@ import java.util.List;
 import biz.golek.whattodofordinner.R;
 import biz.golek.whattodofordinner.business.contract.request_data.GeneratePromptsRequestData;
 import biz.golek.whattodofordinner.business.contract.response_data.DinnerListItem;
-import biz.golek.whattodofordinner.databinding.ActivityDinnerListBinding;
 import biz.golek.whattodofordinner.view.ActivityDependencyProvider;
 import biz.golek.whattodofordinner.view.adapters.DinnerListItemArrayAdapter;
 import biz.golek.whattodofordinner.view.awareness.IActivityDependencyProviderAware;
-import biz.golek.whattodofordinner.view.view_models.DinnerListViewModel;
 import biz.golek.whattodofordinner.view.view_models.PromptsActivityViewModel;
 
 public class PromptsActivity extends AppCompatActivity implements IActivityDependencyProviderAware {
@@ -60,7 +57,7 @@ public class PromptsActivity extends AppCompatActivity implements IActivityDepen
                 if (item == nonOfThisListItem)
                     activityDependencyProvider.getGeneratePromptsController().Run(getDenyRequestData());
                 else
-                    activityDependencyProvider.getDinnerAcceptedController().Run(item.id);
+                    activityDependencyProvider.getDinnerChosenController().Run(item.id, item.name);
             }
         });
     }

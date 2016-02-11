@@ -8,12 +8,13 @@ import javax.inject.Singleton;
 import biz.golek.whattodofordinner.ViewStateManager;
 import biz.golek.whattodofordinner.business.contract.controllers.AddNewDinnerController;
 import biz.golek.whattodofordinner.business.contract.controllers.DeleteDinnerController;
-import biz.golek.whattodofordinner.business.contract.controllers.DinnerAcceptedController;
+import biz.golek.whattodofordinner.business.contract.controllers.DinnerChosenController;
 import biz.golek.whattodofordinner.business.contract.controllers.EditDinnerController;
 import biz.golek.whattodofordinner.business.contract.controllers.GeneratePromptsController;
 import biz.golek.whattodofordinner.business.contract.controllers.SaveNewDinnerController;
 import biz.golek.whattodofordinner.business.contract.controllers.DinnerListController;
 import biz.golek.whattodofordinner.business.contract.controllers.ShowGeneratePromptsPreferencesController;
+import biz.golek.whattodofordinner.business.contract.controllers.ShowMainController;
 import biz.golek.whattodofordinner.business.contract.interactors.UpdateDinnerController;
 import biz.golek.whattodofordinner.view.ActivityDependencyProvider;
 import biz.golek.whattodofordinner.view.presneters.ActivityPresenter;
@@ -53,7 +54,8 @@ public class AppModule {
             Provider<EditDinnerController> editDinnerControllerProvider,
             Provider<ShowGeneratePromptsPreferencesController> showGeneratePromptsPreferencesControllerProvider,
             Provider<GeneratePromptsController> generatePromptsControllerProvider,
-            Provider<DinnerAcceptedController> dinnerAcceptedControllerProvider){
+            Provider<DinnerChosenController> dinnerAcceptedControllerProvider,
+            Provider<ShowMainController> showMainControllerProvider){
         return new ActivityDependencyProvider(
             eventBus,
             addNewDinnerControllerProvider,
@@ -64,7 +66,8 @@ public class AppModule {
             editDinnerControllerProvider,
             showGeneratePromptsPreferencesControllerProvider,
             generatePromptsControllerProvider,
-            dinnerAcceptedControllerProvider);
+            dinnerAcceptedControllerProvider,
+            showMainControllerProvider);
     }
 
     @Provides
