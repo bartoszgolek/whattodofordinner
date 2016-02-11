@@ -36,21 +36,28 @@ public class GeneratePromptsImpl implements GeneratePrompts {
 
         List<DinnerListItem> result = new ArrayList<DinnerListItem>();
 
-        for (Dinner d: prompts) {
-            DinnerListItem dinnerListItem = new DinnerListItem();
-            dinnerListItem.id = d.getId();
-            dinnerListItem.name = d.getName();
-            result.add(dinnerListItem);
-        };
+        if (prompts.size() > 0) {
+            for (Dinner d : prompts) {
+                DinnerListItem dinnerListItem = new DinnerListItem();
+                dinnerListItem.id = d.getId();
+                dinnerListItem.name = d.getName();
+                result.add(dinnerListItem);
+            }
+            ;
 
-        presenter.Show(
-            new GeneratePromptResponseData(
-                result,
-                requestData.excludes,
-                requestData.maximum_duration,
-                requestData.soup_profile,
-                requestData.vegetarian_profile
-            )
-        );
+            presenter.Show(
+                    new GeneratePromptResponseData(
+                            result,
+                            requestData.excludes,
+                            requestData.maximum_duration,
+                            requestData.soup_profile,
+                            requestData.vegetarian_profile
+                    )
+            );
+        }
+        else
+        {
+            presenter.ShowEmptyResult();
+        }
     }
 }

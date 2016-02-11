@@ -53,6 +53,11 @@ public class EditDinnerActivity extends AppCompatActivity implements IActivityDe
         ((CompoundButton)findViewById(R.id.vege)).setOnCheckedChangeListener(viewModel.getVegetarianListener());
         ((CompoundButton)findViewById(R.id.soup)).setOnCheckedChangeListener(viewModel.getSoupListener());
         ((AdapterView)findViewById(R.id.duration)).setOnItemSelectedListener(viewModel.getDurationListener());
+
+        ((CompoundButton)findViewById(R.id.spring_season)).setOnCheckedChangeListener(viewModel.getSpringListener());
+        ((CompoundButton)findViewById(R.id.summer_season)).setOnCheckedChangeListener(viewModel.getSummerListener());
+        ((CompoundButton)findViewById(R.id.autumn_season)).setOnCheckedChangeListener(viewModel.getAutumnListener());
+        ((CompoundButton)findViewById(R.id.winter_season)).setOnCheckedChangeListener(viewModel.getWinterListener());
     }
 
     @Override

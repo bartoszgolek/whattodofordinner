@@ -10,4 +10,6 @@ import biz.golek.whattodofordinner.business.contract.response_data.GeneratePromp
  */
 public interface GeneratePromptsPresenter {
     void Show(GeneratePromptResponseData generatePromptResponseData);
+
+    void ShowEmptyResult();
 }

@@ -50,4 +50,8 @@
     <string name="close">Zamknij</string>
     <string name="congratulations">Gratulacje!</string>
     <string name="you_have_chose_dinner">Wybrałeś obiad:</string>
+    <string name="sorry">Przepraszam</string>
+    <string name="sorry_message">Nie ma dla Ciebie wiecej propozycji.</string>
+    <string name="sorry_message2">Może chcesz dodać nowy obiad do listy.</string>
+    <string name="sorry_message_question">Co chcesz zrobić?</string>
 </resources>

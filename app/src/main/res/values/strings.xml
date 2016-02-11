@@ -49,4 +49,8 @@
     <string name="close">Close</string>
     <string name="you_have_chose_dinner">You have chose dinner:</string>
     <string name="congratulations">Congratulations!</string>
+    <string name="sorry">Sorry</string>
+    <string name="sorry_message">There is no other propositions for You.</string>
+    <string name="sorry_message2">Maybe You want to add new dinner to the list.</string>
+    <string name="sorry_message_question">What do You want to do?</string>
 </resources>
