@@ -54,4 +54,7 @@
     <string name="sorry_message">Nie ma dla Ciebie wiecej propozycji.</string>
     <string name="sorry_message2">Może chcesz dodać nowy obiad do listy.</string>
     <string name="sorry_message_question">Co chcesz zrobić?</string>
+    <string name="action_about">O programie</string>
+    <string name="what_to_do_for_dinner">Co na obiad</string>
+    <string name="author">Autor:</string>
 </resources>

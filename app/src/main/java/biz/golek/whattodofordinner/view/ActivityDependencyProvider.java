@@ -4,6 +4,7 @@ import org.greenrobot.eventbus.EventBus;
 
 import javax.inject.Provider;
 
+import biz.golek.whattodofordinner.business.contract.controllers.AboutController;
 import biz.golek.whattodofordinner.business.contract.controllers.AddNewDinnerController;
 import biz.golek.whattodofordinner.business.contract.controllers.DeleteDinnerController;
 import biz.golek.whattodofordinner.business.contract.controllers.DinnerChosenController;
@@ -30,6 +31,7 @@ public class ActivityDependencyProvider {
     private final Provider<GeneratePromptsController> generatePromptsControllerProvider;
     private final Provider<DinnerChosenController> dinnerChosenControllerProvider;
     private final Provider<ShowMainController> showMainControllerProvider;
+    private final Provider<AboutController> aboutControllerProvider;
 
     public ActivityDependencyProvider(
             Provider<EventBus> eventBusProvider,
@@ -42,7 +44,8 @@ public class ActivityDependencyProvider {
             Provider<ShowGeneratePromptsPreferencesController> showGeneratePromptsPreferencesControllerProvider,
             Provider<GeneratePromptsController> generatePromptsControllerProvider,
             Provider<DinnerChosenController> dinnerAcceptedControllerProvider,
-            Provider<ShowMainController> showMainControllerProvider)
+            Provider<ShowMainController> showMainControllerProvider,
+            Provider<AboutController> aboutControllerProvider)
     {
         this.eventBusProvider = eventBusProvider;
         this.addNewDinnerControllerProvider = addNewDinnerControllerProvider;
@@ -55,6 +58,7 @@ public class ActivityDependencyProvider {
         this.generatePromptsControllerProvider = generatePromptsControllerProvider;
         this.dinnerChosenControllerProvider = dinnerAcceptedControllerProvider;
         this.showMainControllerProvider = showMainControllerProvider;
+        this.aboutControllerProvider = aboutControllerProvider;
     }
 
     public AddNewDinnerController getAddNewDinnerController() {
@@ -99,5 +103,9 @@ public class ActivityDependencyProvider {
 
     public ShowMainController getShowMainController() {
         return showMainControllerProvider.get();
+    }
+
+    public AboutController getShowAboutController() {
+        return aboutControllerProvider.get();
     }
 }

@@ -6,6 +6,7 @@ import javax.inject.Provider;
 import javax.inject.Singleton;
 
 import biz.golek.whattodofordinner.ViewStateManager;
+import biz.golek.whattodofordinner.business.contract.controllers.AboutController;
 import biz.golek.whattodofordinner.business.contract.controllers.AddNewDinnerController;
 import biz.golek.whattodofordinner.business.contract.controllers.DeleteDinnerController;
 import biz.golek.whattodofordinner.business.contract.controllers.DinnerChosenController;
@@ -55,7 +56,8 @@ public class AppModule {
             Provider<ShowGeneratePromptsPreferencesController> showGeneratePromptsPreferencesControllerProvider,
             Provider<GeneratePromptsController> generatePromptsControllerProvider,
             Provider<DinnerChosenController> dinnerAcceptedControllerProvider,
-            Provider<ShowMainController> showMainControllerProvider){
+            Provider<ShowMainController> showMainControllerProvider,
+            Provider<AboutController> aboutControllerProvider){
         return new ActivityDependencyProvider(
             eventBus,
             addNewDinnerControllerProvider,
@@ -67,7 +69,8 @@ public class AppModule {
             showGeneratePromptsPreferencesControllerProvider,
             generatePromptsControllerProvider,
             dinnerAcceptedControllerProvider,
-            showMainControllerProvider);
+            showMainControllerProvider,
+            aboutControllerProvider);
     }
 
     @Provides

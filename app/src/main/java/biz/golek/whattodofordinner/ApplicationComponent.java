@@ -2,6 +2,7 @@ package biz.golek.whattodofordinner;
 
 import javax.inject.Singleton;
 
+import biz.golek.whattodofordinner.modules.AboutModule;
 import biz.golek.whattodofordinner.modules.DatabaseModule;
 import biz.golek.whattodofordinner.modules.DinnerListModule;
 import biz.golek.whattodofordinner.modules.EditDinnerModule;
@@ -23,7 +24,8 @@ import dagger.Component;
                 DinnerListModule.class,
                 EditDinnerModule.class,
                 GeneratePromptsModule.class,
-                MainModule.class
+                MainModule.class,
+                AboutModule.class
         })
 public interface ApplicationComponent {
     ViewStateManager viewStateManager();

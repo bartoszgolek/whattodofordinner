@@ -39,7 +39,8 @@
             android:name=".view.activities.PromptsActivity"
             android:label="@string/title_activity_prompts" />
         <activity android:name=".view.activities.DinnerChosenActivity" />
-        <activity android:name=".view.activities.EmptyPromptsActivity"></activity>
+        <activity android:name=".view.activities.EmptyPromptsActivity" />
+        <activity android:name=".view.activities.AboutActivity"></activity>
     </application>
 
 </manifest>

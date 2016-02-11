@@ -53,4 +53,7 @@
     <string name="sorry_message">There is no other propositions for You.</string>
     <string name="sorry_message2">Maybe You want to add new dinner to the list.</string>
     <string name="sorry_message_question">What do You want to do?</string>
+    <string name="action_about">About</string>
+    <string name="what_to_do_for_dinner">Waht to do for dinner</string>
+    <string name="author">Author:</string>
 </resources>

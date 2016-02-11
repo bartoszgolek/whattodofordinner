@@ -2,6 +2,8 @@ package biz.golek.whattodofordinner;
 
 import org.junit.Test;
 
+import java.util.Date;
+
 import static org.junit.Assert.*;
 
 /**
@@ -10,6 +12,18 @@ import static org.junit.Assert.*;
 public class ExampleUnitTest {
     @Test
     public void addition_isCorrect() throws Exception {
-        assertEquals(4, 2 + 2);
+        long miliseconds = new Date().getTime();
+        //assertEquals(0, miliseconds);
+        long seconds = miliseconds / 1000;
+        //assertEquals(0, seconds);
+        long minutes = seconds / 60;
+        //assertEquals(0, minutes);
+        long hours = minutes / 60;
+        //assertEquals(0, hours);
+        long days = hours / 24;
+        assertEquals(0, days);
+
+        //zupa = 1 lub 0
+
     }
 }

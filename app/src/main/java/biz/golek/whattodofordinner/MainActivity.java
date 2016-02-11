@@ -71,6 +71,11 @@ public class MainActivity extends AppCompatActivity implements IActivityDependen
             return true;
         }
 
+        if (id == R.id.action_about) {
+            this.activityDependencyProvider.getShowAboutController().Run();
+            return true;
+        }
+
         return super.onOptionsItemSelected(item);
     }
 
