@@ -24,10 +24,10 @@ import biz.golek.whattodofordinner.view.helpers.SimpleTextWatcher;
 public class DinnerFormViewModel extends BaseObservable implements Serializable {
 
     class Seasons {
-        public static final int spring = 1;
-        public static final int summer = 2;
-        public static final int autumn = 3;
-        public static final int winter = 4;
+        public static final int spring = 0;
+        public static final int summer = 1;
+        public static final int autumn = 2;
+        public static final int winter = 3;
     }
 
     private String name = "";
@@ -164,7 +164,7 @@ public class DinnerFormViewModel extends BaseObservable implements Serializable 
     private void setSeason(int season_number, boolean value) {
         seasons = value
                 ? FlagHelper.setFlag(season_number, seasons)
-                : FlagHelper.setFlag(season_number, seasons);
+                : FlagHelper.unsetFlag(season_number, seasons);
     }
 
     public Integer getSeasons() {
@@ -173,6 +173,10 @@ public class DinnerFormViewModel extends BaseObservable implements Serializable 
 
     public void setSeasons(Integer seasons) {
         this.seasons = seasons;
+        notifyPropertyChanged(BR.spring);
+        notifyPropertyChanged(BR.summer);
+        notifyPropertyChanged(BR.autumn);
+        notifyPropertyChanged(BR.winter);
     }
 
     public CompoundButton.OnCheckedChangeListener getSpringListener() {

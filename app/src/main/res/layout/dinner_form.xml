@@ -88,28 +88,32 @@
                 android:layout_height="wrap_content"
                 android:text="@string/spring"
                 android:id="@+id/spring_season"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin" />
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:checked="@{viewModel.spring}" />
 
             <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/summer"
                 android:id="@+id/summer_season"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin" />
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:checked="@{viewModel.summer}" />
 
             <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/autumn"
                 android:id="@+id/autumn_season"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin" />
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:checked="@{viewModel.autumn}" />
 
             <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/winter"
                 android:id="@+id/winter_season"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin" />
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:checked="@{viewModel.winter}" />
         </LinearLayout>
 
     </GridLayout>

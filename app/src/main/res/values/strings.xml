@@ -56,4 +56,5 @@
     <string name="action_about">About</string>
     <string name="what_to_do_for_dinner">Waht to do for dinner</string>
     <string name="author">Author:</string>
+    <string name="version">Version:</string>
 </resources>

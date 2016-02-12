@@ -1,9 +1,12 @@
 package biz.golek.whattodofordinner.view.activities;
 
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import biz.golek.whattodofordinner.R;
 
@@ -15,6 +18,15 @@ public class AboutActivity extends AppCompatActivity {
         setContentView(R.layout.activity_about);
 
         setupActionBar();
+
+        PackageInfo pInfo = null;
+        try {
+            pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
+            String version = pInfo.versionName;
+            ((TextView)findViewById(R.id.version)).setText(getResources().getString(R.string.version) + " " + version);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
