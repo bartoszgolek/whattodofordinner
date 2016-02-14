@@ -57,5 +57,8 @@
     <string name="action_about">O programie</string>
     <string name="what_to_do_for_dinner">Co na obiad</string>
     <string name="author">Autor:</string>
+    <string name="title_activity_about">O programie</string>
+    <string name="title_activity_chosen">Obiad wybrany</string>
+    <string name="title_activity_empty_prompts">Brak wyników</string>
     <string name="version">Wersja:</string>
 </resources>
