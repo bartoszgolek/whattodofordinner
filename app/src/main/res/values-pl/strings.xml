@@ -61,4 +61,7 @@
     <string name="title_activity_chosen">Obiad wybrany</string>
     <string name="title_activity_empty_prompts">Brak wyników</string>
     <string name="version">Wersja:</string>
+    <string name="add_base">Dodaj dania bazowe</string>
+    <string name="dinners_generated_from_base_prompts">Dania bazowe zosstały dodane.</string>
+    <string name="maximum_duration">Maksymalny czas przygotowania</string>
 </resources>

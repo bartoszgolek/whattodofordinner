@@ -6,7 +6,7 @@ import android.content.res.Resources;
 import org.greenrobot.eventbus.EventBus;
 
 import biz.golek.whattodofordinner.R;
-import biz.golek.whattodofordinner.business.contract.presenters.SaveNewDinnerPresenter;
+import biz.golek.whattodofordinner.business.contract.presenters.AddBasePromptsPresenter;
 import biz.golek.whattodofordinner.models.Dinner;
 import biz.golek.whattodofordinner.view.helpers.ViewState;
 import biz.golek.whattodofordinner.view.messages.AddedDinner;
@@ -14,14 +14,14 @@ import biz.golek.whattodofordinner.view.messages.DinnerAddedMessage;
 import biz.golek.whattodofordinner.view.presneters.NotificationPresenter;
 
 /**
- * Created by bg on 05.02.16.
+ * Created by bgolek on 2016-02-16.
  */
-public class SaveNewDinnerPresenterImpl implements SaveNewDinnerPresenter {
+public class AddBasePromptsPresenterImpl implements AddBasePromptsPresenter {
     private ViewState viewState;
     private NotificationPresenter notification;
     private EventBus eventBus;
 
-    public SaveNewDinnerPresenterImpl(
+    public AddBasePromptsPresenterImpl(
             ViewState viewState,
             NotificationPresenter notification,
             EventBus eventBus) {
@@ -31,19 +31,17 @@ public class SaveNewDinnerPresenterImpl implements SaveNewDinnerPresenter {
     }
 
     @Override
-    public void ShowSaved(Dinner dinner) {
+    public void Show(Dinner[] dinners) {
         Activity currentActivity = viewState.getCurrentActivity();
         Resources res = currentActivity.getApplication().getApplicationContext().getResources();
-        notification.show(res.getString(R.string.save_new_dinner_saved_message));
+        notification.show(res.getString(R.string.dinners_generated_from_base_prompts));
 
-        eventBus.post(
-            new DinnerAddedMessage(
-                new AddedDinner[]{
-                    new AddedDinner(dinner.getId(), dinner.getName())
-                }
-            )
-        );
+        AddedDinner[] added = new AddedDinner[dinners.length];
+        for (int i = 0; i < dinners.length; i++) {
+            Dinner d = dinners[i];
+            added[i] = new AddedDinner(d.getId(), d.getName());
+        }
 
-        currentActivity.finish();
+        eventBus.post(new DinnerAddedMessage(added));
     }
 }

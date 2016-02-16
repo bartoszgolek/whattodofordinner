@@ -4,19 +4,15 @@ package biz.golek.whattodofordinner.view.messages;
  * Created by bgolek on 2016-02-10.
  */
 public class DinnerAddedMessage {
-    private Long id;
-    private String name;
+    private AddedDinner[] dinners;
 
-    public DinnerAddedMessage(Long id, String name) {
-        this.id = id;
-        this.name = name;
+    public DinnerAddedMessage(AddedDinner[] dinners) {
+
+        this.dinners = dinners;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
+    public AddedDinner[] getAddedDinners() {
+        return dinners;
     }
 }
+

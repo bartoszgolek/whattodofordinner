@@ -60,4 +60,7 @@
     <string name="title_activity_empty_prompts">Empty result</string>
     <string name="title_activity_about">About</string>
     <string name="version">Version:</string>
+    <string name="add_base">Add base prompts</string>
+    <string name="dinners_generated_from_base_prompts" >Base prompts has been added.</string>
+    <string name="maximum_duration">Maximum duration</string>
 </resources>

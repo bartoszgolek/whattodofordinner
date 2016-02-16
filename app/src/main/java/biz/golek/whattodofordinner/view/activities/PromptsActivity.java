@@ -4,11 +4,15 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import org.greenrobot.eventbus.Subscribe;
 
 import java.util.List;
 
@@ -18,6 +22,8 @@ import biz.golek.whattodofordinner.business.contract.response_data.DinnerListIte
 import biz.golek.whattodofordinner.view.ActivityDependencyProvider;
 import biz.golek.whattodofordinner.view.adapters.DinnerListItemArrayAdapter;
 import biz.golek.whattodofordinner.view.awareness.IActivityDependencyProviderAware;
+import biz.golek.whattodofordinner.view.messages.DinnerDeletedMessage;
+import biz.golek.whattodofordinner.view.messages.DinnerUpdatedMessage;
 import biz.golek.whattodofordinner.view.view_models.PromptsActivityViewModel;
 
 public class PromptsActivity extends AppCompatActivity implements IActivityDependencyProviderAware {
@@ -42,7 +48,7 @@ public class PromptsActivity extends AppCompatActivity implements IActivityDepen
             viewModel = (PromptsActivityViewModel)getIntent().getSerializableExtra("VIEW_MODEL");
 
         listView =  (ListView) findViewById(R.id.prompts_list);
-        List<DinnerListItem> prompts = viewModel.getPrompts();
+        List<DinnerListItem> prompts = viewModel.prompts;
         nonOfThisListItem = new DinnerListItem();
         nonOfThisListItem.id = -1L;
         nonOfThisListItem.name = getResources().getString(R.string.non_of_this);
@@ -60,6 +66,43 @@ public class PromptsActivity extends AppCompatActivity implements IActivityDepen
                     activityDependencyProvider.getDinnerChosenController().Run(item.id, item.name);
             }
         });
+
+        registerForContextMenu(listView);
+
+        activityDependencyProvider.getEventBusProvider().get().register(this);
+    }
+
+    @Subscribe
+    public void onDinnerDeleteMessage(DinnerDeletedMessage event) {
+        DinnerListItem dinner = null;
+        for (DinnerListItem d : viewModel.prompts)
+            if (d.id.equals(event.getId()))
+                dinner = d;
+
+        if (dinner != null)
+            viewModel.prompts.remove(dinner);
+        adapter.notifyDataSetChanged();
+    };
+
+    @Subscribe
+    public void onDinnerUpdatedMessage(DinnerUpdatedMessage event) {
+        boolean updated = false;
+        for (DinnerListItem dinner : viewModel.prompts) {
+            if (dinner.id.equals(event.getId())) {
+                dinner.id = event.getId();
+                dinner.name = event.getName();
+                updated = true;
+            }
+        }
+
+        if (updated)
+            adapter.notifyDataSetChanged();
+    };
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        activityDependencyProvider.getEventBusProvider().get().unregister(this);
     }
 
     @NonNull
@@ -70,7 +113,7 @@ public class PromptsActivity extends AppCompatActivity implements IActivityDepen
         rd.maximum_duration = viewModel.getMaximumDuration();
 
         Long[] oldExcludes = viewModel.getExcludes();
-        List<DinnerListItem> prompts = viewModel.getPrompts();
+        List<DinnerListItem> prompts = viewModel.prompts;
         int oldExcludesLength = oldExcludes!= null ? oldExcludes.length : 0;
         int promptsSize = prompts != null ? prompts.size() : 0;
         if (oldExcludesLength + promptsSize > 0)
@@ -117,6 +160,37 @@ public class PromptsActivity extends AppCompatActivity implements IActivityDepen
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+
+        if (v.getId()==R.id.prompts_list) {
+            AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo)menuInfo;
+            DinnerListItem dinnerListItem = (DinnerListItem)listView.getItemAtPosition(info.position);
+            if (dinnerListItem != nonOfThisListItem)
+            {
+                MenuInflater inflater = getMenuInflater();
+                inflater.inflate(R.menu.dinner_list_item_menu, menu);
+            }
+        }
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        DinnerListItem dinnerListItem = (DinnerListItem)listView.getItemAtPosition(info.position);
+        switch(item.getItemId()) {
+            case R.id.dinner_list_item_menu_edit:
+                activityDependencyProvider.getEditDinnerController().Run(dinnerListItem.id);
+                return true;
+            case R.id.dinner_list_item_menu_delete:
+                activityDependencyProvider.getDeleteDinnerController().Run(dinnerListItem.id);
+                return true;
+            default:
+                return super.onContextItemSelected(item);
+        }
     }
 
     @Override

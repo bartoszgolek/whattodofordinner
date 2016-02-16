@@ -27,6 +27,7 @@ public class WhatToDoForDinnerApp extends Application {
                 .editDinnerModule(new EditDinnerModule())
                 .generatePromptsModule(new GeneratePromptsModule())
                 .aboutModule(new AboutModule())
+                .generatePromptsModule(new GeneratePromptsModule())
                 .build();
 
         registerActivityLifecycleCallbacks(component.viewStateManager());

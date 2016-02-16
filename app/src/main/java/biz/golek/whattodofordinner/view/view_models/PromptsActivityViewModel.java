@@ -11,15 +11,12 @@ import biz.golek.whattodofordinner.business.contract.response_data.DinnerListIte
  * Created by bg on 10.02.16.
  */
 public class PromptsActivityViewModel implements Serializable {
-    private List<DinnerListItem> prompts;
     private Long[] excludes;
     private Profile soupProfile;
     private Profile vegetarianProfile;
     private Duration maximumDuration;
 
-    public List<DinnerListItem> getPrompts() {
-        return prompts;
-    }
+    public List<DinnerListItem> prompts;
 
     public void setPrompts(List<DinnerListItem> prompts) {
         this.prompts = prompts;

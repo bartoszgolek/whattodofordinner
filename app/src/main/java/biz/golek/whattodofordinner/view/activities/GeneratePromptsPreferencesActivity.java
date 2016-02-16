@@ -65,6 +65,7 @@ public class GeneratePromptsPreferencesActivity extends AppCompatActivity implem
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, viewModel.getDurations(getResources()));
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         maximumDurationSpinner.setAdapter(adapter);
+        maximumDurationSpinner.setSelection(2, false);
     }
 
 

@@ -22,6 +22,7 @@ import biz.golek.whattodofordinner.databinding.ActivityDinnerListBinding;
 import biz.golek.whattodofordinner.view.ActivityDependencyProvider;
 import biz.golek.whattodofordinner.view.adapters.DinnerListItemArrayAdapter;
 import biz.golek.whattodofordinner.view.awareness.IActivityDependencyProviderAware;
+import biz.golek.whattodofordinner.view.messages.AddedDinner;
 import biz.golek.whattodofordinner.view.messages.DinnerAddedMessage;
 import biz.golek.whattodofordinner.view.messages.DinnerDeletedMessage;
 import biz.golek.whattodofordinner.view.messages.DinnerUpdatedMessage;
@@ -77,11 +78,13 @@ public class DinnerListActivity extends AppCompatActivity implements IActivityDe
 
     @Subscribe
     public void onDinnerAddedMessage(DinnerAddedMessage event) {
-        DinnerListItem dinner = new DinnerListItem();
-        dinner.id = event.getId();
-        dinner.name = event.getName();
+        for (AddedDinner addedDinner : event.getAddedDinners()) {
+            DinnerListItem dinner = new DinnerListItem();
+            dinner.id = addedDinner.getId();
+            dinner.name = addedDinner.getName();
 
-        viewModel.dinners.add(dinner);
+            viewModel.dinners.add(dinner);
+        }
         adapter.notifyDataSetChanged();
     };
 
@@ -154,6 +157,11 @@ public class DinnerListActivity extends AppCompatActivity implements IActivityDe
 
         if (id == R.id.dinner_list_menu_add) {
             this.activityDependencyProvider.getAddNewDinnerController().Run();
+            return true;
+        }
+
+        if (id == R.id.dinner_list_menu_add_base) {
+            this.activityDependencyProvider.getAddBasePromptsController().Run();
             return true;
         }
 

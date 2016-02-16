@@ -5,6 +5,7 @@ import org.greenrobot.eventbus.EventBus;
 import javax.inject.Provider;
 
 import biz.golek.whattodofordinner.business.contract.controllers.AboutController;
+import biz.golek.whattodofordinner.business.contract.controllers.AddBasePromptsController;
 import biz.golek.whattodofordinner.business.contract.controllers.AddNewDinnerController;
 import biz.golek.whattodofordinner.business.contract.controllers.DeleteDinnerController;
 import biz.golek.whattodofordinner.business.contract.controllers.DinnerChosenController;
@@ -32,6 +33,7 @@ public class ActivityDependencyProvider {
     private final Provider<DinnerChosenController> dinnerChosenControllerProvider;
     private final Provider<ShowMainController> showMainControllerProvider;
     private final Provider<AboutController> aboutControllerProvider;
+    private final Provider<AddBasePromptsController> addBasePromptsControllerProvider;
 
     public ActivityDependencyProvider(
             Provider<EventBus> eventBusProvider,
@@ -45,7 +47,8 @@ public class ActivityDependencyProvider {
             Provider<GeneratePromptsController> generatePromptsControllerProvider,
             Provider<DinnerChosenController> dinnerAcceptedControllerProvider,
             Provider<ShowMainController> showMainControllerProvider,
-            Provider<AboutController> aboutControllerProvider)
+            Provider<AboutController> aboutControllerProvider,
+            Provider<AddBasePromptsController> addBasePromptsControllerProvider)
     {
         this.eventBusProvider = eventBusProvider;
         this.addNewDinnerControllerProvider = addNewDinnerControllerProvider;
@@ -59,6 +62,7 @@ public class ActivityDependencyProvider {
         this.dinnerChosenControllerProvider = dinnerAcceptedControllerProvider;
         this.showMainControllerProvider = showMainControllerProvider;
         this.aboutControllerProvider = aboutControllerProvider;
+        this.addBasePromptsControllerProvider = addBasePromptsControllerProvider;
     }
 
     public AddNewDinnerController getAddNewDinnerController() {
@@ -107,5 +111,9 @@ public class ActivityDependencyProvider {
 
     public AboutController getShowAboutController() {
         return aboutControllerProvider.get();
+    }
+
+    public AddBasePromptsController getAddBasePromptsController() {
+        return addBasePromptsControllerProvider.get();
     }
 }
