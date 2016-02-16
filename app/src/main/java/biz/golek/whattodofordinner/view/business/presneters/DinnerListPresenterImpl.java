@@ -9,7 +9,7 @@ import biz.golek.whattodofordinner.view.presneters.ActivityPresenter;
 import biz.golek.whattodofordinner.view.view_models.DinnerListViewModel;
 
 /**
- * Created by bgolek on 2016-02-08.
+ * Created by Bartosz Gołek on 2016-02-08.
  */
 public class DinnerListPresenterImpl implements DinnerListPresenter {
     private ActivityPresenter starter;

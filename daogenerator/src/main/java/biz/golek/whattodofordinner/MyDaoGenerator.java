@@ -2,10 +2,7 @@ package biz.golek.whattodofordinner;
 
 import de.greenrobot.daogenerator.DaoGenerator;
 import de.greenrobot.daogenerator.Entity;
-//import de.greenrobot.daogenerator.Property;
-import de.greenrobot.daogenerator.Property;
 import de.greenrobot.daogenerator.Schema;
-//import de.greenrobot.daogenerator.ToMany;
 
 
 /**
@@ -13,7 +10,7 @@ import de.greenrobot.daogenerator.Schema;
  */
 public class MyDaoGenerator {
     public static void main(String[] args) throws Exception {
-        Schema schema = new Schema(1, "biz.golek.whattodofordinner.models");
+        Schema schema = new Schema(1, "biz.golek.whattodofordinner.database");
 
         addDinner(schema);
 
@@ -22,6 +19,8 @@ public class MyDaoGenerator {
 
     private static void addDinner(Schema schema) {
         Entity dinner = schema.addEntity("Dinner");
+        dinner.setJavaPackage("biz.golek.whattodofordinner.business.contract.entities");
+        dinner.setJavaPackageDao("biz.golek.whattodofordinner.database");
         dinner.addIdProperty();
         dinner.addStringProperty("name").notNull();
         dinner.addIntProperty("duration").notNull();

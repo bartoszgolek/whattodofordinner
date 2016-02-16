@@ -5,11 +5,10 @@ import android.content.Intent;
 
 import java.io.Serializable;
 
-import biz.golek.whattodofordinner.view.activities.AddNewDinnerActivity;
 import biz.golek.whattodofordinner.view.helpers.ViewState;
 
 /**
- * Created by bgolek on 2016-02-08.
+ * Created by Bartosz Gołek on 2016-02-08.
  */
 public class ActivityPresenter {
     private ViewState viewState;

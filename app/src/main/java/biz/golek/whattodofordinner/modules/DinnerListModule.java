@@ -19,7 +19,7 @@ import biz.golek.whattodofordinner.business.interactors.DeleteDinnerImpl;
 import biz.golek.whattodofordinner.database.business.dao.DeleteDinnerDaoImpl;
 import biz.golek.whattodofordinner.database.business.dao.DinnerListDaoImpl;
 import biz.golek.whattodofordinner.business.interactors.DinnerListImpl;
-import biz.golek.whattodofordinner.models.DinnerDao;
+import biz.golek.whattodofordinner.database.DinnerDao;
 import biz.golek.whattodofordinner.view.business.presneters.DeleteDinnerPresenterImpl;
 import biz.golek.whattodofordinner.view.business.presneters.DinnerListPresenterImpl;
 import biz.golek.whattodofordinner.view.helpers.ViewState;
@@ -29,7 +29,7 @@ import dagger.Module;
 import dagger.Provides;
 
 /**
- * Created by bgolek on 2016-02-05.
+ * Created by Bartosz Gołek on 2016-02-05.
  */
 @Module
 public class DinnerListModule {

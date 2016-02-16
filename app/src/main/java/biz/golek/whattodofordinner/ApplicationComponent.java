@@ -14,7 +14,7 @@ import biz.golek.whattodofordinner.modules.AppModule;
 import dagger.Component;
 
 /**
- * Created by bgolek on 2016-02-03.
+ * Created by Bartosz Gołek on 2016-02-03.
  */
 @Singleton
 @Component(modules =

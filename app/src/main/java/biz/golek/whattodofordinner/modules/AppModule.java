@@ -27,7 +27,7 @@ import dagger.Module;
 import dagger.Provides;
 
 /**
- * Created by bgolek on 2016-02-03.
+ * Created by Bartosz Gołek on 2016-02-03.
  */
 @Module
 public class AppModule {

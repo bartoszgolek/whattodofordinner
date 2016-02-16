@@ -13,7 +13,7 @@ import biz.golek.whattodofordinner.view.helpers.ViewState;
  */
 public class ViewStateManager implements Application.ActivityLifecycleCallbacks {
 
-    ViewState viewState;
+    private ViewState viewState;
 
     @Inject
     public ViewStateManager(ViewState viewState){
@@ -21,9 +21,8 @@ public class ViewStateManager implements Application.ActivityLifecycleCallbacks 
     }
 
     private void clearReferences(){
-        Activity currActivity = viewState.getCurrentActivity();
-        if (this.equals(currActivity))
-            viewState.setCurrentActivity(null);
+        Activity currentActivity = viewState.getCurrentActivity();
+        viewState.setCurrentActivity(null);
     }
 
     @Override

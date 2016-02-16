@@ -82,7 +82,7 @@ public class PromptsActivity extends AppCompatActivity implements IActivityDepen
         if (dinner != null)
             viewModel.prompts.remove(dinner);
         adapter.notifyDataSetChanged();
-    };
+    }
 
     @Subscribe
     public void onDinnerUpdatedMessage(DinnerUpdatedMessage event) {
@@ -97,7 +97,7 @@ public class PromptsActivity extends AppCompatActivity implements IActivityDepen
 
         if (updated)
             adapter.notifyDataSetChanged();
-    };
+    }
 
     @Override
     protected void onDestroy() {

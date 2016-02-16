@@ -22,17 +22,16 @@ import biz.golek.whattodofordinner.business.interactors.GeneratePromptsImpl;
 import biz.golek.whattodofordinner.business.interactors.ShowGeneratePromptsPreferencesImpl;
 import biz.golek.whattodofordinner.database.business.dao.DinnerChosenDaoImpl;
 import biz.golek.whattodofordinner.database.business.dao.GeneratePromptsDaoImpl;
-import biz.golek.whattodofordinner.models.DinnerDao;
+import biz.golek.whattodofordinner.database.DinnerDao;
 import biz.golek.whattodofordinner.view.business.presneters.DinnerChosenPresenterImpl;
 import biz.golek.whattodofordinner.view.business.presneters.ShowGeneratePromptsPreferencesPresenterImpl;
 import biz.golek.whattodofordinner.view.presneters.ActivityPresenter;
 import biz.golek.whattodofordinner.view.presneters.GeneratePromptsPresenterImpl;
-import biz.golek.whattodofordinner.view.presneters.MainActivityPresenter;
 import dagger.Module;
 import dagger.Provides;
 
 /**
- * Created by bgolek on 2016-02-05.
+ * Created by Bartosz Gołek on 2016-02-05.
  */
 @Module
 public class GeneratePromptsModule {

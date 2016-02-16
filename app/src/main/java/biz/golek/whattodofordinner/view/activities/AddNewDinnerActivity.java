@@ -41,7 +41,7 @@ public class AddNewDinnerActivity extends AppCompatActivity implements IActivity
 
         attachListeners();
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, viewModel.getDurations(getResources()));
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, viewModel.getDurations(getResources()));
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         Spinner sItems = (Spinner) findViewById(R.id.duration);

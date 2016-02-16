@@ -4,7 +4,7 @@ import biz.golek.whattodofordinner.business.contract.controllers.AddNewDinnerCon
 import biz.golek.whattodofordinner.business.contract.interactors.AddNewDinner;
 
 /**
- * Created by bgolek on 2016-02-05.
+ * Created by Bartosz Gołek on 2016-02-05.
  */
 public class AddNewDinnerControllerImpl implements AddNewDinnerController {
 

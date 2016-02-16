@@ -1,7 +1,7 @@
 package biz.golek.whattodofordinner.view.messages;
 
 /**
- * Created by bgolek on 2016-02-10.
+ * Created by Bartosz Gołek on 2016-02-10.
  */
 public class DinnerUpdatedMessage {
     private Long id;

@@ -62,7 +62,7 @@ public class GeneratePromptsPreferencesActivity extends AppCompatActivity implem
         maximumDurationSpinner = (Spinner) findViewById(R.id.maximum_duration);
         attachListeners();
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, viewModel.getDurations(getResources()));
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, viewModel.getDurations(getResources()));
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         maximumDurationSpinner.setAdapter(adapter);
         maximumDurationSpinner.setSelection(2, false);

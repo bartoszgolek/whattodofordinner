@@ -16,6 +16,7 @@
         tools:context="biz.golek.whattodofordinner.view.activities.AboutActivity">
 
         <ImageView
+            android:contentDescription="@string/what_to_do_for_dinner"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_gravity="center"

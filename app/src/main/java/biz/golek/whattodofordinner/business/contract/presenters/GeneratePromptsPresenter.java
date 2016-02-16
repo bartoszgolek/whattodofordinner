@@ -1,8 +1,5 @@
 package biz.golek.whattodofordinner.business.contract.presenters;
 
-import java.util.List;
-
-import biz.golek.whattodofordinner.business.contract.response_data.DinnerListItem;
 import biz.golek.whattodofordinner.business.contract.response_data.GeneratePromptResponseData;
 
 /**

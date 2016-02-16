@@ -19,7 +19,7 @@ public class AboutActivity extends AppCompatActivity {
 
         setupActionBar();
 
-        PackageInfo pInfo = null;
+        PackageInfo pInfo;
         try {
             pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
             String version = pInfo.versionName;

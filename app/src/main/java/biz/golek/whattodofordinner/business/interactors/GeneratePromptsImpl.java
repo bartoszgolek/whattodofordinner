@@ -9,7 +9,7 @@ import biz.golek.whattodofordinner.business.contract.presenters.GeneratePromptsP
 import biz.golek.whattodofordinner.business.contract.request_data.GeneratePromptsRequestData;
 import biz.golek.whattodofordinner.business.contract.response_data.DinnerListItem;
 import biz.golek.whattodofordinner.business.contract.response_data.GeneratePromptResponseData;
-import biz.golek.whattodofordinner.models.Dinner;
+import biz.golek.whattodofordinner.business.contract.entities.Dinner;
 
 /**
  * Created by bg on 10.02.16.
@@ -34,7 +34,7 @@ public class GeneratePromptsImpl implements GeneratePrompts {
                 requestData.soup_profile,
                 requestData.excludes);
 
-        List<DinnerListItem> result = new ArrayList<DinnerListItem>();
+        List<DinnerListItem> result = new ArrayList<>();
 
         if (prompts.size() > 0) {
             for (Dinner d : prompts) {
@@ -43,7 +43,6 @@ public class GeneratePromptsImpl implements GeneratePrompts {
                 dinnerListItem.name = d.getName();
                 result.add(dinnerListItem);
             }
-            ;
 
             presenter.Show(
                     new GeneratePromptResponseData(

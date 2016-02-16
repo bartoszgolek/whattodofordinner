@@ -1,17 +1,16 @@
 package biz.golek.whattodofordinner.database.business.dao;
 
-import java.util.ArrayList;
 import java.util.Date;
 
 import javax.inject.Provider;
 
 import biz.golek.whattodofordinner.business.contract.dao.AddBasePromptsDao;
-import biz.golek.whattodofordinner.models.Dinner;
-import biz.golek.whattodofordinner.models.DinnerDao;
+import biz.golek.whattodofordinner.business.contract.entities.Dinner;
+import biz.golek.whattodofordinner.database.DinnerDao;
 import biz.golek.whattodofordinner.view.helpers.FlagHelper;
 
 /**
- * Created by bgolek on 2016-02-16.
+ * Created by Bartosz Gołek on 2016-02-16.
  */
 public class AddBasePromptsDaoImpl implements AddBasePromptsDao {
     private Provider<DinnerDao> daoProvider;

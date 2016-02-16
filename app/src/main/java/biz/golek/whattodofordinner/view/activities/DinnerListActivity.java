@@ -12,7 +12,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import org.greenrobot.eventbus.Subscribe;
 
@@ -74,7 +73,7 @@ public class DinnerListActivity extends AppCompatActivity implements IActivityDe
         if (dinner != null)
             viewModel.dinners.remove(dinner);
             adapter.notifyDataSetChanged();
-    };
+    }
 
     @Subscribe
     public void onDinnerAddedMessage(DinnerAddedMessage event) {
@@ -86,7 +85,7 @@ public class DinnerListActivity extends AppCompatActivity implements IActivityDe
             viewModel.dinners.add(dinner);
         }
         adapter.notifyDataSetChanged();
-    };
+    }
 
     @Subscribe
     public void onDinnerUpdatedMessage(DinnerUpdatedMessage event) {
@@ -101,7 +100,7 @@ public class DinnerListActivity extends AppCompatActivity implements IActivityDe
 
         if (updated)
             adapter.notifyDataSetChanged();
-    };
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

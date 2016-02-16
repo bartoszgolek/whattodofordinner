@@ -20,7 +20,7 @@ import biz.golek.whattodofordinner.business.interactors.EditDinnerImpl;
 import biz.golek.whattodofordinner.business.interactors.UpdateDinnerImpl;
 import biz.golek.whattodofordinner.database.business.dao.EditDinnerDaoImpl;
 import biz.golek.whattodofordinner.database.business.dao.UpdateDinnerDaoImpl;
-import biz.golek.whattodofordinner.models.DinnerDao;
+import biz.golek.whattodofordinner.database.DinnerDao;
 import biz.golek.whattodofordinner.view.business.presneters.EditDinnerPresenterImpl;
 import biz.golek.whattodofordinner.view.business.presneters.UpdateDinnerPresenterImpl;
 import biz.golek.whattodofordinner.view.helpers.ViewState;
@@ -30,7 +30,7 @@ import dagger.Module;
 import dagger.Provides;
 
 /**
- * Created by bgolek on 2016-02-05.
+ * Created by Bartosz Gołek on 2016-02-05.
  */
 @Module
 public class EditDinnerModule {

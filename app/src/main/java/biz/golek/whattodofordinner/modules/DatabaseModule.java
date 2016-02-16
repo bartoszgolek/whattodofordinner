@@ -5,15 +5,15 @@ import android.database.sqlite.SQLiteDatabase;
 import javax.inject.Singleton;
 
 import biz.golek.whattodofordinner.DinnerOpenHelper;
-import biz.golek.whattodofordinner.models.DaoMaster;
-import biz.golek.whattodofordinner.models.DaoSession;
-import biz.golek.whattodofordinner.models.DinnerDao;
+import biz.golek.whattodofordinner.database.DaoMaster;
+import biz.golek.whattodofordinner.database.DaoSession;
+import biz.golek.whattodofordinner.database.DinnerDao;
 import biz.golek.whattodofordinner.view.helpers.ViewState;
 import dagger.Module;
 import dagger.Provides;
 
 /**
- * Created by bgolek on 2016-02-08.
+ * Created by Bartosz Gołek on 2016-02-08.
  */
 @Module
 public class DatabaseModule {

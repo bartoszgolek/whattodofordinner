@@ -18,7 +18,7 @@ import biz.golek.whattodofordinner.business.contract.controllers.ShowMainControl
 import biz.golek.whattodofordinner.business.contract.interactors.UpdateDinnerController;
 
 /**
- * Created by bgolek on 2016-02-04.
+ * Created by Bartosz Gołek on 2016-02-04.
  */
 public class ActivityDependencyProvider {
     private Provider<EventBus> eventBusProvider;

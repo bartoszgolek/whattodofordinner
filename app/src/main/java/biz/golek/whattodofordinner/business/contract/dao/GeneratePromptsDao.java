@@ -4,7 +4,7 @@ import java.util.List;
 
 import biz.golek.whattodofordinner.business.contract.request_data.Duration;
 import biz.golek.whattodofordinner.business.contract.request_data.Profile;
-import biz.golek.whattodofordinner.models.Dinner;
+import biz.golek.whattodofordinner.business.contract.entities.Dinner;
 
 /**
  * Created by bg on 10.02.16.

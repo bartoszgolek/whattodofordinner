@@ -7,10 +7,10 @@ import biz.golek.whattodofordinner.business.contract.dao.DinnerListDao;
 import biz.golek.whattodofordinner.business.contract.interactors.DinnerList;
 import biz.golek.whattodofordinner.business.contract.presenters.DinnerListPresenter;
 import biz.golek.whattodofordinner.business.contract.response_data.DinnerListItem;
-import biz.golek.whattodofordinner.models.Dinner;
+import biz.golek.whattodofordinner.business.contract.entities.Dinner;
 
 /**
- * Created by bgolek on 2016-02-08.
+ * Created by Bartosz Gołek on 2016-02-08.
  */
 public class DinnerListImpl implements DinnerList {
     private DinnerListPresenter presenter;
@@ -25,7 +25,7 @@ public class DinnerListImpl implements DinnerList {
 
     @Override
     public void Run() {
-        List<DinnerListItem> result = new ArrayList<DinnerListItem>();
+        List<DinnerListItem> result = new ArrayList<>();
 
         List<Dinner> dinners = dao.getAllDinners();
         for (Dinner d: dinners) {
@@ -33,7 +33,7 @@ public class DinnerListImpl implements DinnerList {
             dinnerListItem.id = d.getId();
             dinnerListItem.name = d.getName();
             result.add(dinnerListItem);
-        };
+        }
 
         presenter.Show(result);
     }

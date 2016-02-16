@@ -1,10 +1,8 @@
 package biz.golek.whattodofordinner;
 
 import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
 
-import biz.golek.whattodofordinner.models.DaoMaster;
-import kotlin.jvm.Throws;
+import biz.golek.whattodofordinner.database.DaoMaster;
 
 /**
  * Created by bg on 07.02.16.

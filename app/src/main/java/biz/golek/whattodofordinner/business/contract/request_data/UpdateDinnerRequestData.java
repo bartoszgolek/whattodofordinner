@@ -1,7 +1,7 @@
 package biz.golek.whattodofordinner.business.contract.request_data;
 
 /**
- * Created by bgolek on 2016-02-10.
+ * Created by Bartosz Gołek on 2016-02-10.
  */
 public class UpdateDinnerRequestData {
     public Long id;

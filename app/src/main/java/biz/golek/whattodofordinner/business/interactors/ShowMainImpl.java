@@ -4,7 +4,7 @@ import biz.golek.whattodofordinner.business.contract.interactors.ShowMain;
 import biz.golek.whattodofordinner.business.contract.presenters.ShowMainPresenter;
 
 /**
- * Created by bgolek on 2016-02-11.
+ * Created by Bartosz Gołek on 2016-02-11.
  */
 public class ShowMainImpl implements ShowMain {
     private ShowMainPresenter presenter;

@@ -4,7 +4,7 @@ import biz.golek.whattodofordinner.business.contract.presenters.ShowMainPresente
 import biz.golek.whattodofordinner.view.presneters.MainActivityPresenter;
 
 /**
- * Created by bgolek on 2016-02-11.
+ * Created by Bartosz Gołek on 2016-02-11.
  */
 public class ShowMainPresenterImpl implements ShowMainPresenter {
     private MainActivityPresenter mainActivityPresenter;

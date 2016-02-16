@@ -1,13 +1,10 @@
 package biz.golek.whattodofordinner.business.interactors;
 
-import javax.inject.Provider;
-
 import biz.golek.whattodofordinner.business.contract.dao.SaveNewDinnerDao;
 import biz.golek.whattodofordinner.business.contract.interactors.SaveNewDinner;
 import biz.golek.whattodofordinner.business.contract.presenters.SaveNewDinnerPresenter;
 import biz.golek.whattodofordinner.business.contract.request_data.SaveNewDinnerRequestData;
-import biz.golek.whattodofordinner.models.Dinner;
-import biz.golek.whattodofordinner.models.DinnerDao;
+import biz.golek.whattodofordinner.business.contract.entities.Dinner;
 
 /**
  * Created by bg on 05.02.16.

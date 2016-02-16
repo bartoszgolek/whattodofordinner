@@ -12,7 +12,7 @@ import biz.golek.whattodofordinner.view.messages.DinnerDeletedMessage;
 import biz.golek.whattodofordinner.view.presneters.NotificationPresenter;
 
 /**
- * Created by bgolek on 2016-02-10.
+ * Created by Bartosz Gołek on 2016-02-10.
  */
 public class DeleteDinnerPresenterImpl implements DeleteDinnerPresenter {
     private NotificationPresenter notification;

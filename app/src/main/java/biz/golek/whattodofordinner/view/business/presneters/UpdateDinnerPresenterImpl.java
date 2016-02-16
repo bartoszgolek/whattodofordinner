@@ -7,14 +7,13 @@ import org.greenrobot.eventbus.EventBus;
 
 import biz.golek.whattodofordinner.R;
 import biz.golek.whattodofordinner.business.contract.presenters.UpdateDinnerPresenter;
-import biz.golek.whattodofordinner.models.Dinner;
+import biz.golek.whattodofordinner.business.contract.entities.Dinner;
 import biz.golek.whattodofordinner.view.helpers.ViewState;
-import biz.golek.whattodofordinner.view.messages.DinnerAddedMessage;
 import biz.golek.whattodofordinner.view.messages.DinnerUpdatedMessage;
 import biz.golek.whattodofordinner.view.presneters.NotificationPresenter;
 
 /**
- * Created by bgolek on 2016-02-10.
+ * Created by Bartosz Gołek on 2016-02-10.
  */
 public class UpdateDinnerPresenterImpl implements UpdateDinnerPresenter {
     private ViewState viewState;

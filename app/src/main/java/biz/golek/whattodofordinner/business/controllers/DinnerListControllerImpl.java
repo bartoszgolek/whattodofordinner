@@ -4,7 +4,7 @@ import biz.golek.whattodofordinner.business.contract.controllers.DinnerListContr
 import biz.golek.whattodofordinner.business.contract.interactors.DinnerList;
 
 /**
- * Created by bgolek on 2016-02-08.
+ * Created by Bartosz Gołek on 2016-02-08.
  */
 public class DinnerListControllerImpl implements DinnerListController {
     private DinnerList interactor;

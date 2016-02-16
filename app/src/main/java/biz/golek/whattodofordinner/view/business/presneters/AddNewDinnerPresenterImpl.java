@@ -5,7 +5,7 @@ import biz.golek.whattodofordinner.view.activities.AddNewDinnerActivity;
 import biz.golek.whattodofordinner.view.presneters.ActivityPresenter;
 
 /**
- * Created by bgolek on 2016-02-05.
+ * Created by Bartosz Gołek on 2016-02-05.
  */
 public class AddNewDinnerPresenterImpl implements AddNewDinnerPresenter {
     private ActivityPresenter starter;

@@ -11,8 +11,8 @@ import javax.inject.Provider;
 import biz.golek.whattodofordinner.business.contract.dao.GeneratePromptsDao;
 import biz.golek.whattodofordinner.business.contract.request_data.Duration;
 import biz.golek.whattodofordinner.business.contract.request_data.Profile;
-import biz.golek.whattodofordinner.models.Dinner;
-import biz.golek.whattodofordinner.models.DinnerDao;
+import biz.golek.whattodofordinner.business.contract.entities.Dinner;
+import biz.golek.whattodofordinner.database.DinnerDao;
 import de.greenrobot.dao.query.QueryBuilder;
 
 /**
@@ -135,7 +135,12 @@ public class GeneratePromptsDaoImpl implements GeneratePromptsDao {
         }
 
         private String getlastDropClause() {
-            return "(" + getCurrentDayNumber() + " - " + getDayNumberFactor(DinnerDao.Properties.LastDrop.columnName) +")";
+            return "(" + getMinOf(subtract("100", subtract(getCurrentDayNumber(), getDayNumberFactor(DinnerDao.Properties.LastDrop.columnName))), "0") +")";
+        }
+
+        private String subtract(String value, String value2)
+        {
+            return "(" + value + " - " + value2 + ")";
         }
 
         private String getDayNumberFactor(String fieldOrValue)
@@ -151,6 +156,11 @@ public class GeneratePromptsDaoImpl implements GeneratePromptsDao {
         private String getBoolFactor(String field)
         {
             return "CASE " + field + " WHEN 1 THEN 1 ELSE -1 END";
+        }
+
+        private String getMinOf(String value, String value2)
+        {
+            return "CASE WHEN" + value + " < " + value2 + " THEN " + value2 + " ELSE " + value + " END";
         }
 
         private String getSeasonInClause(Date date) {

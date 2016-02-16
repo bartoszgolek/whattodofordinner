@@ -4,7 +4,7 @@ import biz.golek.whattodofordinner.business.contract.controllers.EditDinnerContr
 import biz.golek.whattodofordinner.business.contract.interactors.EditDinner;
 
 /**
- * Created by bgolek on 2016-02-10.
+ * Created by Bartosz Gołek on 2016-02-10.
  */
 public class EditDinnerControllerImpl implements EditDinnerController {
     private EditDinner editDinner;

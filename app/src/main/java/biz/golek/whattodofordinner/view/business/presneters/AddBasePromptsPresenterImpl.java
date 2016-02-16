@@ -7,14 +7,14 @@ import org.greenrobot.eventbus.EventBus;
 
 import biz.golek.whattodofordinner.R;
 import biz.golek.whattodofordinner.business.contract.presenters.AddBasePromptsPresenter;
-import biz.golek.whattodofordinner.models.Dinner;
+import biz.golek.whattodofordinner.business.contract.entities.Dinner;
 import biz.golek.whattodofordinner.view.helpers.ViewState;
 import biz.golek.whattodofordinner.view.messages.AddedDinner;
 import biz.golek.whattodofordinner.view.messages.DinnerAddedMessage;
 import biz.golek.whattodofordinner.view.presneters.NotificationPresenter;
 
 /**
- * Created by bgolek on 2016-02-16.
+ * Created by Bartosz Gołek on 2016-02-16.
  */
 public class AddBasePromptsPresenterImpl implements AddBasePromptsPresenter {
     private ViewState viewState;

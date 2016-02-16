@@ -17,7 +17,7 @@ import biz.golek.whattodofordinner.business.interactors.SaveNewDinnerImpl;
 import biz.golek.whattodofordinner.business.controllers.AddNewDinnerControllerImpl;
 import biz.golek.whattodofordinner.business.interactors.AddNewDinnerImpl;
 import biz.golek.whattodofordinner.business.controllers.SaveNewDinnerControllerImpl;
-import biz.golek.whattodofordinner.models.DinnerDao;
+import biz.golek.whattodofordinner.database.DinnerDao;
 import biz.golek.whattodofordinner.view.business.presneters.AddNewDinnerPresenterImpl;
 import biz.golek.whattodofordinner.view.business.presneters.SaveNewDinnerPresenterImpl;
 import biz.golek.whattodofordinner.view.presneters.ActivityPresenter;
@@ -27,7 +27,7 @@ import dagger.Module;
 import dagger.Provides;
 
 /**
- * Created by bgolek on 2016-02-05.
+ * Created by Bartosz Gołek on 2016-02-05.
  */
 @Module
 public class NewDinnerModule {

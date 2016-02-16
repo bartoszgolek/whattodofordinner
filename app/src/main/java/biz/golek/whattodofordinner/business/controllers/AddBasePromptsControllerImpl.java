@@ -4,7 +4,7 @@ import biz.golek.whattodofordinner.business.contract.controllers.AddBasePromptsC
 import biz.golek.whattodofordinner.business.contract.interactors.AddBasePrompts;
 
 /**
- * Created by bgolek on 2016-02-16.
+ * Created by Bartosz Gołek on 2016-02-16.
  */
 public class AddBasePromptsControllerImpl implements AddBasePromptsController {
     private AddBasePrompts interactor;

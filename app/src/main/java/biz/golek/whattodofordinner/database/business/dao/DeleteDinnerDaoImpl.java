@@ -3,11 +3,11 @@ package biz.golek.whattodofordinner.database.business.dao;
 import javax.inject.Provider;
 
 import biz.golek.whattodofordinner.business.contract.dao.DeleteDinnerDao;
-import biz.golek.whattodofordinner.models.Dinner;
-import biz.golek.whattodofordinner.models.DinnerDao;
+import biz.golek.whattodofordinner.business.contract.entities.Dinner;
+import biz.golek.whattodofordinner.database.DinnerDao;
 
 /**
- * Created by bgolek on 2016-02-10.
+ * Created by Bartosz Gołek on 2016-02-10.
  */
 public class DeleteDinnerDaoImpl implements DeleteDinnerDao {
     private Provider<DinnerDao> dinnerDao;

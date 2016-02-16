@@ -4,7 +4,7 @@ import biz.golek.whattodofordinner.business.contract.controllers.ShowMainControl
 import biz.golek.whattodofordinner.business.contract.interactors.ShowMain;
 
 /**
- * Created by bgolek on 2016-02-11.
+ * Created by Bartosz Gołek on 2016-02-11.
  */
 public class ShowMainControllerImpl implements ShowMainController {
     private ShowMain interactor;

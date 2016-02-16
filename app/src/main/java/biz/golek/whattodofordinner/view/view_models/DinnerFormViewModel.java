@@ -11,7 +11,6 @@ import android.widget.CompoundButton;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import biz.golek.whattodofordinner.BR;
 import biz.golek.whattodofordinner.R;
@@ -19,7 +18,7 @@ import biz.golek.whattodofordinner.view.helpers.FlagHelper;
 import biz.golek.whattodofordinner.view.helpers.SimpleTextWatcher;
 
 /**
- * Created by bgolek on 2016-02-05.
+ * Created by Bartosz Gołek on 2016-02-05.
  */
 public class DinnerFormViewModel extends BaseObservable implements Serializable {
 
@@ -37,7 +36,7 @@ public class DinnerFormViewModel extends BaseObservable implements Serializable 
     private Integer seasons = 0;
 
     public List<String> getDurations(Resources resources) {
-        List<String> spinnerArray = new ArrayList<String>();
+        List<String> spinnerArray = new ArrayList<>();
         spinnerArray.add(resources.getString(R.string.dinner_duration_short));
         spinnerArray.add(resources.getString(R.string.dinner_duration_medium));
         spinnerArray.add(resources.getString(R.string.dinner_duration_long));

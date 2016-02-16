@@ -8,7 +8,7 @@ import java.io.Serializable;
 import biz.golek.whattodofordinner.BR;
 
 /**
- * Created by bgolek on 2016-02-11.
+ * Created by Bartosz Gołek on 2016-02-11.
  */
 public class DinnerChosenViewModel extends BaseObservable implements Serializable {
     private String dinner;

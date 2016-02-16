@@ -5,7 +5,7 @@ import biz.golek.whattodofordinner.business.contract.presenters.DeleteDinnerPres
 import biz.golek.whattodofordinner.business.contract.dao.DeleteDinnerDao;
 
 /**
- * Created by bgolek on 2016-02-10.
+ * Created by Bartosz Gołek on 2016-02-10.
  */
 public class DeleteDinnerImpl implements DeleteDinner {
     private DeleteDinnerDao dao;

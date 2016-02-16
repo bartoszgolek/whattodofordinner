@@ -12,7 +12,7 @@ import biz.golek.whattodofordinner.business.contract.presenters.AddBasePromptsPr
 import biz.golek.whattodofordinner.business.controllers.AddBasePromptsControllerImpl;
 import biz.golek.whattodofordinner.business.interactors.AddBasePromptsImpl;
 import biz.golek.whattodofordinner.database.business.dao.AddBasePromptsDaoImpl;
-import biz.golek.whattodofordinner.models.DinnerDao;
+import biz.golek.whattodofordinner.database.DinnerDao;
 import biz.golek.whattodofordinner.view.business.presneters.AddBasePromptsPresenterImpl;
 import biz.golek.whattodofordinner.view.helpers.ViewState;
 import biz.golek.whattodofordinner.view.presneters.NotificationPresenter;
@@ -20,7 +20,7 @@ import dagger.Module;
 import dagger.Provides;
 
 /**
- * Created by bgolek on 2016-02-16.
+ * Created by Bartosz Gołek on 2016-02-16.
  */
 @Module
 public class AddBasePromptsModule {

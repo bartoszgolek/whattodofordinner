@@ -25,7 +25,7 @@ public class GeneratePreferencesViewModel extends BaseObservable implements Seri
     private Integer duration = 1;
 
     public List<String> getDurations(Resources resources) {
-        List<String> spinnerArray = new ArrayList<String>();
+        List<String> spinnerArray = new ArrayList<>();
         spinnerArray.add(resources.getString(R.string.dinner_duration_short));
         spinnerArray.add(resources.getString(R.string.dinner_duration_medium));
         spinnerArray.add(resources.getString(R.string.dinner_duration_long));

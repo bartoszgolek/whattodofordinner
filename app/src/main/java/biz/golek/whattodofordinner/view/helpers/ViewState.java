@@ -3,7 +3,7 @@ package biz.golek.whattodofordinner.view.helpers;
 import android.app.Activity;
 
 /**
- * Created by bgolek on 2016-02-03.
+ * Created by Bartosz Gołek on 2016-02-03.
  */
 public class ViewState {
     private Activity currentActivity;

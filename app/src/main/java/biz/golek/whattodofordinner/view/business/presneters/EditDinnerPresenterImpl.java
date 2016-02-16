@@ -1,14 +1,13 @@
 package biz.golek.whattodofordinner.view.business.presneters;
 
 import biz.golek.whattodofordinner.business.contract.presenters.EditDinnerPresenter;
-import biz.golek.whattodofordinner.models.Dinner;
+import biz.golek.whattodofordinner.business.contract.entities.Dinner;
 import biz.golek.whattodofordinner.view.activities.EditDinnerActivity;
 import biz.golek.whattodofordinner.view.presneters.ActivityPresenter;
-import biz.golek.whattodofordinner.view.view_models.DinnerFormViewModel;
 import biz.golek.whattodofordinner.view.view_models.EditDinnerFormViewModel;
 
 /**
- * Created by bgolek on 2016-02-10.
+ * Created by Bartosz Gołek on 2016-02-10.
  */
 public class EditDinnerPresenterImpl implements EditDinnerPresenter {
     private ActivityPresenter starter;

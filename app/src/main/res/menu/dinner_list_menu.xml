@@ -5,13 +5,13 @@
         android:id="@+id/dinner_list_menu_add"
         android:orderInCategory="100"
         android:title="@string/add"
-        app:showAsAction="always" />
+        app:showAsAction="always"
         />
 
     <item
         android:id="@+id/dinner_list_menu_add_base"
         android:orderInCategory="110"
         android:title="@string/add_base"
-        app:showAsAction="never" />
+        app:showAsAction="never"
     />
 </menu>
