@@ -20,9 +20,10 @@ public class ViewStateManager implements Application.ActivityLifecycleCallbacks 
         this.viewState = viewState;
     }
 
-    private void clearReferences(){
+    private void clearReferences(Activity activity){
         Activity currentActivity = viewState.getCurrentActivity();
-        viewState.setCurrentActivity(null);
+        if (activity.equals(currentActivity))
+            viewState.setCurrentActivity(null);
     }
 
     @Override
@@ -42,7 +43,7 @@ public class ViewStateManager implements Application.ActivityLifecycleCallbacks 
 
     @Override
     public void onActivityPaused(Activity activity) {
-        clearReferences();
+        clearReferences(activity);
     }
 
     @Override
@@ -57,6 +58,6 @@ public class ViewStateManager implements Application.ActivityLifecycleCallbacks 
 
     @Override
     public void onActivityDestroyed(Activity activity) {
-        clearReferences();
+        clearReferences(activity);
     }
 }
