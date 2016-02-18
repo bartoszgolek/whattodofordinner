@@ -8,7 +8,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 
@@ -74,6 +76,17 @@ public class GeneratePromptsPreferencesActivity extends AppCompatActivity implem
         maximumDurationSpinner.setOnItemSelectedListener(viewModel.getDurationListener());
         ((SeekBar)findViewById(R.id.vegetarian_profile)).setOnSeekBarChangeListener(viewModel.getVegetarianProfileListener());
         ((SeekBar)findViewById(R.id.soup_profile)).setOnSeekBarChangeListener(viewModel.getSoupProfileListener());
+
+        ((Button)findViewById(R.id.generate_prompts_preferences_ok)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GeneratePromptsRequestData requestData = new GeneratePromptsRequestData();
+                requestData.maximum_duration = Duration.fromInt(viewModel.getDuration());
+                requestData.vegetarian_profile = Profile.fromInt(viewModel.getVegetarian_profile() + 1);
+                requestData.soup_profile = Profile.fromInt(viewModel.getSoup_profile() + 1);
+                activityDependencyProvider.getGeneratePromptsController().Run(requestData);
+            }
+        });
     }
 
     @Override
@@ -94,13 +107,6 @@ public class GeneratePromptsPreferencesActivity extends AppCompatActivity implem
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_generate_prompts_preferences, menu);
-        return true;
-    }
-
-    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == android.R.id.home) {
@@ -108,14 +114,6 @@ public class GeneratePromptsPreferencesActivity extends AppCompatActivity implem
             return true;
         }
 
-        if (id == R.id.generate_prompts_preferences_ok) {
-            GeneratePromptsRequestData requestData = new GeneratePromptsRequestData();
-            requestData.maximum_duration = Duration.fromInt(viewModel.getDuration());
-            requestData.vegetarian_profile = Profile.fromInt(viewModel.getVegetarian_profile() + 1);
-            requestData.soup_profile = Profile.fromInt(viewModel.getSoup_profile() + 1);
-            activityDependencyProvider.getGeneratePromptsController().Run(requestData);
-            return true;
-        }
         return super.onOptionsItemSelected(item);
     }
 

@@ -93,12 +93,12 @@ public class GeneratePromptsDaoImpl implements GeneratePromptsDao {
 
         @NonNull
         private String getLastUsageScoreString() {
-            return getScoreString(getlastUsageClause(), last_usage_score_weight);
+            return getScoreString(getLastUsageClause(), last_usage_score_weight);
         }
 
         @NonNull
         private String getLastDropScoreString() {
-            return getScoreString(getlastDropClause(), last_drop_score_weight);
+            return getScoreString(getLastDropClause(), last_drop_score_weight);
         }
 
         @NonNull
@@ -130,37 +130,52 @@ public class GeneratePromptsDaoImpl implements GeneratePromptsDao {
                 return "0";
         }
 
-        private String getlastUsageClause() {
-            return "(" + getCurrentDayNumber() + " - " + getDayNumberFactor(DinnerDao.Properties.LastUsage.columnName) +")";
+        private String getLastUsageClause() {
+            return SqlFunctionsProvider.subtract(
+                    getCurrentDayNumber(),
+                    SqlFunctionsProvider.ternary(
+                        SqlFunctionsProvider.isNull(DinnerDao.Properties.LastUsage.columnName),
+                        getDayNumber(-300),
+                        SqlFunctionsProvider.daysOf(DinnerDao.Properties.LastUsage.columnName)
+                    )
+            );
         }
 
-        private String getlastDropClause() {
-            return "(" + getMinOf(subtract("100", subtract(getCurrentDayNumber(), getDayNumberFactor(DinnerDao.Properties.LastDrop.columnName))), "0") +")";
-        }
-
-        private String subtract(String value, String value2)
-        {
-            return "(" + value + " - " + value2 + ")";
-        }
-
-        private String getDayNumberFactor(String fieldOrValue)
-        {
-            return "(" + fieldOrValue  + " * 1000 * 60 * 60 * 24)";
+        private String getLastDropClause() {
+            return SqlFunctionsProvider.ternary(
+                SqlFunctionsProvider.isNull(DinnerDao.Properties.LastDrop.columnName),
+                "0",
+                SqlFunctionsProvider.getMaxOf(
+                    SqlFunctionsProvider.subtract(
+                        "100",
+                        SqlFunctionsProvider.subtract(
+                            getCurrentDayNumber(),
+                            SqlFunctionsProvider.daysOf(DinnerDao.Properties.LastDrop.columnName)
+                        )
+                    ),
+                    "0"
+                )
+            );
         }
 
         private String getCurrentDayNumber()
         {
-            return getDayNumberFactor(Long.toString(new Date().getTime()));
+            return Long.toString(getDayNumber(new Date()));
+        }
+
+        private long getDayNumber(Date date)
+        {
+            return date.getTime() / 1000 / 60 / 60 / 24;
+        }
+
+        private String getDayNumber(long addDays)
+        {
+            return Long.toString(getDayNumber(new Date()) + addDays);
         }
 
         private String getBoolFactor(String field)
         {
             return "CASE " + field + " WHEN 1 THEN 1 ELSE -1 END";
-        }
-
-        private String getMinOf(String value, String value2)
-        {
-            return "CASE WHEN" + value + " < " + value2 + " THEN " + value2 + " ELSE " + value + " END";
         }
 
         private String getSeasonInClause(Date date) {
@@ -185,5 +200,43 @@ public class GeneratePromptsDaoImpl implements GeneratePromptsDao {
                 "(4,5,6,7,12,13,14,15)", //Autumn
                 "(8,9,10,11,12,13,14,15)", //Winter
         };
+    }
+
+    public static class SqlFunctionsProvider
+    {
+        public static String getMinOf(String value, String value2)
+        {
+            return "CASE WHEN " + value + " < " + value2 + " THEN " + value + " ELSE " + value2 + " END";
+        }
+
+        public static String getMaxOf(String value, String value2)
+        {
+            return "CASE WHEN " + value + " > " + value2 + " THEN " + value + " ELSE " + value2 + " END";
+        }
+
+        public static String ifNull(String value, String defaultValue)
+        {
+            return "CASE WHEN " + value + " IS NULL THEN " + defaultValue + " ELSE " + value + " END";
+        }
+
+        public static String isNull(String value)
+        {
+            return value + " IS NULL";
+        }
+
+        public static String ternary(String condition, String trueValue, String falseValue)
+        {
+            return "CASE WHEN " + condition + " THEN " + trueValue + " ELSE " + falseValue + " END";
+        }
+
+        public static String daysOf(String value)
+        {
+            return "(" + value + " / 1000 / 60 / 60 / 24)";
+        }
+
+        public static String subtract(String value, String value2)
+        {
+            return "(" + value + " - " + value2 + ")";
+        }
     }
 }
