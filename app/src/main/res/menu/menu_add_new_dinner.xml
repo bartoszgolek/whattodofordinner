@@ -6,6 +6,7 @@
     <item
         android:id="@+id/save"
         android:orderInCategory="100"
+        android:icon="@drawable/ic_check"
         android:title="@string/save"
         app:showAsAction="always" />
 </menu>
