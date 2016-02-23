@@ -17,6 +17,7 @@ import biz.golek.whattodofordinner.business.contract.controllers.SaveNewDinnerCo
 import biz.golek.whattodofordinner.business.contract.controllers.DinnerListController;
 import biz.golek.whattodofordinner.business.contract.controllers.ShowGeneratePromptsPreferencesController;
 import biz.golek.whattodofordinner.business.contract.controllers.ShowMainController;
+import biz.golek.whattodofordinner.business.contract.controllers.ShowMarkDinnerUsedController;
 import biz.golek.whattodofordinner.business.contract.interactors.UpdateDinnerController;
 import biz.golek.whattodofordinner.view.ActivityDependencyProvider;
 import biz.golek.whattodofordinner.view.presneters.ActivityPresenter;
@@ -59,7 +60,8 @@ public class AppModule {
             Provider<DinnerChosenController> dinnerAcceptedControllerProvider,
             Provider<ShowMainController> showMainControllerProvider,
             Provider<AboutController> aboutControllerProvider,
-            Provider<AddBasePromptsController> addBasePromptsControllerProvider){
+            Provider<AddBasePromptsController> addBasePromptsControllerProvider,
+            Provider<ShowMarkDinnerUsedController> showMarkDinnerUsedControllerProvider){
         return new ActivityDependencyProvider(
             eventBus,
             addNewDinnerControllerProvider,
@@ -73,7 +75,8 @@ public class AppModule {
             dinnerAcceptedControllerProvider,
             showMainControllerProvider,
             aboutControllerProvider,
-            addBasePromptsControllerProvider);
+            addBasePromptsControllerProvider,
+            showMarkDinnerUsedControllerProvider);
     }
 
     @Provides

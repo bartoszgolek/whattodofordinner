@@ -9,8 +9,10 @@ import biz.golek.whattodofordinner.modules.DinnerListModule;
 import biz.golek.whattodofordinner.modules.EditDinnerModule;
 import biz.golek.whattodofordinner.modules.GeneratePromptsModule;
 import biz.golek.whattodofordinner.modules.MainModule;
+import biz.golek.whattodofordinner.modules.MarkDinnerUsedModule;
 import biz.golek.whattodofordinner.modules.NewDinnerModule;
 import biz.golek.whattodofordinner.modules.AppModule;
+import biz.golek.whattodofordinner.view.activities.MarkDinnerUsed;
 import dagger.Component;
 
 /**
@@ -27,7 +29,8 @@ import dagger.Component;
                 GeneratePromptsModule.class,
                 MainModule.class,
                 AboutModule.class,
-                AddBasePromptsModule.class
+                AddBasePromptsModule.class,
+                MarkDinnerUsedModule.class
         })
 public interface ApplicationComponent {
     ViewStateManager viewStateManager();

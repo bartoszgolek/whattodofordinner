@@ -5,13 +5,14 @@
     <item
         android:id="@+id/action_make_dish_used"
         android:orderInCategory="80"
-        android:icon="@drawable/ic_restaurant_menu_black"
+        android:icon="@drawable/ic_restaurant_menu"
         android:title="@string/make_dish_used"
         app:showAsAction="always" />
     <item
         android:id="@+id/action_dinner_list"
         android:orderInCategory="90"
         android:title="@string/action_dinner_list"
+        android:icon="@drawable/ic_action_list_2_black"
         app:showAsAction="never" />
     <item
         android:id="@+id/action_about"
