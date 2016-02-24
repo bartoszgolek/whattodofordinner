@@ -36,4 +36,6 @@ public class DinnerListItemArrayAdapter extends ArrayAdapter<DinnerListItem> {
         // Return the completed view to render on screen
         return convertView;
     }
+
+
 }

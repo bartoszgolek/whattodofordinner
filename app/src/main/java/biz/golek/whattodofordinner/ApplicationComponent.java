@@ -12,7 +12,6 @@ import biz.golek.whattodofordinner.modules.MainModule;
 import biz.golek.whattodofordinner.modules.MarkDinnerUsedModule;
 import biz.golek.whattodofordinner.modules.NewDinnerModule;
 import biz.golek.whattodofordinner.modules.AppModule;
-import biz.golek.whattodofordinner.view.activities.MarkDinnerUsed;
 import dagger.Component;
 
 /**

@@ -65,4 +65,5 @@
     <string name="maximum_duration">Maximum duration</string>
     <string name="make_dish_used">Make Dish used</string>
     <string name="dinner">Dinner</string>
+    <string name="dinner_date">Dinner date</string>
 </resources>

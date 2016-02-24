@@ -8,4 +8,9 @@ import java.io.Serializable;
 public class DinnerListItem implements Serializable {
     public Long id;
     public String name;
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }
