@@ -11,6 +11,7 @@ import biz.golek.whattodofordinner.business.contract.entities.Dinner;
 import biz.golek.whattodofordinner.view.helpers.ViewState;
 import biz.golek.whattodofordinner.view.messages.AddedDinner;
 import biz.golek.whattodofordinner.view.messages.DinnerAddedMessage;
+import biz.golek.whattodofordinner.view.presneters.CloseCurrentActivityPresenter;
 import biz.golek.whattodofordinner.view.presneters.NotificationPresenter;
 
 /**
@@ -20,21 +21,23 @@ public class SaveNewDinnerPresenterImpl implements SaveNewDinnerPresenter {
     private ViewState viewState;
     private NotificationPresenter notification;
     private EventBus eventBus;
+    private Resources resources;
+    private CloseCurrentActivityPresenter closeCurrentActivityPresenter;
 
     public SaveNewDinnerPresenterImpl(
             ViewState viewState,
             NotificationPresenter notification,
-            EventBus eventBus) {
+            EventBus eventBus, Resources resources, CloseCurrentActivityPresenter closeCurrentActivityPresenter) {
         this.viewState = viewState;
         this.notification = notification;
         this.eventBus = eventBus;
+        this.resources = resources;
+        this.closeCurrentActivityPresenter = closeCurrentActivityPresenter;
     }
 
     @Override
     public void ShowSaved(Dinner dinner) {
-        Activity currentActivity = viewState.getCurrentActivity();
-        Resources res = currentActivity.getApplication().getApplicationContext().getResources();
-        notification.show(res.getString(R.string.save_new_dinner_saved_message));
+        notification.show(resources.getString(R.string.save_new_dinner_saved_message));
 
         eventBus.post(
             new DinnerAddedMessage(
@@ -44,6 +47,6 @@ public class SaveNewDinnerPresenterImpl implements SaveNewDinnerPresenter {
             )
         );
 
-        currentActivity.finish();
+        closeCurrentActivityPresenter.closeActivity();
     }
 }

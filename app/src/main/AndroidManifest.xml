@@ -47,7 +47,9 @@
         <activity
             android:name=".view.activities.AboutActivity"
             android:label="@string/title_activity_about" />
-        <activity android:name=".view.activities.MarkDinnerUsedActivity"></activity>
+        <activity
+            android:name=".view.activities.MarkDinnerUsedActivity"
+            android:label="@string/title_activity_mark_dinner_used" />
     </application>
 
 </manifest>

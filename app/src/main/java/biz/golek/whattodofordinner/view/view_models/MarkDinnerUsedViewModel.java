@@ -24,14 +24,18 @@ public class MarkDinnerUsedViewModel extends BaseObservable implements Serializa
     private DinnerListItem dinner;
 
     @Bindable
-    public String getDinnerDate(){
+    public String getDinnerDateString(){
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
         return sdf.format(dinnerDate);
     }
 
+    public Date getDinnerDate(){
+        return dinnerDate;
+    }
+
     public void setDinnerDate(Date dinnerDate) {
         this.dinnerDate = dinnerDate;
-        notifyPropertyChanged(BR.dinnerDate);
+        notifyPropertyChanged(BR.dinnerDateString);
     }
 
     public AdapterView.OnItemSelectedListener getDinnerListener() {

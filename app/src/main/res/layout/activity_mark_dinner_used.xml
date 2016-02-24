@@ -54,10 +54,12 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="date"
+            android:inputType="none"
             android:ems="10"
-            android:text="@{viewModel.dinnerDate}"
-            android:id="@+id/mark_dish_used_dinner_date" />
+            android:text="@{viewModel.dinnerDateString}"
+            android:id="@+id/mark_dish_used_dinner_date"
+            android:clickable="true"
+            android:editable="false" />
 
     </LinearLayout>
 </layout>

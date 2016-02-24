@@ -13,8 +13,8 @@ android {
         applicationId "biz.golek.whattodofordinner"
         minSdkVersion 15
         targetSdkVersion 23
-        versionCode 7
-        versionName "1.0-alpha5"
+        versionCode 8
+        versionName "1.0-alpha6"
     }
     buildTypes {
         debug {

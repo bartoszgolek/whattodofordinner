@@ -1,5 +1,7 @@
 package biz.golek.whattodofordinner.modules;
 
+import android.content.res.Resources;
+
 import org.greenrobot.eventbus.EventBus;
 
 import javax.inject.Provider;
@@ -13,6 +15,7 @@ import biz.golek.whattodofordinner.business.contract.controllers.DeleteDinnerCon
 import biz.golek.whattodofordinner.business.contract.controllers.DinnerChosenController;
 import biz.golek.whattodofordinner.business.contract.controllers.EditDinnerController;
 import biz.golek.whattodofordinner.business.contract.controllers.GeneratePromptsController;
+import biz.golek.whattodofordinner.business.contract.controllers.MarkDinnerUsedController;
 import biz.golek.whattodofordinner.business.contract.controllers.SaveNewDinnerController;
 import biz.golek.whattodofordinner.business.contract.controllers.DinnerListController;
 import biz.golek.whattodofordinner.business.contract.controllers.ShowGeneratePromptsPreferencesController;
@@ -22,6 +25,7 @@ import biz.golek.whattodofordinner.business.contract.interactors.UpdateDinnerCon
 import biz.golek.whattodofordinner.view.ActivityDependencyProvider;
 import biz.golek.whattodofordinner.view.presneters.ActivityPresenter;
 import biz.golek.whattodofordinner.view.helpers.ViewState;
+import biz.golek.whattodofordinner.view.presneters.CloseCurrentActivityPresenter;
 import biz.golek.whattodofordinner.view.presneters.MainActivityPresenter;
 import biz.golek.whattodofordinner.view.presneters.NotificationPresenter;
 import dagger.Module;
@@ -61,7 +65,8 @@ public class AppModule {
             Provider<ShowMainController> showMainControllerProvider,
             Provider<AboutController> aboutControllerProvider,
             Provider<AddBasePromptsController> addBasePromptsControllerProvider,
-            Provider<ShowMarkDinnerUsedController> showMarkDinnerUsedControllerProvider){
+            Provider<ShowMarkDinnerUsedController> showMarkDinnerUsedControllerProvider,
+            Provider<MarkDinnerUsedController> markDinnerUsedControllerProvider){
         return new ActivityDependencyProvider(
             eventBus,
             addNewDinnerControllerProvider,
@@ -76,13 +81,20 @@ public class AppModule {
             showMainControllerProvider,
             aboutControllerProvider,
             addBasePromptsControllerProvider,
-            showMarkDinnerUsedControllerProvider);
+            showMarkDinnerUsedControllerProvider,
+            markDinnerUsedControllerProvider);
     }
 
     @Provides
     @Singleton
     static ActivityPresenter providesActivityPresenter(ViewState viewState){
         return new ActivityPresenter(viewState);
+    }
+
+    @Provides
+    @Singleton
+    static CloseCurrentActivityPresenter providesCloseCurrentActivityPresenter(ViewState viewState){
+        return new CloseCurrentActivityPresenter(viewState);
     }
 
     @Provides
@@ -101,5 +113,11 @@ public class AppModule {
     @Singleton
     static EventBus providesEventBus(){
         return EventBus.getDefault();
+    }
+
+    @Provides
+    @Singleton
+    static Resources providesResources(ViewState vs){
+        return vs.getCurrentActivity().getResources();
     }
 }

@@ -1,18 +1,30 @@
 package biz.golek.whattodofordinner.modules;
 
+import android.content.res.Resources;
+
 import javax.inject.Provider;
 import javax.inject.Singleton;
 
+import biz.golek.whattodofordinner.business.contract.controllers.MarkDinnerUsedController;
 import biz.golek.whattodofordinner.business.contract.controllers.ShowMarkDinnerUsedController;
+import biz.golek.whattodofordinner.business.contract.dao.MarkDinnerUsedDao;
 import biz.golek.whattodofordinner.business.contract.dao.ShowMarkDinnerUsedDao;
+import biz.golek.whattodofordinner.business.contract.interactors.MarkDinnerUsed;
 import biz.golek.whattodofordinner.business.contract.interactors.ShowMarkDinnerUsed;
+import biz.golek.whattodofordinner.business.contract.presenters.MarkDinnerUsedPresenter;
 import biz.golek.whattodofordinner.business.contract.presenters.ShowMarkDinnerUsedPresenter;
+import biz.golek.whattodofordinner.business.controllers.MarkDinnerUsedControllerImpl;
 import biz.golek.whattodofordinner.business.controllers.ShowMarkDinnerUsedControllerImpl;
+import biz.golek.whattodofordinner.business.interactors.MarkDinnerUsedImpl;
 import biz.golek.whattodofordinner.business.interactors.ShowMarkDinnerUsedImpl;
 import biz.golek.whattodofordinner.database.DinnerDao;
+import biz.golek.whattodofordinner.database.business.dao.MarkDinnerUsedDaoImpl;
 import biz.golek.whattodofordinner.database.business.dao.ShowMarkDinnerUsedDaoImpl;
+import biz.golek.whattodofordinner.view.business.presneters.MarkDinnerUsedPresenterImpl;
 import biz.golek.whattodofordinner.view.business.presneters.ShowMarkDinnerUsedPresenterImpl;
 import biz.golek.whattodofordinner.view.presneters.ActivityPresenter;
+import biz.golek.whattodofordinner.view.presneters.CloseCurrentActivityPresenter;
+import biz.golek.whattodofordinner.view.presneters.NotificationPresenter;
 import dagger.Module;
 import dagger.Provides;
 
@@ -46,35 +58,43 @@ public class MarkDinnerUsedModule {
         return new ShowMarkDinnerUsedDaoImpl(dinnerDaoProvider);
     }
 
-//    @Provides
-//    @Singleton
-//    static SaveNewDinner provideSaveNewDinner(
-//            SaveNewDinnerPresenter saveNewDinnerPreseneter,
-//            SaveNewDinnerDao saveNewDinnerDao
-//    ){
-//        return new SaveNewDinnerImpl(saveNewDinnerPreseneter, saveNewDinnerDao);
-//    }
-//
-//    @Provides
-//    @Singleton
-//    static SaveNewDinnerController provideSaveNewDinnerController(SaveNewDinner saveNewDinner){
-//        return new SaveNewDinnerControllerImpl(saveNewDinner);
-//    }
-//
-//    @Provides
-//    @Singleton
-//    static SaveNewDinnerPresenter provideSaveNewDinnerPresenter(
-//            ViewState viewState,
-//            NotificationPresenter notification,
-//            EventBus eventBus)
-//    {
-//        return new SaveNewDinnerPresenterImpl(viewState, notification, eventBus);
-//    }
-//
-//    @Provides
-//    @Singleton
-//    static SaveNewDinnerDao provideSaveNewDinnerDao(Provider<DinnerDao> dinnerDaoProvider)
-//    {
-//        return new SaveNewDinnerDaoImpl(dinnerDaoProvider);
-//    }
+    public ShowMarkDinnerUsedController getShowMarkDinnerUsedController(ShowMarkDinnerUsed interactor) {
+        return new ShowMarkDinnerUsedControllerImpl(interactor);
+    }
+
+    public MarkDinnerUsedController getMarkDinnerUsedController(MarkDinnerUsed interactor) {
+        return new MarkDinnerUsedControllerImpl(interactor);
+    }
+
+    @Provides
+    @Singleton
+    static MarkDinnerUsed provideMarkDinnerUsed(
+            MarkDinnerUsedPresenter markDinnerUsedPreseneter,
+            MarkDinnerUsedDao markDinnerUsedDao
+    ){
+        return new MarkDinnerUsedImpl(markDinnerUsedDao, markDinnerUsedPreseneter);
+    }
+
+    @Provides
+    @Singleton
+    static MarkDinnerUsedController provideMarkDinnerUsedController(MarkDinnerUsed markDinnerUsed){
+        return new MarkDinnerUsedControllerImpl(markDinnerUsed);
+    }
+
+    @Provides
+    @Singleton
+    static MarkDinnerUsedPresenter provideMarkDinnerUsedPresenter(
+            CloseCurrentActivityPresenter closeCurrentActivityPresenter,
+            NotificationPresenter notification,
+            Resources resources)
+    {
+        return new MarkDinnerUsedPresenterImpl(closeCurrentActivityPresenter, notification, resources);
+    }
+
+    @Provides
+    @Singleton
+    static MarkDinnerUsedDao provideMarkDinnerUsedDao(Provider<DinnerDao> dinnerDaoProvider)
+    {
+        return new MarkDinnerUsedDaoImpl(dinnerDaoProvider);
+    }
 }

@@ -66,4 +66,6 @@
     <string name="make_dish_used">Make Dish used</string>
     <string name="dinner">Dinner</string>
     <string name="dinner_date">Dinner date</string>
+    <string name="dinner_used_message">Dinner used</string>
+    <string name="title_activity_mark_dinner_used">Mark dinner used</string>
 </resources>

@@ -1,5 +1,7 @@
 package biz.golek.whattodofordinner.modules;
 
+import android.content.res.Resources;
+
 import org.greenrobot.eventbus.EventBus;
 
 import javax.inject.Provider;
@@ -22,6 +24,7 @@ import biz.golek.whattodofordinner.view.business.presneters.AddNewDinnerPresente
 import biz.golek.whattodofordinner.view.business.presneters.SaveNewDinnerPresenterImpl;
 import biz.golek.whattodofordinner.view.presneters.ActivityPresenter;
 import biz.golek.whattodofordinner.view.helpers.ViewState;
+import biz.golek.whattodofordinner.view.presneters.CloseCurrentActivityPresenter;
 import biz.golek.whattodofordinner.view.presneters.NotificationPresenter;
 import dagger.Module;
 import dagger.Provides;
@@ -70,9 +73,11 @@ public class NewDinnerModule {
     static SaveNewDinnerPresenter provideSaveNewDinnerPresenter(
             ViewState viewState,
             NotificationPresenter notification,
-            EventBus eventBus)
+            EventBus eventBus,
+            Resources resources,
+            CloseCurrentActivityPresenter closeCurrentActivityPresenter)
     {
-        return new SaveNewDinnerPresenterImpl(viewState, notification, eventBus);
+        return new SaveNewDinnerPresenterImpl(viewState, notification, eventBus, resources, closeCurrentActivityPresenter);
     }
 
     @Provides
