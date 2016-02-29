@@ -34,6 +34,8 @@ public class DinnerDao extends AbstractDao<Dinner, Long> {
         public final static Property CreationDate = new Property(8, java.util.Date.class, "creationDate", false, "CREATION_DATE");
     };
 
+    private DaoSession daoSession;
+
 
     public DinnerDao(DaoConfig config) {
         super(config);
@@ -41,6 +43,7 @@ public class DinnerDao extends AbstractDao<Dinner, Long> {
     
     public DinnerDao(DaoConfig config, DaoSession daoSession) {
         super(config, daoSession);
+        this.daoSession = daoSession;
     }
 
     /** Creates the underlying database table. */
@@ -89,6 +92,12 @@ public class DinnerDao extends AbstractDao<Dinner, Long> {
             stmt.bindLong(8, lastDrop.getTime());
         }
         stmt.bindLong(9, entity.getCreationDate().getTime());
+    }
+
+    @Override
+    protected void attachEntity(Dinner entity) {
+        super.attachEntity(entity);
+        entity.__setDaoSession(daoSession);
     }
 
     /** @inheritdoc */
