@@ -1,9 +1,9 @@
 package biz.golek.whattodofordinner.business.interactors;
 
 import biz.golek.whattodofordinner.business.contract.dao.AddBasePromptsDao;
+import biz.golek.whattodofordinner.business.contract.entities.Dinner;
 import biz.golek.whattodofordinner.business.contract.interactors.AddBasePrompts;
 import biz.golek.whattodofordinner.business.contract.presenters.AddBasePromptsPresenter;
-import biz.golek.whattodofordinner.business.contract.entities.Dinner;
 
 /**
  * Created by Bartosz Gołek on 2016-02-16.

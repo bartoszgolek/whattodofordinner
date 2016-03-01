@@ -8,6 +8,7 @@ import biz.golek.whattodofordinner.DinnerOpenHelper;
 import biz.golek.whattodofordinner.database.DaoMaster;
 import biz.golek.whattodofordinner.database.DaoSession;
 import biz.golek.whattodofordinner.database.DinnerDao;
+import biz.golek.whattodofordinner.database.business.dao.DBDinnerToDinner;
 import biz.golek.whattodofordinner.view.helpers.ViewState;
 import dagger.Module;
 import dagger.Provides;
@@ -26,5 +27,12 @@ public class DatabaseModule {
         DaoMaster daoMaster = new DaoMaster(db);
         DaoSession daoSession = daoMaster.newSession();
         return daoSession.getDinnerDao();
+    }
+
+    @Provides
+    @Singleton
+    public DBDinnerToDinner provideDBDinnerToDinner()
+    {
+        return new DBDinnerToDinner();
     }
 }

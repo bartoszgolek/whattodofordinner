@@ -106,7 +106,10 @@ public class AddNewDinnerActivity extends AppCompatActivity implements IActivity
         requestData.duration = viewModel.getDuration();
         requestData.soup = viewModel.getSoup();
         requestData.vegetarian = viewModel.getVegetarian();
-        requestData.seasons = viewModel.getSeasons();
+        requestData.spring = viewModel.getSpring();
+        requestData.summer = viewModel.getSummer();
+        requestData.autumn = viewModel.getAutumn();
+        requestData.winter = viewModel.getWinter();
 
         controllerProvider.getSaveNewDinnerController().Run(requestData);
     }

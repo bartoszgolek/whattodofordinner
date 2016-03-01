@@ -14,7 +14,6 @@ import java.util.List;
 
 import biz.golek.whattodofordinner.BR;
 import biz.golek.whattodofordinner.R;
-import biz.golek.whattodofordinner.view.helpers.FlagHelper;
 import biz.golek.whattodofordinner.view.helpers.SimpleTextWatcher;
 
 /**
@@ -22,18 +21,14 @@ import biz.golek.whattodofordinner.view.helpers.SimpleTextWatcher;
  */
 public class DinnerFormViewModel extends BaseObservable implements Serializable {
 
-    class Seasons {
-        public static final int spring = 0;
-        public static final int summer = 1;
-        public static final int autumn = 2;
-        public static final int winter = 3;
-    }
-
     private String name = "";
     private boolean soup = false;
     private boolean vegetarian = false;
     private Integer duration = 1;
-    private Integer seasons = 0;
+    private boolean spring = false;
+    private boolean summer = false;
+    private boolean autumn = false;
+    private boolean winter = false;
 
     public List<String> getDurations(Resources resources) {
         List<String> spinnerArray = new ArrayList<>();
@@ -114,67 +109,45 @@ public class DinnerFormViewModel extends BaseObservable implements Serializable 
 
     @Bindable
     public boolean getSpring() {
-        return getSeason(Seasons.spring);
+        return spring;
     }
 
     @Bindable
     public boolean getSummer() {
-        return getSeason(Seasons.summer);
+        return summer;
     }
 
     @Bindable
     public boolean getAutumn() {
-        return getSeason(Seasons.autumn);
+        return autumn;
     }
 
     @Bindable
     public boolean getWinter() {
-        return getSeason(Seasons.winter);
-    }
-
-    private boolean getSeason(int season_number) {
-        return FlagHelper.flagIsSet(season_number, seasons);
+        return winter;
     }
 
     @Bindable
     public void setSpring(boolean value) {
-        setSeason(Seasons.spring, value);
+        spring = value;
         notifyPropertyChanged(BR.spring);
     }
 
     @Bindable
     public void setSummer(boolean value) {
-        setSeason(Seasons.summer, value);
+        summer = value;
         notifyPropertyChanged(BR.summer);
     }
 
     @Bindable
     public void setAutumn(boolean value) {
-        setSeason(Seasons.autumn, value);
+        autumn = value;
         notifyPropertyChanged(BR.autumn);
     }
 
     @Bindable
     public void setWinter(boolean value) {
-        setSeason(Seasons.winter, value);
-        notifyPropertyChanged(BR.winter);
-    }
-
-    private void setSeason(int season_number, boolean value) {
-        seasons = value
-                ? FlagHelper.setFlag(season_number, seasons)
-                : FlagHelper.unsetFlag(season_number, seasons);
-    }
-
-    public Integer getSeasons() {
-        return seasons;
-    }
-
-    public void setSeasons(Integer seasons) {
-        this.seasons = seasons;
-        notifyPropertyChanged(BR.spring);
-        notifyPropertyChanged(BR.summer);
-        notifyPropertyChanged(BR.autumn);
+        winter = value;
         notifyPropertyChanged(BR.winter);
     }
 
@@ -183,7 +156,7 @@ public class DinnerFormViewModel extends BaseObservable implements Serializable 
 
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                setSeason(Seasons.spring, isChecked);
+                spring = isChecked;
             }
         };
     }
@@ -193,7 +166,7 @@ public class DinnerFormViewModel extends BaseObservable implements Serializable 
 
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                setSeason(Seasons.summer, isChecked);
+                summer = isChecked;
             }
         };
     }
@@ -203,7 +176,7 @@ public class DinnerFormViewModel extends BaseObservable implements Serializable 
 
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                setSeason(Seasons.autumn, isChecked);
+                autumn = isChecked;
             }
         };
     }
@@ -213,7 +186,7 @@ public class DinnerFormViewModel extends BaseObservable implements Serializable 
 
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                setSeason(Seasons.winter, isChecked);
+                winter = isChecked;
             }
         };
     }

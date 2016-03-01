@@ -9,10 +9,10 @@ import de.greenrobot.dao.AbstractDaoSession;
 import de.greenrobot.dao.identityscope.IdentityScopeType;
 import de.greenrobot.dao.internal.DaoConfig;
 
-import biz.golek.whattodofordinner.business.contract.entities.Dinner;
-import biz.golek.whattodofordinner.business.contract.entities.DinnerStat;
-import biz.golek.whattodofordinner.business.contract.entities.Ingredient;
-import biz.golek.whattodofordinner.business.contract.entities.DinnerIngredient;
+import biz.golek.whattodofordinner.database.entities.Dinner;
+import biz.golek.whattodofordinner.database.entities.DinnerStat;
+import biz.golek.whattodofordinner.database.entities.Ingredient;
+import biz.golek.whattodofordinner.database.entities.DinnerIngredient;
 
 import biz.golek.whattodofordinner.database.DinnerDao;
 import biz.golek.whattodofordinner.database.DinnerStatDao;

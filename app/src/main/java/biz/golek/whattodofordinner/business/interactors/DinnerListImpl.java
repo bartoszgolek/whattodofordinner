@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import biz.golek.whattodofordinner.business.contract.dao.DinnerListDao;
+import biz.golek.whattodofordinner.business.contract.entities.Dinner;
 import biz.golek.whattodofordinner.business.contract.interactors.DinnerList;
 import biz.golek.whattodofordinner.business.contract.presenters.DinnerListPresenter;
 import biz.golek.whattodofordinner.business.contract.response_data.DinnerListItem;
-import biz.golek.whattodofordinner.business.contract.entities.Dinner;
 
 /**
  * Created by Bartosz Gołek on 2016-02-08.

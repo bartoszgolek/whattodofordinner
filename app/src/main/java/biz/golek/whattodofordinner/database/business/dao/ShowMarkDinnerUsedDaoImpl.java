@@ -13,13 +13,15 @@ import biz.golek.whattodofordinner.database.DinnerDao;
  */
 public class ShowMarkDinnerUsedDaoImpl implements ShowMarkDinnerUsedDao {
     private Provider<DinnerDao> dinnerDaoProvider;
+    private DBDinnerToDinner converter;
 
-    public ShowMarkDinnerUsedDaoImpl(Provider<DinnerDao> dinnerDaoProvider) {
+    public ShowMarkDinnerUsedDaoImpl(Provider<DinnerDao> dinnerDaoProvider, DBDinnerToDinner converter) {
         this.dinnerDaoProvider = dinnerDaoProvider;
+        this.converter = converter;
     }
 
     @Override
     public List<Dinner> getAllDinners() {
-        return dinnerDaoProvider.get().loadAll();
+        return converter.toBusiness(dinnerDaoProvider.get().loadAll());
     }
 }

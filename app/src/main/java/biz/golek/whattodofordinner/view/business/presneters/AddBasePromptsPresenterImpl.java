@@ -6,8 +6,8 @@ import android.content.res.Resources;
 import org.greenrobot.eventbus.EventBus;
 
 import biz.golek.whattodofordinner.R;
-import biz.golek.whattodofordinner.business.contract.presenters.AddBasePromptsPresenter;
 import biz.golek.whattodofordinner.business.contract.entities.Dinner;
+import biz.golek.whattodofordinner.business.contract.presenters.AddBasePromptsPresenter;
 import biz.golek.whattodofordinner.view.helpers.ViewState;
 import biz.golek.whattodofordinner.view.messages.AddedDinner;
 import biz.golek.whattodofordinner.view.messages.DinnerAddedMessage;

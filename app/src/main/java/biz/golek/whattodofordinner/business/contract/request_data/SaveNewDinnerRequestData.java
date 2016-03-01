@@ -8,5 +8,8 @@ public class SaveNewDinnerRequestData {
     public Integer duration;
     public Boolean soup;
     public Boolean vegetarian;
-    public Integer seasons;
+    public Boolean spring;
+    public Boolean summer;
+    public Boolean autumn;
+    public Boolean winter;
 }

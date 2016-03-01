@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import biz.golek.whattodofordinner.business.contract.dao.GeneratePromptsDao;
+import biz.golek.whattodofordinner.business.contract.entities.Dinner;
 import biz.golek.whattodofordinner.business.contract.interactors.GeneratePrompts;
 import biz.golek.whattodofordinner.business.contract.presenters.GeneratePromptsPresenter;
 import biz.golek.whattodofordinner.business.contract.request_data.GeneratePromptsRequestData;
 import biz.golek.whattodofordinner.business.contract.response_data.DinnerListItem;
 import biz.golek.whattodofordinner.business.contract.response_data.GeneratePromptResponseData;
-import biz.golek.whattodofordinner.business.contract.entities.Dinner;
 
 /**
  * Created by bg on 10.02.16.

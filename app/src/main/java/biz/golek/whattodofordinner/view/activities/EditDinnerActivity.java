@@ -107,7 +107,10 @@ public class EditDinnerActivity extends AppCompatActivity implements IActivityDe
         requestData.duration = viewModel.getDuration();
         requestData.soup = viewModel.getSoup();
         requestData.vegetarian = viewModel.getVegetarian();
-        requestData.seasons = viewModel.getSeasons();
+        requestData.spring = viewModel.getSpring();
+        requestData.summer = viewModel.getSummer();
+        requestData.autumn = viewModel.getAutumn();
+        requestData.winter = viewModel.getWinter();
 
         activityDependencyProvider.getUpdateDinnerController().Run(requestData);
     }

@@ -21,7 +21,6 @@ public class MarkDinnerUsedImpl implements MarkDinnerUsed {
     @Override
     public void Run(MarkDinnerUsedRequestData requestData) {
         Dinner dinner = dao.GetDinner(requestData.dinnerId);
-        dinner.setLastUsage(requestData.dinnerDate);
         dao.SaveDinner(dinner);
 
         presenter.Show();

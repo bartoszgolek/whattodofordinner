@@ -3,8 +3,8 @@ package biz.golek.whattodofordinner.database.business.dao;
 import javax.inject.Provider;
 
 import biz.golek.whattodofordinner.business.contract.dao.DeleteDinnerDao;
-import biz.golek.whattodofordinner.business.contract.entities.Dinner;
 import biz.golek.whattodofordinner.database.DinnerDao;
+import biz.golek.whattodofordinner.database.entities.Dinner;
 
 /**
  * Created by Bartosz Gołek on 2016-02-10.

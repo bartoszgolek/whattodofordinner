@@ -9,9 +9,9 @@ import java.util.List;
 import javax.inject.Provider;
 
 import biz.golek.whattodofordinner.business.contract.dao.GeneratePromptsDao;
+import biz.golek.whattodofordinner.business.contract.entities.Dinner;
 import biz.golek.whattodofordinner.business.contract.request_data.Duration;
 import biz.golek.whattodofordinner.business.contract.request_data.Profile;
-import biz.golek.whattodofordinner.business.contract.entities.Dinner;
 import biz.golek.whattodofordinner.database.DinnerDao;
 import de.greenrobot.dao.query.QueryBuilder;
 
@@ -20,6 +20,7 @@ import de.greenrobot.dao.query.QueryBuilder;
  */
 public class GeneratePromptsDaoImpl implements GeneratePromptsDao {
     private Provider<DinnerDao> dinnerDaoProvider;
+    private biz.golek.whattodofordinner.database.business.dao.DBDinnerToDinner converter;
 
     public GeneratePromptsDaoImpl(Provider<DinnerDao> dinnerDaoProvider) {
         this.dinnerDaoProvider = dinnerDaoProvider;
@@ -27,7 +28,7 @@ public class GeneratePromptsDaoImpl implements GeneratePromptsDao {
 
     @Override
     public List<Dinner> GetPrompts(Duration maximum_duration, Profile vegetarian_profile, Profile soup_profile, Long[] excludes) {
-        QueryBuilder<Dinner> queryBuilder = dinnerDaoProvider.get().queryBuilder();
+        QueryBuilder<biz.golek.whattodofordinner.database.entities.Dinner> queryBuilder = dinnerDaoProvider.get().queryBuilder();
 
         if (excludes != null && excludes.length > 0)
             queryBuilder.where(DinnerDao.Properties.Id.notIn(excludes));
@@ -43,7 +44,7 @@ public class GeneratePromptsDaoImpl implements GeneratePromptsDao {
         String orderByString = new ScoreFunctionGenerator(vegetarian_profile, soup_profile).getOrderByString();
         queryBuilder.orderRaw(orderByString);
 
-        return queryBuilder.limit(3).list();
+        return converter.toBusiness(queryBuilder.limit(3).list());
     }
 
     @Override
@@ -51,11 +52,11 @@ public class GeneratePromptsDaoImpl implements GeneratePromptsDao {
         if (excludes != null && excludes.length > 0) {
             DinnerDao dinnerDao = dinnerDaoProvider.get();
 
-            List<Dinner> list = dinnerDao.queryBuilder()
+            List<biz.golek.whattodofordinner.database.entities.Dinner> list = dinnerDao.queryBuilder()
                     .where(DinnerDao.Properties.Id.in(excludes))
                     .list();
 
-            for (Dinner d : list) {
+            for (biz.golek.whattodofordinner.database.entities.Dinner d : list) {
                 d.setLastDrop(new Date());
                 dinnerDao.update(d);
             }

@@ -1,7 +1,7 @@
 package biz.golek.whattodofordinner.view.business.presneters;
 
-import biz.golek.whattodofordinner.business.contract.presenters.EditDinnerPresenter;
 import biz.golek.whattodofordinner.business.contract.entities.Dinner;
+import biz.golek.whattodofordinner.business.contract.presenters.EditDinnerPresenter;
 import biz.golek.whattodofordinner.view.activities.EditDinnerActivity;
 import biz.golek.whattodofordinner.view.presneters.ActivityPresenter;
 import biz.golek.whattodofordinner.view.view_models.EditDinnerFormViewModel;
@@ -25,7 +25,10 @@ public class EditDinnerPresenterImpl implements EditDinnerPresenter {
         data.setDuration(dinner.getDuration());
         data.setSoup(dinner.getSoup());
         data.setVegetarian(dinner.getVegetarian());
-        data.setSeasons(dinner.getSeasons());
+        data.setSpring(dinner.getSpring());
+        data.setSummer(dinner.getSummer());
+        data.setAutumn(dinner.getAutumn());
+        data.setWinter(dinner.getWinter());
 
         starter.startActivity(EditDinnerActivity.class, data);
     }

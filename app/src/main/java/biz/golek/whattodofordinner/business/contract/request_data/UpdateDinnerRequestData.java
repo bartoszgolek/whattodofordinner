@@ -10,4 +10,8 @@ public class UpdateDinnerRequestData {
     public boolean soup;
     public boolean vegetarian;
     public Integer seasons;
+    public Boolean spring;
+    public Boolean summer;
+    public Boolean autumn;
+    public Boolean winter;
 }

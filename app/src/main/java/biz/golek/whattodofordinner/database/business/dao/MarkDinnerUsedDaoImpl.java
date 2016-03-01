@@ -11,21 +11,23 @@ import biz.golek.whattodofordinner.database.DinnerDao;
  */
 public class MarkDinnerUsedDaoImpl implements MarkDinnerUsedDao {
     private final Provider<DinnerDao> dinnerDaoProvider;
+    private DBDinnerToDinner converter;
 
-    public MarkDinnerUsedDaoImpl(Provider<DinnerDao> dinnerDaoProvider) {
+    public MarkDinnerUsedDaoImpl(Provider<DinnerDao> dinnerDaoProvider, DBDinnerToDinner converter) {
         this.dinnerDaoProvider = dinnerDaoProvider;
+        this.converter = converter;
     }
 
     @Override
     public Dinner GetDinner(Long dinnerId) {
-        return dinnerDaoProvider.get()
+        return converter.toBusiness(dinnerDaoProvider.get()
             .queryBuilder()
             .where(DinnerDao.Properties.Id.eq(dinnerId))
-            .unique();
+            .unique());
     }
 
     @Override
     public void SaveDinner(Dinner dinner) {
-        dinnerDaoProvider.get().update(dinner);
+        dinnerDaoProvider.get().update(converter.toDatabase(dinner));
     }
 }

@@ -16,6 +16,7 @@ import biz.golek.whattodofordinner.business.contract.presenters.DinnerListPresen
 import biz.golek.whattodofordinner.business.controllers.DeleteDinnerControllerImpl;
 import biz.golek.whattodofordinner.business.controllers.DinnerListControllerImpl;
 import biz.golek.whattodofordinner.business.interactors.DeleteDinnerImpl;
+import biz.golek.whattodofordinner.database.business.dao.DBDinnerToDinner;
 import biz.golek.whattodofordinner.database.business.dao.DeleteDinnerDaoImpl;
 import biz.golek.whattodofordinner.database.business.dao.DinnerListDaoImpl;
 import biz.golek.whattodofordinner.business.interactors.DinnerListImpl;
@@ -57,8 +58,8 @@ public class DinnerListModule {
 
     @Provides
     @Singleton
-    static DinnerListDao provideDinnerListDao(Provider<DinnerDao> dinnerDaoProvider){
-        return new DinnerListDaoImpl(dinnerDaoProvider);
+    static DinnerListDao provideDinnerListDao(Provider<DinnerDao> dinnerDaoProvider, DBDinnerToDinner converter){
+        return new DinnerListDaoImpl(dinnerDaoProvider, converter);
     }
 
     @Provides

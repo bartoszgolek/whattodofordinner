@@ -14,6 +14,7 @@ import biz.golek.whattodofordinner.business.contract.interactors.AddNewDinner;
 import biz.golek.whattodofordinner.business.contract.interactors.SaveNewDinner;
 import biz.golek.whattodofordinner.business.contract.presenters.AddNewDinnerPresenter;
 import biz.golek.whattodofordinner.business.contract.presenters.SaveNewDinnerPresenter;
+import biz.golek.whattodofordinner.database.business.dao.DBDinnerToDinner;
 import biz.golek.whattodofordinner.database.business.dao.SaveNewDinnerDaoImpl;
 import biz.golek.whattodofordinner.business.interactors.SaveNewDinnerImpl;
 import biz.golek.whattodofordinner.business.controllers.AddNewDinnerControllerImpl;
@@ -82,8 +83,8 @@ public class NewDinnerModule {
 
     @Provides
     @Singleton
-    static SaveNewDinnerDao provideSaveNewDinnerDao(Provider<DinnerDao> dinnerDaoProvider)
+    static SaveNewDinnerDao provideSaveNewDinnerDao(Provider<DinnerDao> dinnerDaoProvider, DBDinnerToDinner converter)
     {
-        return new SaveNewDinnerDaoImpl(dinnerDaoProvider);
+        return new SaveNewDinnerDaoImpl(dinnerDaoProvider, converter);
     }
 }

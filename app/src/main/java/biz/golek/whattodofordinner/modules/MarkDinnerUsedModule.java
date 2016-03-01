@@ -18,6 +18,7 @@ import biz.golek.whattodofordinner.business.controllers.ShowMarkDinnerUsedContro
 import biz.golek.whattodofordinner.business.interactors.MarkDinnerUsedImpl;
 import biz.golek.whattodofordinner.business.interactors.ShowMarkDinnerUsedImpl;
 import biz.golek.whattodofordinner.database.DinnerDao;
+import biz.golek.whattodofordinner.database.business.dao.DBDinnerToDinner;
 import biz.golek.whattodofordinner.database.business.dao.MarkDinnerUsedDaoImpl;
 import biz.golek.whattodofordinner.database.business.dao.ShowMarkDinnerUsedDaoImpl;
 import biz.golek.whattodofordinner.view.business.presneters.MarkDinnerUsedPresenterImpl;
@@ -54,8 +55,8 @@ public class MarkDinnerUsedModule {
 
     @Provides
     @Singleton
-    static ShowMarkDinnerUsedDao provideShowMarkDinnerUsedDao(Provider<DinnerDao> dinnerDaoProvider){
-        return new ShowMarkDinnerUsedDaoImpl(dinnerDaoProvider);
+    static ShowMarkDinnerUsedDao provideShowMarkDinnerUsedDao(Provider<DinnerDao> dinnerDaoProvider, DBDinnerToDinner converter){
+        return new ShowMarkDinnerUsedDaoImpl(dinnerDaoProvider, converter);
     }
 
     public ShowMarkDinnerUsedController getShowMarkDinnerUsedController(ShowMarkDinnerUsed interactor) {
@@ -93,8 +94,8 @@ public class MarkDinnerUsedModule {
 
     @Provides
     @Singleton
-    static MarkDinnerUsedDao provideMarkDinnerUsedDao(Provider<DinnerDao> dinnerDaoProvider)
+    static MarkDinnerUsedDao provideMarkDinnerUsedDao(Provider<DinnerDao> dinnerDaoProvider, DBDinnerToDinner converter)
     {
-        return new MarkDinnerUsedDaoImpl(dinnerDaoProvider);
+        return new MarkDinnerUsedDaoImpl(dinnerDaoProvider, converter);
     }
 }

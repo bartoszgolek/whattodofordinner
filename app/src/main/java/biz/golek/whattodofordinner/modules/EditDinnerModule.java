@@ -2,8 +2,6 @@ package biz.golek.whattodofordinner.modules;
 
 import android.content.res.Resources;
 
-import org.greenrobot.eventbus.EventBus;
-
 import javax.inject.Provider;
 import javax.inject.Singleton;
 
@@ -20,12 +18,12 @@ import biz.golek.whattodofordinner.business.controllers.EditDinnerControllerImpl
 import biz.golek.whattodofordinner.business.controllers.UpdateDinnerControllerImpl;
 import biz.golek.whattodofordinner.business.interactors.EditDinnerImpl;
 import biz.golek.whattodofordinner.business.interactors.UpdateDinnerImpl;
+import biz.golek.whattodofordinner.database.business.dao.DBDinnerToDinner;
 import biz.golek.whattodofordinner.database.business.dao.EditDinnerDaoImpl;
 import biz.golek.whattodofordinner.database.business.dao.UpdateDinnerDaoImpl;
 import biz.golek.whattodofordinner.database.DinnerDao;
 import biz.golek.whattodofordinner.view.business.presneters.EditDinnerPresenterImpl;
 import biz.golek.whattodofordinner.view.business.presneters.UpdateDinnerPresenterImpl;
-import biz.golek.whattodofordinner.view.helpers.ViewState;
 import biz.golek.whattodofordinner.view.presneters.ActivityPresenter;
 import biz.golek.whattodofordinner.view.presneters.CloseCurrentActivityPresenter;
 import biz.golek.whattodofordinner.view.presneters.NotificationPresenter;
@@ -58,17 +56,17 @@ public class EditDinnerModule {
 
     @Provides
     @Singleton
-    static EditDinnerDao provideEditDinnerDao(Provider<DinnerDao> dinnerDaoProvider){
-        return new EditDinnerDaoImpl(dinnerDaoProvider);
+    static EditDinnerDao provideEditDinnerDao(Provider<DinnerDao> dinnerDaoProvider, DBDinnerToDinner converter){
+        return new EditDinnerDaoImpl(dinnerDaoProvider, converter);
     }
 
     @Provides
     @Singleton
     static UpdateDinner provideUpdateDinner(
-            UpdateDinnerPresenter updateDinnerPreseneter,
+            UpdateDinnerPresenter updateDinnerPresenter,
             UpdateDinnerDao updateDinnerDao
     ){
-        return new UpdateDinnerImpl(updateDinnerPreseneter, updateDinnerDao);
+        return new UpdateDinnerImpl(updateDinnerPresenter, updateDinnerDao);
     }
 
     @Provides
@@ -89,8 +87,8 @@ public class EditDinnerModule {
 
     @Provides
     @Singleton
-    static UpdateDinnerDao provideUpdateDinnerDao(Provider<DinnerDao> dinnerDaoProvider)
+    static UpdateDinnerDao provideUpdateDinnerDao(Provider<DinnerDao> dinnerDaoProvider, DBDinnerToDinner converter)
     {
-        return new UpdateDinnerDaoImpl(dinnerDaoProvider);
+        return new UpdateDinnerDaoImpl(dinnerDaoProvider, converter);
     }
 }

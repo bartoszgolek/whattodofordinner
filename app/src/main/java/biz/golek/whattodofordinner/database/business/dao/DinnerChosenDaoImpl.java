@@ -5,8 +5,8 @@ import java.util.Date;
 import javax.inject.Provider;
 
 import biz.golek.whattodofordinner.business.contract.dao.DinnerChosenDao;
-import biz.golek.whattodofordinner.business.contract.entities.Dinner;
 import biz.golek.whattodofordinner.database.DinnerDao;
+import biz.golek.whattodofordinner.database.entities.Dinner;
 
 /**
  * Created by bg on 11.02.16.

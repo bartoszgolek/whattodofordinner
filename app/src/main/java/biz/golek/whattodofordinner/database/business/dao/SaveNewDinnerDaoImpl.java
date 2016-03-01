@@ -10,12 +10,15 @@ import biz.golek.whattodofordinner.database.DinnerDao;
 
 public class SaveNewDinnerDaoImpl implements SaveNewDinnerDao {
     private Provider<DinnerDao> dinnerDaoProvider;
+    private DBDinnerToDinner converter;
 
-    public SaveNewDinnerDaoImpl(Provider<DinnerDao> dinnerDaoProvider) {
+    public SaveNewDinnerDaoImpl(Provider<DinnerDao> dinnerDaoProvider, DBDinnerToDinner converter) {
         this.dinnerDaoProvider = dinnerDaoProvider;
+        this.converter = converter;
     }
 
-    public void saveDinner(Dinner entity) {
+    public void saveDinner(Dinner dinner) {
+        biz.golek.whattodofordinner.database.entities.Dinner entity = converter.toDatabase(dinner);
         entity.setCreationDate(new Date());
         dinnerDaoProvider.get().insert(entity);
     }

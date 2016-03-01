@@ -70,7 +70,8 @@ public class AddBasePromptsDaoImpl implements AddBasePromptsDao {
     }
 
     private Dinner insertDinner(DinnerDao dao, String name, int duration, boolean soup, boolean vegetarian, boolean spring, boolean summer, boolean autumn, boolean winter) {
-        Dinner dinner = new Dinner();
+        biz.golek.whattodofordinner.database.entities.Dinner dinner =
+            new biz.golek.whattodofordinner.database.entities.Dinner();
         dinner.setName(name);
         dinner.setDuration(duration);
         dinner.setSoup(soup);
@@ -81,7 +82,7 @@ public class AddBasePromptsDaoImpl implements AddBasePromptsDao {
 
         dao.insert(dinner);
 
-        return dinner;
+        return new Dinner(dinner.getId(), name, duration, soup, vegetarian, spring, summer, autumn, winter, dinner.getCreationDate());
     }
 
     private int getSeasonsValue(boolean spring, boolean summer, boolean autumn, boolean winter) {

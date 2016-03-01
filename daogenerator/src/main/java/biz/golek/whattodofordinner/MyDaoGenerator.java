@@ -21,7 +21,7 @@ public class MyDaoGenerator {
 
     private static void addDinner(Schema schema) {
         Entity dinner = schema.addEntity("Dinner");
-        dinner.setJavaPackage("biz.golek.whattodofordinner.business.contract.entities");
+        dinner.setJavaPackage("biz.golek.whattodofordinner.database.entities");
         dinner.setJavaPackageDao("biz.golek.whattodofordinner.database");
         dinner.addIdProperty();
         dinner.addStringProperty("name").notNull();
@@ -34,7 +34,7 @@ public class MyDaoGenerator {
         dinner.addDateProperty("creationDate").notNull();
 
         Entity dinnerStat = schema.addEntity("DinnerStat");
-        dinnerStat.setJavaPackage("biz.golek.whattodofordinner.business.contract.entities");
+        dinnerStat.setJavaPackage("biz.golek.whattodofordinner.database.entities");
         dinnerStat.setJavaPackageDao("biz.golek.whattodofordinner.database");
         dinnerStat.addIdProperty();
         Property statType = dinnerStat.addIntProperty("type").notNull().getProperty();
@@ -46,13 +46,13 @@ public class MyDaoGenerator {
         dinnerToStats.orderAsc(statDate, statType);
 
         Entity ingredient = schema.addEntity("Ingredient");
-        ingredient.setJavaPackage("biz.golek.whattodofordinner.business.contract.entities");
+        ingredient.setJavaPackage("biz.golek.whattodofordinner.database.entities");
         ingredient.setJavaPackageDao("biz.golek.whattodofordinner.database");
         ingredient.addIdProperty();
         ingredient.addShortProperty("Name");
 
         Entity dinnerIngredient = schema.addEntity("DinnerIngredient");
-        dinnerIngredient.setJavaPackage("biz.golek.whattodofordinner.business.contract.entities");
+        dinnerIngredient.setJavaPackage("biz.golek.whattodofordinner.database.entities");
         dinnerIngredient.setJavaPackageDao("biz.golek.whattodofordinner.database");
         dinnerIngredient.addIdProperty();
         Property dinnerIngredientDinnerId = dinnerIngredient.addLongProperty("dinnerId")
