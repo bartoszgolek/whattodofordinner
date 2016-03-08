@@ -1,4 +1,4 @@
-package biz.golek.whattodofordinner.view.helpers;
+package biz.golek.whattodofordinner.utils;
 
 /**
  * Created by bg on 09.02.16.

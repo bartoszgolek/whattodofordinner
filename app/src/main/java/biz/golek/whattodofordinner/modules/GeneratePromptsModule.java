@@ -20,6 +20,8 @@ import biz.golek.whattodofordinner.business.controllers.ShowGeneratePromptsPrefe
 import biz.golek.whattodofordinner.business.interactors.DinnerChosenImpl;
 import biz.golek.whattodofordinner.business.interactors.GeneratePromptsImpl;
 import biz.golek.whattodofordinner.business.interactors.ShowGeneratePromptsPreferencesImpl;
+import biz.golek.whattodofordinner.database.DinnerStatDao;
+import biz.golek.whattodofordinner.database.business.dao.DBDinnerToDinner;
 import biz.golek.whattodofordinner.database.business.dao.DinnerChosenDaoImpl;
 import biz.golek.whattodofordinner.database.business.dao.GeneratePromptsDaoImpl;
 import biz.golek.whattodofordinner.database.DinnerDao;
@@ -88,9 +90,10 @@ public class GeneratePromptsModule {
     @Provides
     @Singleton
     static GeneratePromptsDao provideGeneratePromptsDao(
-            Provider<DinnerDao> dinnerDaoProvider
-    ){
-        return new GeneratePromptsDaoImpl(dinnerDaoProvider);
+            Provider<DinnerDao> dinnerDaoProvider,
+            Provider<DinnerStatDao> dinnerStatDaoProvider,
+            DBDinnerToDinner converter){
+        return new GeneratePromptsDaoImpl(dinnerDaoProvider, dinnerStatDaoProvider, converter);
     }
 
     @Provides
@@ -121,8 +124,9 @@ public class GeneratePromptsModule {
     @Provides
     @Singleton
     static DinnerChosenDao provideDinnerAcceptedDao(
-            Provider<DinnerDao> dinnerDaoProvider
-    ){
-        return new DinnerChosenDaoImpl(dinnerDaoProvider);
+            Provider<DinnerDao> dinnerDaoProvider,
+            Provider<DinnerStatDao> dinnerStatDaoProvider)
+    {
+        return new DinnerChosenDaoImpl(dinnerDaoProvider, dinnerStatDaoProvider);
     }
 }

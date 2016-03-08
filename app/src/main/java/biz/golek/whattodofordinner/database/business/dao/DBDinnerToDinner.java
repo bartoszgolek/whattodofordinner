@@ -5,7 +5,7 @@ import java.util.List;
 
 import biz.golek.whattodofordinner.database.entities.Dinner;
 import biz.golek.whattodofordinner.database.entities.Seasons;
-import biz.golek.whattodofordinner.view.helpers.FlagHelper;
+import biz.golek.whattodofordinner.utils.FlagHelper;
 
 /**
  * Created by bgolek on 2016-03-01.

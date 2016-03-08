@@ -7,7 +7,7 @@ import javax.inject.Provider;
 import biz.golek.whattodofordinner.business.contract.dao.AddBasePromptsDao;
 import biz.golek.whattodofordinner.business.contract.entities.Dinner;
 import biz.golek.whattodofordinner.database.DinnerDao;
-import biz.golek.whattodofordinner.view.helpers.FlagHelper;
+import biz.golek.whattodofordinner.utils.FlagHelper;
 
 /**
  * Created by Bartosz Gołek on 2016-02-16.

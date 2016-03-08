@@ -18,6 +18,7 @@ import biz.golek.whattodofordinner.business.controllers.ShowMarkDinnerUsedContro
 import biz.golek.whattodofordinner.business.interactors.MarkDinnerUsedImpl;
 import biz.golek.whattodofordinner.business.interactors.ShowMarkDinnerUsedImpl;
 import biz.golek.whattodofordinner.database.DinnerDao;
+import biz.golek.whattodofordinner.database.DinnerStatDao;
 import biz.golek.whattodofordinner.database.business.dao.DBDinnerToDinner;
 import biz.golek.whattodofordinner.database.business.dao.MarkDinnerUsedDaoImpl;
 import biz.golek.whattodofordinner.database.business.dao.ShowMarkDinnerUsedDaoImpl;
@@ -94,8 +95,11 @@ public class MarkDinnerUsedModule {
 
     @Provides
     @Singleton
-    static MarkDinnerUsedDao provideMarkDinnerUsedDao(Provider<DinnerDao> dinnerDaoProvider, DBDinnerToDinner converter)
+    static MarkDinnerUsedDao provideMarkDinnerUsedDao(
+            Provider<DinnerDao> dinnerDaoProvider,
+            Provider<DinnerStatDao> dinnerStatDaoProvider,
+            DBDinnerToDinner converter)
     {
-        return new MarkDinnerUsedDaoImpl(dinnerDaoProvider, converter);
+        return new MarkDinnerUsedDaoImpl(dinnerDaoProvider, dinnerStatDaoProvider, converter);
     }
 }

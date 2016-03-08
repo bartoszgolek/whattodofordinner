@@ -5,7 +5,6 @@ import javax.inject.Provider;
 import biz.golek.whattodofordinner.business.contract.dao.UpdateDinnerDao;
 import biz.golek.whattodofordinner.business.contract.entities.Dinner;
 import biz.golek.whattodofordinner.database.DinnerDao;
-import biz.golek.whattodofordinner.view.helpers.FlagHelper;
 
 /**
  * Created by Bartosz Gołek on 2016-02-10.

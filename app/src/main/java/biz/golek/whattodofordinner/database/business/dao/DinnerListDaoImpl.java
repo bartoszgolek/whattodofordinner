@@ -1,6 +1,5 @@
 package biz.golek.whattodofordinner.database.business.dao;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Provider;
@@ -8,9 +7,6 @@ import javax.inject.Provider;
 import biz.golek.whattodofordinner.business.contract.dao.DinnerListDao;
 import biz.golek.whattodofordinner.business.contract.entities.Dinner;
 import biz.golek.whattodofordinner.database.DinnerDao;
-import biz.golek.whattodofordinner.database.entities.Seasons;
-import biz.golek.whattodofordinner.view.helpers.FlagHelper;
-import biz.golek.whattodofordinner.view.view_models.DinnerFormViewModel;
 
 /**
  * Created by bg on 08.02.16.

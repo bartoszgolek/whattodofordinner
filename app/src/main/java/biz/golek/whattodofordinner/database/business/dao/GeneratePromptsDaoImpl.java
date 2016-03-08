@@ -13,6 +13,9 @@ import biz.golek.whattodofordinner.business.contract.entities.Dinner;
 import biz.golek.whattodofordinner.business.contract.request_data.Duration;
 import biz.golek.whattodofordinner.business.contract.request_data.Profile;
 import biz.golek.whattodofordinner.database.DinnerDao;
+import biz.golek.whattodofordinner.database.DinnerStatDao;
+import biz.golek.whattodofordinner.database.entities.DinnerStat;
+import biz.golek.whattodofordinner.database.entities.DinnerStatType;
 import de.greenrobot.dao.query.QueryBuilder;
 
 /**
@@ -20,10 +23,16 @@ import de.greenrobot.dao.query.QueryBuilder;
  */
 public class GeneratePromptsDaoImpl implements GeneratePromptsDao {
     private Provider<DinnerDao> dinnerDaoProvider;
+    private Provider<DinnerStatDao> dinnerStatDaoProvider;
     private biz.golek.whattodofordinner.database.business.dao.DBDinnerToDinner converter;
 
-    public GeneratePromptsDaoImpl(Provider<DinnerDao> dinnerDaoProvider) {
+    public GeneratePromptsDaoImpl(
+            Provider<DinnerDao> dinnerDaoProvider,
+            Provider<DinnerStatDao> dinnerStatDaoProvider,
+            DBDinnerToDinner converter) {
         this.dinnerDaoProvider = dinnerDaoProvider;
+        this.dinnerStatDaoProvider = dinnerStatDaoProvider;
+        this.converter = converter;
     }
 
     @Override
@@ -51,14 +60,22 @@ public class GeneratePromptsDaoImpl implements GeneratePromptsDao {
     public void StoreDeny(Long[] excludes) {
         if (excludes != null && excludes.length > 0) {
             DinnerDao dinnerDao = dinnerDaoProvider.get();
+            DinnerStatDao dinnerStatDao = dinnerStatDaoProvider.get();
 
             List<biz.golek.whattodofordinner.database.entities.Dinner> list = dinnerDao.queryBuilder()
                     .where(DinnerDao.Properties.Id.in(excludes))
                     .list();
 
-            for (biz.golek.whattodofordinner.database.entities.Dinner d : list) {
-                d.setLastDrop(new Date());
-                dinnerDao.update(d);
+            for (biz.golek.whattodofordinner.database.entities.Dinner dinner : list) {
+                Date dropDate = new Date();
+                dinner.setLastDrop(dropDate);
+                dinnerDao.update(dinner);
+
+                DinnerStat dinnerStat = new DinnerStat();
+                dinnerStat.setType(DinnerStatType.Drop);
+                dinnerStat.setDate(dropDate);
+                dinnerStat.setDinnerId(dinner.getId());
+                dinnerStatDao.insert(dinnerStat);
             }
         }
     }
