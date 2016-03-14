@@ -14,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import biz.golek.whattodofordinner.R;
 import biz.golek.whattodofordinner.business.contract.response_data.DinnerListItem;
@@ -21,9 +22,10 @@ import biz.golek.whattodofordinner.databinding.ActivityDinnerListBinding;
 import biz.golek.whattodofordinner.view.ActivityDependencyProvider;
 import biz.golek.whattodofordinner.view.adapters.DinnerListItemArrayAdapter;
 import biz.golek.whattodofordinner.view.awareness.IActivityDependencyProviderAware;
-import biz.golek.whattodofordinner.view.messages.AddedDinner;
+import biz.golek.whattodofordinner.view.messages.Dinner;
 import biz.golek.whattodofordinner.view.messages.DinnerAddedMessage;
 import biz.golek.whattodofordinner.view.messages.DinnerDeletedMessage;
+import biz.golek.whattodofordinner.view.messages.DinnerLoadedMessage;
 import biz.golek.whattodofordinner.view.messages.DinnerUpdatedMessage;
 import biz.golek.whattodofordinner.view.view_models.DinnerListViewModel;
 
@@ -55,6 +57,7 @@ public class DinnerListActivity extends AppCompatActivity implements IActivityDe
         registerForContextMenu(listView);
 
         activityDependencyProvider.getEventBusProvider().get().register(this);
+        activityDependencyProvider.getLoadDinnerListController().run();
     }
 
     @Override
@@ -63,7 +66,21 @@ public class DinnerListActivity extends AppCompatActivity implements IActivityDe
         activityDependencyProvider.getEventBusProvider().get().unregister(this);
     }
 
-    @Subscribe
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onDinnerLoadeddMessage(DinnerLoadedMessage event) {
+        viewModel.dinners.clear();
+
+        for (Dinner addedDinner : event.getDinners()) {
+            DinnerListItem dinner = new DinnerListItem();
+            dinner.id = addedDinner.getId();
+            dinner.name = addedDinner.getName();
+
+            viewModel.dinners.add(dinner);
+        }
+        adapter.notifyDataSetChanged();
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
     public void onDinnerDeleteMessage(DinnerDeletedMessage event) {
         DinnerListItem dinner = null;
         for (DinnerListItem d : viewModel.dinners)
@@ -75,9 +92,9 @@ public class DinnerListActivity extends AppCompatActivity implements IActivityDe
             adapter.notifyDataSetChanged();
     }
 
-    @Subscribe
+    @Subscribe(threadMode = ThreadMode.MAIN)
     public void onDinnerAddedMessage(DinnerAddedMessage event) {
-        for (AddedDinner addedDinner : event.getAddedDinners()) {
+        for (Dinner addedDinner : event.getAddedDinners()) {
             DinnerListItem dinner = new DinnerListItem();
             dinner.id = addedDinner.getId();
             dinner.name = addedDinner.getName();
@@ -87,7 +104,7 @@ public class DinnerListActivity extends AppCompatActivity implements IActivityDe
         adapter.notifyDataSetChanged();
     }
 
-    @Subscribe
+    @Subscribe(threadMode = ThreadMode.MAIN)
     public void onDinnerUpdatedMessage(DinnerUpdatedMessage event) {
         boolean updated = false;
         for (DinnerListItem dinner : viewModel.dinners) {

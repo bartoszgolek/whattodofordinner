@@ -6,23 +6,29 @@ import javax.inject.Provider;
 import javax.inject.Singleton;
 
 import biz.golek.whattodofordinner.business.contract.controllers.DeleteDinnerController;
-import biz.golek.whattodofordinner.business.contract.controllers.DinnerListController;
+import biz.golek.whattodofordinner.business.contract.controllers.ShowDinnerListController;
+import biz.golek.whattodofordinner.business.contract.controllers.LoadDinnerListController;
 import biz.golek.whattodofordinner.business.contract.dao.DeleteDinnerDao;
-import biz.golek.whattodofordinner.business.contract.dao.DinnerListDao;
+import biz.golek.whattodofordinner.business.contract.dao.LoadDinnerListDao;
 import biz.golek.whattodofordinner.business.contract.interactors.DeleteDinner;
-import biz.golek.whattodofordinner.business.contract.interactors.DinnerList;
+import biz.golek.whattodofordinner.business.contract.interactors.ShowDinnerList;
+import biz.golek.whattodofordinner.business.contract.interactors.LoadDinnerList;
 import biz.golek.whattodofordinner.business.contract.presenters.DeleteDinnerPresenter;
-import biz.golek.whattodofordinner.business.contract.presenters.DinnerListPresenter;
+import biz.golek.whattodofordinner.business.contract.presenters.ShowDinnerListPresenter;
+import biz.golek.whattodofordinner.business.contract.presenters.LoadDinnerListPresenter;
 import biz.golek.whattodofordinner.business.controllers.DeleteDinnerControllerImpl;
-import biz.golek.whattodofordinner.business.controllers.DinnerListControllerImpl;
+import biz.golek.whattodofordinner.business.controllers.ShowDinnerListControllerImpl;
+import biz.golek.whattodofordinner.business.controllers.LoadDinnerListControllerImpl;
 import biz.golek.whattodofordinner.business.interactors.DeleteDinnerImpl;
+import biz.golek.whattodofordinner.business.interactors.LoadDinnerListImpl;
 import biz.golek.whattodofordinner.database.business.dao.DBDinnerToDinner;
 import biz.golek.whattodofordinner.database.business.dao.DeleteDinnerDaoImpl;
-import biz.golek.whattodofordinner.database.business.dao.DinnerListDaoImpl;
-import biz.golek.whattodofordinner.business.interactors.DinnerListImpl;
+import biz.golek.whattodofordinner.database.business.dao.LoadDinnerListDaoImpl;
+import biz.golek.whattodofordinner.business.interactors.ShowDinnerListImpl;
 import biz.golek.whattodofordinner.database.DinnerDao;
 import biz.golek.whattodofordinner.view.business.presneters.DeleteDinnerPresenterImpl;
-import biz.golek.whattodofordinner.view.business.presneters.DinnerListPresenterImpl;
+import biz.golek.whattodofordinner.view.business.presneters.ShowDinnerListPresenterImpl;
+import biz.golek.whattodofordinner.view.business.presneters.LoadDinnerListPresenterImpl;
 import biz.golek.whattodofordinner.view.helpers.ViewState;
 import biz.golek.whattodofordinner.view.presneters.ActivityPresenter;
 import biz.golek.whattodofordinner.view.presneters.NotificationPresenter;
@@ -37,29 +43,49 @@ public class DinnerListModule {
 
     @Provides
     @Singleton
-    static DinnerList provideDinnerList(
-            DinnerListPresenter dinnerListPresenter,
-            DinnerListDao dinnerListDao
+    static ShowDinnerList provideShowDinnerList(
+            ShowDinnerListPresenter showDinnerListPresenter
     ){
-        return new DinnerListImpl(dinnerListPresenter, dinnerListDao);
+        return new ShowDinnerListImpl(showDinnerListPresenter);
     }
 
     @Provides
     @Singleton
-    static DinnerListController provideDinnerListController(DinnerList dinnerList){
-        return new DinnerListControllerImpl(dinnerList);
+    static ShowDinnerListController provideShowDinnerListController(ShowDinnerList showDinnerList){
+        return new ShowDinnerListControllerImpl(showDinnerList);
     }
 
     @Provides
     @Singleton
-    static DinnerListPresenter provideDinnerListPresenter(ActivityPresenter starter){
-        return new DinnerListPresenterImpl(starter);
+    static ShowDinnerListPresenter provideShowDinnerListPresenter(ActivityPresenter activityPresenter){
+        return new ShowDinnerListPresenterImpl(activityPresenter);
     }
 
     @Provides
     @Singleton
-    static DinnerListDao provideDinnerListDao(Provider<DinnerDao> dinnerDaoProvider, DBDinnerToDinner converter){
-        return new DinnerListDaoImpl(dinnerDaoProvider, converter);
+    static LoadDinnerList provideLoadDinnerList(
+            LoadDinnerListPresenter loadDinnerListPresenter,
+            LoadDinnerListDao loadDinnerListDao
+    ){
+        return new LoadDinnerListImpl(loadDinnerListPresenter, loadDinnerListDao);
+    }
+
+    @Provides
+    @Singleton
+    static LoadDinnerListController provideLoadDinnerListController(LoadDinnerList loadDinnerList){
+        return new LoadDinnerListControllerImpl(loadDinnerList);
+    }
+
+    @Provides
+    @Singleton
+    static LoadDinnerListPresenter provideLoadDinnerListPresenter(EventBus eventBus){
+        return new LoadDinnerListPresenterImpl(eventBus);
+    }
+
+    @Provides
+    @Singleton
+    static LoadDinnerListDao provideLoadDinnerListDao(Provider<DinnerDao> dinnerDaoProvider, DBDinnerToDinner converter){
+        return new LoadDinnerListDaoImpl(dinnerDaoProvider, converter);
     }
 
     @Provides

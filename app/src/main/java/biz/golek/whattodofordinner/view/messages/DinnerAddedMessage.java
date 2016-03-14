@@ -4,14 +4,14 @@ package biz.golek.whattodofordinner.view.messages;
  * Created by Bartosz Gołek on 2016-02-10.
  */
 public class DinnerAddedMessage {
-    private AddedDinner[] dinners;
+    private Dinner[] dinners;
 
-    public DinnerAddedMessage(AddedDinner[] dinners) {
+    public DinnerAddedMessage(Dinner[] dinners) {
 
         this.dinners = dinners;
     }
 
-    public AddedDinner[] getAddedDinners() {
+    public Dinner[] getAddedDinners() {
         return dinners;
     }
 }

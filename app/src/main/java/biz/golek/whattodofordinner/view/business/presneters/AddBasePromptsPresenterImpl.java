@@ -6,10 +6,9 @@ import android.content.res.Resources;
 import org.greenrobot.eventbus.EventBus;
 
 import biz.golek.whattodofordinner.R;
-import biz.golek.whattodofordinner.business.contract.entities.Dinner;
 import biz.golek.whattodofordinner.business.contract.presenters.AddBasePromptsPresenter;
 import biz.golek.whattodofordinner.view.helpers.ViewState;
-import biz.golek.whattodofordinner.view.messages.AddedDinner;
+import biz.golek.whattodofordinner.view.messages.Dinner;
 import biz.golek.whattodofordinner.view.messages.DinnerAddedMessage;
 import biz.golek.whattodofordinner.view.presneters.NotificationPresenter;
 
@@ -31,15 +30,15 @@ public class AddBasePromptsPresenterImpl implements AddBasePromptsPresenter {
     }
 
     @Override
-    public void Show(Dinner[] dinners) {
+    public void Show(biz.golek.whattodofordinner.business.contract.entities.Dinner[] dinners) {
         Activity currentActivity = viewState.getCurrentActivity();
         Resources res = currentActivity.getApplication().getApplicationContext().getResources();
         notification.show(res.getString(R.string.dinners_generated_from_base_prompts));
 
-        AddedDinner[] added = new AddedDinner[dinners.length];
+        Dinner[] added = new Dinner[dinners.length];
         for (int i = 0; i < dinners.length; i++) {
-            Dinner d = dinners[i];
-            added[i] = new AddedDinner(d.getId(), d.getName());
+            biz.golek.whattodofordinner.business.contract.entities.Dinner d = dinners[i];
+            added[i] = new Dinner(d.getId(), d.getName());
         }
 
         eventBus.post(new DinnerAddedMessage(added));

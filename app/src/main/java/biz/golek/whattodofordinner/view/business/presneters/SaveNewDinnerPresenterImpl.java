@@ -5,10 +5,9 @@ import android.content.res.Resources;
 import org.greenrobot.eventbus.EventBus;
 
 import biz.golek.whattodofordinner.R;
-import biz.golek.whattodofordinner.business.contract.entities.Dinner;
 import biz.golek.whattodofordinner.business.contract.presenters.SaveNewDinnerPresenter;
 import biz.golek.whattodofordinner.view.helpers.ViewState;
-import biz.golek.whattodofordinner.view.messages.AddedDinner;
+import biz.golek.whattodofordinner.view.messages.Dinner;
 import biz.golek.whattodofordinner.view.messages.DinnerAddedMessage;
 import biz.golek.whattodofordinner.view.presneters.CloseCurrentActivityPresenter;
 import biz.golek.whattodofordinner.view.presneters.NotificationPresenter;
@@ -35,13 +34,13 @@ public class SaveNewDinnerPresenterImpl implements SaveNewDinnerPresenter {
     }
 
     @Override
-    public void ShowSaved(Dinner dinner) {
+    public void ShowSaved(biz.golek.whattodofordinner.business.contract.entities.Dinner dinner) {
         notification.show(resources.getString(R.string.save_new_dinner_saved_message));
 
         eventBus.post(
             new DinnerAddedMessage(
-                new AddedDinner[]{
-                    new AddedDinner(dinner.getId(), dinner.getName())
+                new Dinner[]{
+                    new Dinner(dinner.getId(), dinner.getName())
                 }
             )
         );

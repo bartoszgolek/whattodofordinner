@@ -1,10 +1,10 @@
 package biz.golek.whattodofordinner.view.messages;
 
-public class AddedDinner {
+public class Dinner {
     private Long id;
     private String name;
 
-    public AddedDinner(Long id, String name) {
+    public Dinner(Long id, String name) {
         this.id = id;
         this.name = name;
     }

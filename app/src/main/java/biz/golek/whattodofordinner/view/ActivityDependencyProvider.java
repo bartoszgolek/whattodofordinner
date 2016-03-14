@@ -11,15 +11,14 @@ import biz.golek.whattodofordinner.business.contract.controllers.DeleteDinnerCon
 import biz.golek.whattodofordinner.business.contract.controllers.DinnerChosenController;
 import biz.golek.whattodofordinner.business.contract.controllers.EditDinnerController;
 import biz.golek.whattodofordinner.business.contract.controllers.GeneratePromptsController;
+import biz.golek.whattodofordinner.business.contract.controllers.LoadDinnerListController;
 import biz.golek.whattodofordinner.business.contract.controllers.MarkDinnerUsedController;
 import biz.golek.whattodofordinner.business.contract.controllers.SaveNewDinnerController;
-import biz.golek.whattodofordinner.business.contract.controllers.DinnerListController;
+import biz.golek.whattodofordinner.business.contract.controllers.ShowDinnerListController;
 import biz.golek.whattodofordinner.business.contract.controllers.ShowGeneratePromptsPreferencesController;
 import biz.golek.whattodofordinner.business.contract.controllers.ShowMainController;
 import biz.golek.whattodofordinner.business.contract.controllers.ShowMarkDinnerUsedController;
-import biz.golek.whattodofordinner.business.contract.interactors.MarkDinnerUsed;
 import biz.golek.whattodofordinner.business.contract.interactors.UpdateDinnerController;
-import biz.golek.whattodofordinner.business.controllers.MarkDinnerUsedControllerImpl;
 
 /**
  * Created by Bartosz Gołek on 2016-02-04.
@@ -28,7 +27,7 @@ public class ActivityDependencyProvider {
     private Provider<EventBus> eventBusProvider;
     private final Provider<AddNewDinnerController> addNewDinnerControllerProvider;
     private final Provider<SaveNewDinnerController> saveNewDinnerControllerProvider;
-    private final Provider<DinnerListController> dinnerListControllerProvider;
+    private final Provider<ShowDinnerListController> dinnerListControllerProvider;
     private final Provider<DeleteDinnerController> deleteDinnerControllerProvider;
     private final Provider<UpdateDinnerController> updateDinnerControllerProvider;
     private final Provider<EditDinnerController> editDinnerControllerProvider;
@@ -40,12 +39,13 @@ public class ActivityDependencyProvider {
     private final Provider<AddBasePromptsController> addBasePromptsControllerProvider;
     private final Provider<ShowMarkDinnerUsedController> showMarkDinnerUsedControllerProvider;
     private final Provider<MarkDinnerUsedController> markDinnerUsedControllerProvider;
+    private final Provider<LoadDinnerListController> loadDinnerListControllerProvider;
 
     public ActivityDependencyProvider(
             Provider<EventBus> eventBusProvider,
             Provider<AddNewDinnerController> addNewDinnerControllerProvider,
             Provider<SaveNewDinnerController> saveNewDinnerControllerProvider,
-            Provider<DinnerListController> dinnerListControllerProvider,
+            Provider<ShowDinnerListController> dinnerListControllerProvider,
             Provider<DeleteDinnerController> deleteDinnerControllerProvider,
             Provider<UpdateDinnerController> updateDinnerControllerProvider,
             Provider<EditDinnerController> editDinnerControllerProvider,
@@ -54,7 +54,10 @@ public class ActivityDependencyProvider {
             Provider<DinnerChosenController> dinnerAcceptedControllerProvider,
             Provider<ShowMainController> showMainControllerProvider,
             Provider<AboutController> aboutControllerProvider,
-            Provider<AddBasePromptsController> addBasePromptsControllerProvider, Provider<ShowMarkDinnerUsedController> showMarkDinnerUsedControllerProvider, Provider<MarkDinnerUsedController> markDinnerUsedControllerProvider)
+            Provider<AddBasePromptsController> addBasePromptsControllerProvider,
+            Provider<ShowMarkDinnerUsedController> showMarkDinnerUsedControllerProvider,
+            Provider<MarkDinnerUsedController> markDinnerUsedControllerProvider,
+            Provider<LoadDinnerListController> loadDinnerListControllerProvider)
     {
         this.eventBusProvider = eventBusProvider;
         this.addNewDinnerControllerProvider = addNewDinnerControllerProvider;
@@ -71,6 +74,7 @@ public class ActivityDependencyProvider {
         this.addBasePromptsControllerProvider = addBasePromptsControllerProvider;
         this.showMarkDinnerUsedControllerProvider = showMarkDinnerUsedControllerProvider;
         this.markDinnerUsedControllerProvider = markDinnerUsedControllerProvider;
+        this.loadDinnerListControllerProvider = loadDinnerListControllerProvider;
     }
 
     public AddNewDinnerController getAddNewDinnerController() {
@@ -81,7 +85,7 @@ public class ActivityDependencyProvider {
         return saveNewDinnerControllerProvider.get();
     }
 
-    public DinnerListController getShowDinnerListController() {
+    public ShowDinnerListController getShowDinnerListController() {
         return dinnerListControllerProvider.get();
     }
 
@@ -131,5 +135,9 @@ public class ActivityDependencyProvider {
 
     public AddBasePromptsController getAddBasePromptsController() {
         return addBasePromptsControllerProvider.get();
+    }
+
+    public LoadDinnerListController getLoadDinnerListController() {
+        return loadDinnerListControllerProvider.get();
     }
 }

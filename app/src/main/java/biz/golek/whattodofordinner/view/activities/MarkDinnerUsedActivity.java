@@ -26,7 +26,7 @@ import biz.golek.whattodofordinner.databinding.ActivityMarkDinnerUsedBinding;
 import biz.golek.whattodofordinner.view.ActivityDependencyProvider;
 import biz.golek.whattodofordinner.view.adapters.DinnerListItemArrayAdapter;
 import biz.golek.whattodofordinner.view.awareness.IActivityDependencyProviderAware;
-import biz.golek.whattodofordinner.view.messages.AddedDinner;
+import biz.golek.whattodofordinner.view.messages.Dinner;
 import biz.golek.whattodofordinner.view.messages.DinnerAddedMessage;
 import biz.golek.whattodofordinner.view.messages.DinnerDeletedMessage;
 import biz.golek.whattodofordinner.view.messages.DinnerUpdatedMessage;
@@ -106,7 +106,7 @@ public class MarkDinnerUsedActivity extends AppCompatActivity implements IActivi
     @Subscribe
     public void onDinnerAddedMessage(DinnerAddedMessage event) {
         DinnerListItem firstItem = null;
-        for (AddedDinner addedDinner : event.getAddedDinners()) {
+        for (Dinner addedDinner : event.getAddedDinners()) {
             DinnerListItem dinner = new DinnerListItem();
             dinner.id = addedDinner.getId();
             dinner.name = addedDinner.getName();

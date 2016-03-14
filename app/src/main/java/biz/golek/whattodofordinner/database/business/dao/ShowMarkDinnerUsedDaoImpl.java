@@ -22,6 +22,11 @@ public class ShowMarkDinnerUsedDaoImpl implements ShowMarkDinnerUsedDao {
 
     @Override
     public List<Dinner> getAllDinners() {
-        return converter.toBusiness(dinnerDaoProvider.get().loadAll());
+        return converter.toBusiness(
+                dinnerDaoProvider.get()
+                        .queryBuilder()
+                        .orderAsc(DinnerDao.Properties.Name)
+                        .list()
+        );
     }
 }

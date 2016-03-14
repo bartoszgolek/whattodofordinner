@@ -15,9 +15,10 @@ import biz.golek.whattodofordinner.business.contract.controllers.DeleteDinnerCon
 import biz.golek.whattodofordinner.business.contract.controllers.DinnerChosenController;
 import biz.golek.whattodofordinner.business.contract.controllers.EditDinnerController;
 import biz.golek.whattodofordinner.business.contract.controllers.GeneratePromptsController;
+import biz.golek.whattodofordinner.business.contract.controllers.LoadDinnerListController;
 import biz.golek.whattodofordinner.business.contract.controllers.MarkDinnerUsedController;
 import biz.golek.whattodofordinner.business.contract.controllers.SaveNewDinnerController;
-import biz.golek.whattodofordinner.business.contract.controllers.DinnerListController;
+import biz.golek.whattodofordinner.business.contract.controllers.ShowDinnerListController;
 import biz.golek.whattodofordinner.business.contract.controllers.ShowGeneratePromptsPreferencesController;
 import biz.golek.whattodofordinner.business.contract.controllers.ShowMainController;
 import biz.golek.whattodofordinner.business.contract.controllers.ShowMarkDinnerUsedController;
@@ -55,7 +56,7 @@ public class AppModule {
             Provider<EventBus> eventBus,
             Provider<AddNewDinnerController> addNewDinnerControllerProvider,
             Provider<SaveNewDinnerController> saveNewDinnerControllerProvider,
-            Provider<DinnerListController> dinnerListControllerProvider,
+            Provider<ShowDinnerListController> dinnerListControllerProvider,
             Provider<DeleteDinnerController> deleteDinnerControllerProvider,
             Provider<UpdateDinnerController> updateDinnerControllerProvider,
             Provider<EditDinnerController> editDinnerControllerProvider,
@@ -66,7 +67,8 @@ public class AppModule {
             Provider<AboutController> aboutControllerProvider,
             Provider<AddBasePromptsController> addBasePromptsControllerProvider,
             Provider<ShowMarkDinnerUsedController> showMarkDinnerUsedControllerProvider,
-            Provider<MarkDinnerUsedController> markDinnerUsedControllerProvider){
+            Provider<MarkDinnerUsedController> markDinnerUsedControllerProvider,
+            Provider<LoadDinnerListController> loadDinnerListControllerProvider){
         return new ActivityDependencyProvider(
             eventBus,
             addNewDinnerControllerProvider,
@@ -82,7 +84,8 @@ public class AppModule {
             aboutControllerProvider,
             addBasePromptsControllerProvider,
             showMarkDinnerUsedControllerProvider,
-            markDinnerUsedControllerProvider);
+            markDinnerUsedControllerProvider,
+            loadDinnerListControllerProvider);
     }
 
     @Provides
